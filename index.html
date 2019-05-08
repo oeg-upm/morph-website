@@ -1,162 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
   <title>Morph Family Tools</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
-  <nav class="blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Morph: open source OBDA tools</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#tools">Tools</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#team">Team</a></li>
-      </ul>
+  <!-- Font Awesome Icons -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#tools">Tools</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#team">Team</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+  <!-- Plugin CSS -->
+  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+  <!-- Theme CSS - Includes Bootstrap -->
+  <link href="css/creative.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Morph</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#tools">Tools</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio">Publications</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br>
-      <h1 class="header center red-text">Morph</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">
-        A suite of open source tools for OBDA over heterogeneous data sources (more proper abstract)
-      </h5>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10 align-self-end">
+          <h1 class="text-uppercase text-white font-weight-bold">Morph Family Tools</h1>
+          <hr class="divider my-4">
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+          <p class="text-white-75 font-weight-light mb-5">A suite of open source tools for OBDA over heterogeneous data sources (more proper abstract)</p>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+        </div>
       </div>
-      <!--<div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light red">Get Started</a>
-      </div>
-      <br><br>
-      -->
     </div>
-  </div>
+  </header>
 
-
-  <div class="container">
-    <div class="section" id="tools">
-      <h1 class="header center red-text">Tools</h1>
-      <!--   Icon Section   -->
-      <div class="row">
-          <div class="col s12 m4">
-            <div class="card blue-grey darken-3">
-              <div class="card-content white-text">
-                <span class="card-title center">Morph-RDB</span>
-                <p align="justify">Morph-RDB is an RDB2RDF engine that follows the R2RML specification.
-                  <br><br>
-                Morph-RDB supports two operational modes: data upgrade (generating RDF instances from data in a relational database) and query translation (SPARQL to SQL). Morph-RDB employs various optimisation techniques in order to generate efficient SQL queries, such as self-join elimination and subquery elimination.
-                  <br><br>
-                Morph-RDB has been tested with real queries from various Spanish/EU projects and has proven to work faster than other state-of-the-art tools available. At the moment, Morph-RDB works with MySQL, PostgreSQL, H2, CSV files and MonetDB.</p>
-              </div>
-              <div class="card-action">
-                <a href="https://github.com/oeg-upm/morph-rdb">Github</a>
-                <a href="https://github.com/oeg-upm/morph-rdb/wiki">How to use it</a>
-              </div>
-            </div>
-          </div>
-  
-
-   
-          <div class="col s12 m4">
-            <div class="card blue-grey darken-3">
-              <div class="card-content white-text">
-                <span class="card-title center">Morph-GraphQL</span>
-                <p align="justify">Morph-GraphQL is an engine that generates a GraphQL server from a R2RML mapping for providing access to an RDB.<br><br>
-                  Morph-GraphQL, applying the concept of "mapping translation", takes a R2RML mapping as input that defines rules for accesing a RDB and generates the resources for a GraphQL server (schema and resolvers). At this moment, it is able to generate resolvers in JavaScript. 
-                  <br><br>
-                  We are currently working on provide support for other data sources (CSV, JSON) using RML as input mapping and producing the GraphQL schema and resolvers in other programming languages (Java, Python).
-                </p>
-              </div>
-              <div class="card-action">
-                <a href="https://github.com/oeg-upm/morph-grahql">Github</a>
-                <a href="http://graphql.morph.oeg-upm.net">Try it!</a>
-              </div>
-            </div>
-          </div>
-       
-
-       
-          <div class="col s12 m4">
-            <div class="card blue-grey darken-3" >
-              <div class="card-content white-text">
-                <span class="card-title center">Morph-CSV</span>
-                <p align="justify">
-                  Morph-CSV is a engine to enable OBDA query translation over heterogeneous CSV files.<br><br>
-                  Morph-CSV applies the concept of "mapping translation" for translating the input annotations (CSVW) and mappings (RML+FnO) to a corresponding R2RML mapping document. It also applies an enriched data translation process exploiting the annotation and mapping inputs to generated a RDB instance that represents the original CSV files.<br><br>
-                  Morph-CSV can be be embedded in the top of any R2RML-compliant engine taking the advantages of SPARQL-to-SQL techniques proposed in the state of the art for querying heterogeneous CSV files.
-                </p>
-              </div>
-              <div class="card-action">
-                <a href="https://github.com/oeg-upm/morph-csv">Github</a>
-                <a href="https://github.com/oeg-upm/morph-csv/blob/master/motivating-example/README.md">CSV querying challengues</a>
-              </div>
-            </div>
-          </div>
-    </div>      
-    
-    <div class="section" id="publications">
-      <h1 class="header center red-text">Publications</h1>
-      
-    </div>  
-
-    <div class="section" id="team">
-      <h1 class="header center red-text">Team</h1>
-      
-    </div>     
-    <br><br>
-  </div>
-
-  <footer class="page-footer red">
+  <!-- About Section -->
+  <section class="page-section bg-primary" id="about">
     <div class="container">
-      <div class="row">
-        <div class="col l12 s12">
-          <h5 class="white-text">Ontology Engineering Group</h5>
-          <p class="grey-text text-lighten-4">The Ontology Engineering Group (OEG) is based at the Computer Science School at Universidad Politécnica de Madrid (UPM). It is widely recognised in Europe in the areas of Ontology Engineering, Semantic Infrastructure, Linked Data, and Data Integration. Our main research areas are: Ontological Engineering, Semantic Web and Linked Data, Natural Language, Semantic e-Science and the Semantic Data Integration.</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <!--<img src="img/portfolio/Logos/Logo_OEG.gif" class="img-thumbnail" alt="Responsive image" width="304" height="236"> -->
+          <h2 class="text-white mt-0">Ontology Engineering Group</h2>
+          <hr class="divider light my-4">
+          <p class="text-white-50 mb-4">The Ontology Engineering Group (OEG) is based at the Computer Science School at Universidad Politécnica de Madrid (UPM). It is widely recognised in Europe in the areas of Ontology Engineering, Semantic Infrastructure, Linked Data, and Data Integration. Our main research areas are: Ontological Engineering, Semantic Web and Linked Data, Natural Language, Semantic e-Science and the Semantic Data Integration.</p>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="#tools">Get Started!</a>
         </div>
-        <!--<div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>-->
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="red-text text-lighten-3" href="http://oeg-upm.net">Ontology Engineering Group (UPM)</a>
       </div>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section class="page-section" id="tools">
+    <div class="container">
+      <h2 class="text-center mt-0">Tools And Publications At Your Service</h2>
+      <hr class="divider my-4">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-gem text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Morph-RDB</h3>
+            <p class="text-muted mb-0">Morph-RDB is an RDB2RDF engine that follows the R2RML specification. </p>
+            <p>
+              <a href="https://github.com/oeg-upm/morph-rdb" target="_blank" title="Morph-RDB" style="color:black"><i class="fab fa-2x fa-github"></i></a>
+              <a href="https://github.com/oeg-upm/morph-rdb/wiki" target="_blank" title="How to use it!" style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Morph-GraphQL</h3>
+            <p class="text-muted mb-0">Morph-GraphQL is an engine that generates a GraphQL server from a R2RML mapping for providing access to an RDB.</p>
+            <p>
+              <a href="https://github.com/oeg-upm/morph-grahql" target="_blank" title="Morph-GraphQL" style="color:black"><i class="fab fa-2x fa-github"></i></a>
+              <a href="http://graphql.morph.oeg-upm.net/" target="_blank" title="Try it!" style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-magic text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Morph-CSV</h3>
+            <p class="text-muted mb-0">Morph-CSV is a engine to enable OBDA query translation over heterogeneous CSV files.</p>
+            <p>
+              <a href="https://github.com/oeg-upm/morph-csv" target="_blank" title="Morph-CSV" style="color:black"><i class="fab fa-2x fa-github"></i></a>
+              <a href="https://github.com/oeg-upm/morph-csv/blob/master/motivating-example/README.md" target="_blank" title="Try it!" style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-newspaper text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Publications</h3>
+            <p class="text-muted mb-0">It's really open source if it's made with love!!</p>
+            <p>
+                <a href="https://#" target="_blank" title="Publications" style="color:black"><i class="far fa-2x fa-newspaper"></i></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio/Publications Section -->
+  <section id="portfolio">
+    <div class="container-fluid p-0">
+      <div class="row no-gutters">
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Category
+              </div>
+              <div class="project-name">
+                Project Name
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Category
+              </div>
+              <div class="project-name">
+                Project Name
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Category
+              </div>
+              <div class="project-name">
+                Project Name
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Category
+              </div>
+              <div class="project-name">
+                Project Name
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Category
+              </div>
+              <div class="project-name">
+                Project Name
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
+            <div class="portfolio-box-caption p-3">
+              <div class="project-category text-white-50">
+                Category
+              </div>
+              <div class="project-name">
+                Project Name
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Team Section -->
+    <section class="page-section bg-primary" id="team">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+              <h2 class="text-white mt-0">Team</h2>
+              <hr class="divider light my-4">
+              <!--Team card-->
+              <div class="row">
+                <div class="card mx-auto mb-3" style="width: 18rem;">
+                  <img class="card-img-top" src="img/portfolio/Logos/Logo_OEG.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Full name</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+                <div class="card mx-auto mb-3" style="width: 18rem;">
+                  <img class="card-img-top" src="img/portfolio/Logos/Logo_OEG.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Full name</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+  <!-- Call to Action Section -->
+  <section class="page-section bg-dark text-white">
+    <div class="container text-center">
+      <h2 class="mb-4">Download project from out git repository <i class="fab fa-2 x fa-github"></i></h2>
+      <a class="btn btn-light btn-xl" href="https://github.com/oeg-upm">Download Now!</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="mt-0">Let's Get In Touch!</h2>
+          <hr class="divider my-4">
+          <p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 ml-auto text-center">
+          <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+          <div>+34 (000) 000-0000</div>
+        </div>
+        <div class="col-lg-4 mr-auto text-center">
+          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+          <!-- Make sure to change the email address in anchor text AND the link below! -->
+          <a class="d-block" href="mailto:contact@yourwebsite.com">contact@OEG-UPM.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <!--Facebook-->
+        <a class="btn-floating btn-lg btn-fb waves-effect waves-light" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
+        <!--Twitter-->
+        <a class="btn-floating btn-lg btn-tw waves-effect waves-light" type="button" role="button"><i class="fab fa-twitter"></i></a>
+        <!--Google +-->
+        <a class="btn-floating btn-lg btn-gplus waves-effect waves-light" type="button" role="button"><i class="fab fa-google-plus-g"></i></a>
+        <!--Linkedin-->
+        <a class="btn-floating btn-lg btn-li waves-effect waves-light" type="button" role="button"><i class="fab fa-linkedin-in"></i></a>
+        <!--Instagram-->
+        <a class="btn-floating btn-lg btn-ins waves-effect waves-light" type="button" role="button"><i class="fab fa-instagram"></i></a>
+        <!--Stack Overflow-->
+        <a class="btn-floating btn-lg btn-so waves-effect waves-light" type="button" role="button"><i class="fab fa-stack-overflow"></i></a>
+        <!--Youtube-->
+        <a class="btn-floating btn-lg btn-yt waves-effect waves-light" type="button" role="button"><i class="fab fa-youtube"></i></a>
+        <!--Slack-->
+        <a class="btn-floating btn-lg btn-slack waves-effect waves-light" type="button" role="button"><i class="fab fa-slack-hash"></i></a>
+        <!--Github-->
+        <a class="btn-floating btn-lg btn-git waves-effect waves-light" type="button" role="button"><i class="fab fa-github"></i></a>
+        <!--Comments-->
+        <a class="btn-floating btn-lg btn-comm waves-effect waves-light" type="button" role="button"><i class="fas fa-comments"></i></a>
+        <!--Email-->
+        <a class="btn-floating btn-lg btn-email waves-effect waves-light" type="button" role="button"><i class="fas fa-envelope"></i></a>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-light py-5">
+    <div class="container">
+      <div class="small text-center text-muted">Copyright &copy; 2019 - Ontology Engineering Group (UPM)</div>
     </div>
   </footer>
 
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-  </body>
+  <!-- Custom scripts for this template -->
+  <script src="js/creative.min.js"></script>
+
+</body>
+
 </html>
