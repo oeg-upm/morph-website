@@ -112,168 +112,179 @@
                   class="fab fa-2x fa-github"></i></a>
               <a href="https://github.com/oeg-upm/morph-rdb/wiki" target="_blank" title="How to use it!"
                 style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
+                <a href="papers/morph-rdb-paper.pdf" target="_blank" title="Download paper!!"
+                style="color:black"><i class="fas fa-2x fa-file-download"></i></a>
             </p>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rdbModalLong">
-              Read more!
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="rdbModalLong" tabindex="-1" role="dialog" aria-labelledby="rdbModalLongTitle"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="rdbModalLongTitle">Morph-RDB</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Morph-RDB is an RDB2RDF engine that follows the R2RML specification. </p>
-                    <p>Morph-RDB supports two operational modes: data upgrade (generating RDF instances from data in a
-                      relational database) and query translation (SPARQL to SQL). Morph-RDB employs various optimisation
-                      techniques in order to generate efficient SQL queries, such as self-join elimination and subquery
-                      elimination.
-                    </p>
-                    <p>
-                      Morph-RDB has been tested with real queries from various Spanish/EU projects and has proven to
-                      work faster than other state-of-the-art tools available. At the moment, Morph-RDB works with
-                      MySQL, PostgreSQL, H2, CSV files and MonetDB.
-                    </p>
-                    <img src="img/morph/morph-rdb.svg" class="rounded mx-auto d-block" alt="...">
-                    <p>
-                      <a href="https://github.com/oeg-upm/morph-rdb" target="_blank" title="Morph-RDB"
-                        style="color:black"><i class="fab fa-2x fa-github"></i></a>
-                      <a href="https://github.com/oeg-upm/morph-rdb/wiki" target="_blank" title="How to use it!"
-                        style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="mt-5 shadow-lg p-3 mb-5 bg-white rounded">
-            <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Morph-GraphQL</h3>
-            <p class="text-muted mb-0">Morph-GraphQL is an engine that generates a GraphQL server from a R2RML mapping
-              for providing access to an RDB.</p>
-            <p>
-              <a href="https://github.com/oeg-upm/morph-graphql" target="_blank" title="Morph-GraphQL"
-                style="color:black"><i class="fab fa-2x fa-github"></i></a>
-              <a href="http://graphql.morph.oeg-upm.net/" target="_blank" title="Try it!" style="color:black"><i
-                  class="fab fa-2x fa-wikipedia-w"></i></a>
-            </p>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#graphqlModalLong">
-              Read more!
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="graphqlModalLong" tabindex="-1" role="dialog"
-              aria-labelledby="graphqlModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="graphqlModalLongTitle">Morph-GraphQL</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Morph-GraphQL is an engine that generates a GraphQL server from a R2RML mapping for providing
-                      access to an RDB.
-                    </p>
-                    <p>
-                      Morph-GraphQL, applying the concept of "mapping translation", takes a R2RML mapping as input that
-                      defines rules for accesing a RDB and generates the resources for a GraphQL server (schema and
-                      resolvers). At this moment, it is able to generate resolvers in JavaScript.
-                    </p>
-                    <p>
-                      We are currently working on provide support for other data sources (CSV, JSON) using RML as input
-                      mapping and producing the GraphQL schema and resolvers in other programming languages (Java,
-                      Python).
-                    </p>
-                    <img src="img/morph/morph-graphql.svg" class="rounded mx-auto d-block" alt="...">
-                    <p>
-                      <a href="https://github.com/oeg-upm/morph-graphql" target="_blank" title="Morph-RDB"
-                        style="color:black"><i class="fab fa-2x fa-github"></i></a>
-                      <a href="http://graphql.morph.oeg-upm.net/" target="_blank" title="How to use it!"
-                        style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="mt-5 shadow-lg p-3 mb-5 bg-white rounded">
-            <i class="fas fa-4x fa-table text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Morph-CSV</h3>
-            <p class="text-muted mb-4">Morph-CSV is a engine to enable OBDA query translation over heterogeneous CSV
-              files.</p>
-            <p>
-              <a href="https://github.com/oeg-upm/morph-csv" target="_blank" title="Morph-CSV" style="color:black"><i
-                  class="fab fa-2x fa-github"></i></a>
-              <a href="https://github.com/oeg-upm/morph-csv/blob/master/motivating-example/README.md" target="_blank"
-                title="Try it!" style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
-            </p>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#csvlModalLong">
-              Read more!
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="csvlModalLong" tabindex="-1" role="dialog" aria-labelledby="csvModalLongTitle"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="csvModalLongTitle">Morph-CSV</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Morph-CSV is a engine to enable OBDA query translation over heterogeneous CSV files.
-                    </p>
-                    <p>
-                      Morph-CSV applies the concept of "mapping translation" for translating the input annotations
-                      (CSVW) and mappings (RML+FnO) to a corresponding R2RML mapping document. It also applies an
-                      enriched data translation process exploiting the annotation and mapping inputs to generated a RDB
-                      instance that represents the original CSV files.
 
-                    </p>
-                    <p>
-                      Morph-CSV can be be embedded in the top of any R2RML-compliant engine taking the advantages of
-                      SPARQL-to-SQL techniques proposed in the state of the art for querying heterogeneous CSV files.
-                    </p>
-                    <img src="img/morph/morph-csv.svg" class="rounded mx-auto d-block" alt="...">
-                    <p>
-                      <a href="https://github.com/oeg-upm/morph-csv" target="_blank" title="Morph-RDB"
-                        style="color:black"><i class="fab fa-2x fa-github"></i></a>
-                      <a href="https://github.com/oeg-upm/morph-csv/blob/master/motivating-example/README.md" target="_blank" title="How to use it!"
-                        style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
+            <!--Prueba-->
+
+          <!--Fin prueba-->
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rdbModalLong">
+            Read more!
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="rdbModalLong" tabindex="-1" role="dialog" aria-labelledby="rdbModalLongTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="rdbModalLongTitle">Morph-RDB</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Morph-RDB is an RDB2RDF engine that follows the R2RML specification. </p>
+                  <p>Morph-RDB supports two operational modes: data upgrade (generating RDF instances from data in a
+                    relational database) and query translation (SPARQL to SQL). Morph-RDB employs various optimisation
+                    techniques in order to generate efficient SQL queries, such as self-join elimination and subquery
+                    elimination.
+                  </p>
+                  <p>
+                    Morph-RDB has been tested with real queries from various Spanish/EU projects and has proven to
+                    work faster than other state-of-the-art tools available. At the moment, Morph-RDB works with
+                    MySQL, PostgreSQL, H2, CSV files and MonetDB.
+                  </p>
+                  <img src="img/morph/morph-rdb.svg" class="rounded mx-auto d-block" alt="...">
+                  <p>
+                    <a href="https://github.com/oeg-upm/morph-rdb" target="_blank" title="Morph-RDB"
+                      style="color:black"><i class="fab fa-2x fa-github"></i></a>
+                    <a href="https://github.com/oeg-upm/morph-rdb/wiki" target="_blank" title="How to use it!"
+                      style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
+      <div class="col-lg-4 col-md-6 text-center">
+        <div class="mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+          <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
+          <h3 class="h4 mb-2">Morph-GraphQL</h3>
+          <p class="text-muted mb-0">Morph-GraphQL is an engine that generates a GraphQL server from a R2RML mapping
+            for providing access to an RDB.</p>
+          <p>
+            <a href="https://github.com/oeg-upm/morph-graphql" target="_blank" title="Morph-GraphQL"
+              style="color:black"><i class="fab fa-2x fa-github"></i></a>
+            <a href="http://graphql.morph.oeg-upm.net/" target="_blank" title="Try it!" style="color:black"><i
+                class="fab fa-2x fa-wikipedia-w"></i></a>
+                <a  target="_blank" title="Available soon!!"
+                style="color:black"><i class="fas fa-2x fa-file-download"></i></a>
+          </p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#graphqlModalLong">
+            Read more!
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="graphqlModalLong" tabindex="-1" role="dialog"
+            aria-labelledby="graphqlModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="graphqlModalLongTitle">Morph-GraphQL</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Morph-GraphQL is an engine that generates a GraphQL server from a R2RML mapping for providing
+                    access to an RDB.
+                  </p>
+                  <p>
+                    Morph-GraphQL, applying the concept of "mapping translation", takes a R2RML mapping as input that
+                    defines rules for accesing a RDB and generates the resources for a GraphQL server (schema and
+                    resolvers). At this moment, it is able to generate resolvers in JavaScript.
+                  </p>
+                  <p>
+                    We are currently working on provide support for other data sources (CSV, JSON) using RML as input
+                    mapping and producing the GraphQL schema and resolvers in other programming languages (Java,
+                    Python).
+                  </p>
+                  <img src="img/morph/morph-graphql.svg" class="rounded mx-auto d-block" alt="...">
+                  <p>
+                    <a href="https://github.com/oeg-upm/morph-graphql" target="_blank" title="Morph-RDB"
+                      style="color:black"><i class="fab fa-2x fa-github"></i></a>
+                    <a href="http://graphql.morph.oeg-upm.net/" target="_blank" title="How to use it!"
+                      style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 text-center">
+        <div class="mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+          <i class="fas fa-4x fa-table text-primary mb-4"></i>
+          <h3 class="h4 mb-2">Morph-CSV</h3>
+          <p class="text-muted mb-4">Morph-CSV is a engine to enable OBDA query translation over heterogeneous CSV
+            files.</p>
+          <p>
+            <a href="https://github.com/oeg-upm/morph-csv" target="_blank" title="Morph-CSV" style="color:black"><i
+                class="fab fa-2x fa-github"></i></a>
+            <a href="https://github.com/oeg-upm/morph-csv/blob/master/motivating-example/README.md" target="_blank"
+              title="Try it!" style="color:black"><i class="fab fa-2x fa-wikipedia-w"></i></a>
+              <a href="papers/morph-csv-paper.pdf" target="_blank" title="Download paper!!"
+                style="color:black"><i class="fas fa-2x fa-file-download"></i></a>
+          </p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#csvlModalLong">
+            Read more!
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="csvlModalLong" tabindex="-1" role="dialog" aria-labelledby="csvModalLongTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="csvModalLongTitle">Morph-CSV</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Morph-CSV is a engine to enable OBDA query translation over heterogeneous CSV files.
+                  </p>
+                  <p>
+                    Morph-CSV applies the concept of "mapping translation" for translating the input annotations
+                    (CSVW) and mappings (RML+FnO) to a corresponding R2RML mapping document. It also applies an
+                    enriched data translation process exploiting the annotation and mapping inputs to generated a RDB
+                    instance that represents the original CSV files.
+
+                  </p>
+                  <p>
+                    Morph-CSV can be be embedded in the top of any R2RML-compliant engine taking the advantages of
+                    SPARQL-to-SQL techniques proposed in the state of the art for querying heterogeneous CSV files.
+                  </p>
+                  <img src="img/morph/morph-csv.svg" class="rounded mx-auto d-block" alt="...">
+                  <p>
+                    <a href="https://github.com/oeg-upm/morph-csv" target="_blank" title="Morph-RDB"
+                      style="color:black"><i class="fab fa-2x fa-github"></i></a>
+                    <a href="https://github.com/oeg-upm/morph-csv/blob/master/motivating-example/README.md"
+                      target="_blank" title="How to use it!" style="color:black"><i
+                        class="fab fa-2x fa-wikipedia-w"></i></a>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
     </div>
   </section>
 
@@ -332,7 +343,7 @@
           <hr class="divider light my-4">
           <!--Team card-->
           <div class="row">
-            
+
             <!-- member 1-->
             <div class="row no-gutters bg-light position-relative mb-2">
               <div class="col-md-6 mb-md-0 p-md-4">
