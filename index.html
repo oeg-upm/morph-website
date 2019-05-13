@@ -184,16 +184,19 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <p>Morph-RDB is an RDB2RDF engine that follows the R2RML specification. </p>
-                    <p>Morph-RDB supports two operational modes: data upgrade (generating RDF instances from data in a
-                      relational database) and query translation (SPARQL to SQL). Morph-RDB employs various optimisation
-                      techniques in order to generate efficient SQL queries, such as self-join elimination and subquery
-                      elimination.
+                    <p>
+                      Morph-GraphQL is an engine that generates a GraphQL server from a R2RML mapping for providing
+                      access to an RDB.
                     </p>
                     <p>
-                      Morph-RDB has been tested with real queries from various Spanish/EU projects and has proven to
-                      work faster than other state-of-the-art tools available. At the moment, Morph-RDB works with
-                      MySQL, PostgreSQL, H2, CSV files and MonetDB.
+                      Morph-GraphQL, applying the concept of "mapping translation", takes a R2RML mapping as input that
+                      defines rules for accesing a RDB and generates the resources for a GraphQL server (schema and
+                      resolvers). At this moment, it is able to generate resolvers in JavaScript.
+                    </p>
+                    <p>
+                      We are currently working on provide support for other data sources (CSV, JSON) using RML as input
+                      mapping and producing the GraphQL schema and resolvers in other programming languages (Java,
+                      Python).
                     </p>
                     <img src="img/morph/morph-graphql.svg" class="rounded mx-auto d-block" alt="...">
                     <p>
@@ -228,8 +231,8 @@
               Read more!
             </button>
             <!-- Modal -->
-            <div class="modal fade" id="csvlModalLong" tabindex="-1" role="dialog"
-              aria-labelledby="csvModalLongTitle" aria-hidden="true">
+            <div class="modal fade" id="csvlModalLong" tabindex="-1" role="dialog" aria-labelledby="csvModalLongTitle"
+              aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -240,9 +243,18 @@
                   </div>
                   <div class="modal-body">
                     <p>
-                      Morph-RDB has been tested with real queries from various Spanish/EU projects and has proven to
-                      work faster than other state-of-the-art tools available. At the moment, Morph-RDB works with
-                      MySQL, PostgreSQL, H2, CSV files and MonetDB.
+                      Morph-CSV is a engine to enable OBDA query translation over heterogeneous CSV files.
+                    </p>
+                    <p>
+                      Morph-CSV applies the concept of "mapping translation" for translating the input annotations
+                      (CSVW) and mappings (RML+FnO) to a corresponding R2RML mapping document. It also applies an
+                      enriched data translation process exploiting the annotation and mapping inputs to generated a RDB
+                      instance that represents the original CSV files.
+
+                    </p>
+                    <p>
+                      Morph-CSV can be be embedded in the top of any R2RML-compliant engine taking the advantages of
+                      SPARQL-to-SQL techniques proposed in the state of the art for querying heterogeneous CSV files.
                     </p>
                     <img src="img/morph/morph-csv.svg" class="rounded mx-auto d-block" alt="...">
                     <p>
