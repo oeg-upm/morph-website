@@ -29,7 +29,7 @@
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 mwidth" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Morph</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -64,7 +64,7 @@
   </nav>
 
   <!-- Masthead -->
-  <header class="masthead">
+  <header class="masthead mwidth">
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
@@ -84,7 +84,7 @@
 
 
   <!-- Tools Section -->
-  <section class="page-section" id="tools">
+  <section class=" mwidth page-section" id="tools">
     <div class="container">
       <h2 class="text-center mt-0">Tools At Your Service</h2>
       <hr class="divider my-4">
@@ -272,7 +272,7 @@
   </section>
 
   <!-- Portfolio/Publications Section -->
-  <section lass="page-section" id="publications">
+  <section class="page-section" id="publications">
     <div class="container">
       <h2 class="text-center mt-0">Publications</h2>
       <hr class="divider my-4">
@@ -319,7 +319,7 @@
     </div>
   </section>
 <!-- Projects Section -->
-<section lass="page-section" id="projects">
+<section class="page-section" id="projects">
   <div class="container">
     <h2 class="text-center mt-0">Projects</h2>
     <hr class="divider my-4">
@@ -339,7 +339,7 @@
   </div>
 </section>  
 <!-- Awards Section -->
- <section lass="page-section" id="awards">
+ <section class="page-section" id="awards">
   <div class="container">
     <h2 class="text-center mt-0">Awards</h2>
     <hr class="divider my-4">
@@ -348,7 +348,7 @@
         <li
           class="list-group-item d-flex justify-content-between align-items-center shadow p-3 mb-5 bg-white rounded">
           <div class="col-md-10 ">
-            <h4 class="list-group-item-heading name">Best Demo Paper award en SEKE 2019</h4>
+            <h4 class="list-group-item-heading name">Best Demo Paper award at SEKE 2019</h4>
             <p class="list-group-item-text title"><b>Winners:</b> Ahmad Alobaid, David Chaves-Fraga, Freddy Priyatna and Oscar Corcho </p>
             <a class="btn btn-primary" target="_blank"
               href="http://ksiresearchorg.ipage.com/seke/seke19awardlet.html">Check it <i
@@ -358,10 +358,10 @@
         <li
         class="list-group-item d-flex justify-content-between align-items-center shadow p-3 mb-5 bg-white rounded">
         <div class="col-md-10 ">
-          <h4 class="list-group-item-heading name">Best paper award en SemStats@ISWC2018</h4>
-          <p class="list-group-item-text title"><b>Winners:</b> David Chaves-Fraga, Freddy Priyatna, I. Perez-Santana and Oscar Corcho.</p>
+          <h4 class="list-group-item-heading name">Best paper award at SemStats@ISWC2018</h4>
+          <p class="list-group-item-text title"><b>Winners:</b> David Chaves-Fraga, Freddy Priyatna, Idafen Perez-Santana and Oscar Corcho.</p>
           <a class="btn btn-primary" target="_blank"
-            href="#">Check it <i
+            href="http://ebooks.iospress.nl/volumearticle/50538">Check it <i
               class="fas fa-trophy"></i></a>
         </div>
       </li>
@@ -371,7 +371,7 @@
   </div>
 </section>
   <!-- Team Section -->
-  <section class="page-section bg-primary" id="team">
+  <section class=" mwidth page-section bg-primary" id="team">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
@@ -469,7 +469,7 @@
   </section>
 
   <!-- About Section -->
-  <section class="page-section" id="about" style="background: #585858;">
+  <section class=" mwidth page-section" id="about" style="background: #585858;">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
@@ -489,7 +489,7 @@
   </section>
 
   <!-- Call to Action Section -->
-  <!-- <section class="page-section bg-dark text-white">
+  <!-- <section class=" mwidth page-section bg-dark text-white">
     <div class="container text-center">
       <h2 class="mb-4">Download project from OEG-UPM git repository <i class="fab fa-2 x fa-github"></i></h2>
       <a class="btn btn-light btn-xl" target="_blank" href="https://github.com/oeg-upm">Download Now!</a>
@@ -497,7 +497,7 @@
   </section> -->
 
   <!-- Contact Section -->
-  <!-- <section class="page-section" id="contact">
+  <!-- <section class=" mwidth page-section" id="contact">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
@@ -519,7 +519,7 @@
         </div>
       </div>
     </div> -->
-  <div class="row justify-content-center mt-5">
+  <div class="mwidth row justify-content-center mt-5">
 
     <!--Twitter-->
     <a class="btn-floating btn-lg btn-tw waves-effect waves-light" target="_blank" href="https://twitter.com/oeg_upm"
@@ -555,8 +555,16 @@
 
 </html>
 <style>
+  html,body{
+    padding: 0px;
+    margin: 0px;
+    max-width: 100%!important;
+  }
   .redText{
     color:#f43a3a;
-
+  }
+  .mwidth{
+    max-width: 100%!important;
+    width:100%;
   }
 </style>
