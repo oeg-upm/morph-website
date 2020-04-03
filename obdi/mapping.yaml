@@ -32,6 +32,7 @@ mappings:
       - [schema:name, $(title)]
       - [schema:review, $(review)~iri]
       - [http://example.com/paperType, $(type)]
+      - [ex:paperLink, $(paper_link)]
       - p: dcterms:creator
         o:
          - mapping: list
@@ -94,6 +95,7 @@ mappings:
       - [ex:awardName, $(name)]
       - [ex:awardDescription,$(description)]
       - [ex:Date, $(date)]
+      - [ex:awardLink, $(award_link)]
       - p: ex:Winners
         o:
           - mapping: list
@@ -120,7 +122,7 @@ mappings:
                - [str2, $(id)]
   person:
     sources:
-      - ['csv/per.csv~csv']
+      - ['csv/person.csv~csv']
     s: http://example.com/resources/Person/$(id)
     po:
       - [a, schema:Person]
