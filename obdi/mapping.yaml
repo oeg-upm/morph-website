@@ -35,20 +35,28 @@ mappings:
       - [ex:paperLink, $(paper_link)]
       - p: dcterms:creator
         o:
-         - mapping: list
+         - mapping: papers_people
            condition:
             function: equal
             parameters:
               - [str1, $(id)]
-              - [str2, $(id)]
-      - p: ex:AwardsList
+              - [str2, $(paper_id)]
+      - p: ex:award
         o:
-          - mapping: awardslist
+          - mapping: papers_awards
             condition:
             function: equal
             parameters:
-              - [str1, $(awardListId)]
-              - [str2, $(id)]
+              - [str1, $(id)]
+              - [str2, $(paper_id)]
+      - p: ex:tool
+        o:
+          - mapping: papers_tools
+            condition:
+            function: equal
+            parameters:
+              - [str1, $(id)]
+              - [str2, $(paper_id)]              
   tool:
     sources:
       - ['csv/tools.csv~csv']
@@ -63,28 +71,28 @@ mappings:
       - [schema:image, $(image_link)]
       - p: dcterms:creator
         o:
-          - mapping: list
+          - mapping: people_tools
             condition:
             function: equal
             parameters:
               - [str1, $(id)]
-              - [str2, $(tool)]
-      - p: ex:paperslists
+              - [str2, $(tool_id)]
+      - p: ex:paper
         o:
           - mapping: list
             condition:
             function: equal
             parameters:
-              - [srt1, $(papers)]
-              - [srt2, $(paper_list)]
-      - p: ex:awardslist
+              - [srt1, $(id)]
+              - [srt2, $(tool_id)]
+      - p: ex:award
         o:
-          - mapping: list
+          - mapping: awards_tools
             condition:
             function: equal
             parameters:
-              - [srt1, $(awards)]
-              - [srt2, $(awards_list)]
+              - [srt1, $(id)]
+              - [srt2, $(tool_id)]
 
   award:
     sources:
@@ -98,28 +106,28 @@ mappings:
       - [ex:awardLink, $(award_link)]
       - p: ex:Winners
         o:
-          - mapping: list
+          - mapping: awards_people
             condition:
             function: equal
             parameters:
               - [str1, $(id)]
-              - [str2, $(award)]
+              - [str2, $(person_id)]
       - p: ex:Papers
         o:
-          - mapping: paper
+          - mapping: papers_awards
             condition:
             function: equal
             parameters:
-              - [str1, $(paper)]
-              - [str2, $(id)]
-      - p: ex:Tool
+              - [str1, $(id)]
+              - [str2, $(paper_id)]
+      - p: ex:Tools
         o:
-          - mapping: tool
+          - mapping: awards_tools
             condition:
             function: equal
             parameters:
-               - [str1, $(tool)]
-               - [str2, $(id)]
+               - [str1, $(id)]
+               - [str2, $(award_id)]
   person:
     sources:
       - ['csv/person.csv~csv']
@@ -136,154 +144,133 @@ mappings:
               - [str1, $(member_id)]
               - [str2, $(id)]    
                                 
-  peopleitem:
+  papers_people:
     sources:
-      - ['csv/authors-papers.csv~csv']
-    s: http://example.com/resources/PeopleItem/$(id)
+      - [csv/papers_people.csv]
+    s: ex:paper#$(paper_id)/person#$(person_id)
     po:
-      - [a, co:ListItem]
-      - [co:index, $(authorNumber)]
-      - p: co:itemContent
-        o:
-         - mapping: person
-            condition:
-            function: equal
-            parameters:
-              - [str1, $(person)]
-              - [str2, $(id)]
+    - p: ex:paper
+      o:
+      - mapping: paper
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(paper_id)]
+          - [str2, $(id)]
+    - p: ex:person
+      o:
+      - mapping: person
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(person_id)]
+          - [str2, $(id)]
+  papers_awards:
+    sources:
+      - [csv/papers_awards.csv]
+    s: ex:paper#$(paper_id)/award#$(award_id)
+    po:
+    - p: ex:paper
+      o:
+      - mapping: paper
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(paper_id)]
+          - [str2, $(id)]
+    - p: ex:award
+      o:
+      - mapping: award
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(award_id)]
+          - [str2, $(id)]
 
-  awardsitem:
+  papers_tools:
     sources:
-      - ['csv/awardsitems.csv~csv']
-    s: 'http://example.com/resources/AwardsItem/$(id)'
+      - [csv/papers_tools.csv]
+    s: ex:paper#$(paper_id)/tool#$(tool_id)
     po:
-      - [a, co:List]       
-      - p: ex:Award
-        o:
-          - mapping: award
-            condition:
-            funciton: equal
-            parameters:
-              - [str1, $(award)]
-              - [str2, $(id)]
+    - p: ex:paper
+      o:
+      - mapping: paper
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(paper_id)]
+          - [str2, $(id)]
+    - p: ex:tool
+      o:
+      - mapping: tool
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(tool_id)]
+          - [str2, $(id)]           
 
-  papersitem:
+  awards_tools:
     sources:
-      - ['csv/paperitems.csv~csv']
-    s: 'http://example.com/resources/Papersitem/$(id)'
+      - [csv/awards_tools.csv]
+    s: ex:award#$(award_id)/tool#$(tool_id)
     po:
-      - [a, co:List]       
-      - p: ex:Paper
-        o:
-          - mapping: paper
-            condition:
-            funciton: equal
-            parameters:
-              - [str1, $(paper)]
-              - [str2, $(id)]               
+    - p: ex:award
+      o:
+      - mapping: award
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(award_id)]
+          - [str2, $(id)]
+    - p: ex:tool
+      o:
+      - mapping: tool
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(tool_id)]
+          - [str2, $(id)]
 
-  list:
+  people_tools:
     sources:
-      - ['csv/accepted-papers.csv~csv']
-    s: http://example.com/resources/List/$(id)
+      - [csv/people_tools.csv]
+    s: ex:people#$(person_id)/tool#$(tool_id)
     po:
-      - [a, co:List]
-      - p: co:paperAuthortItem
-        o:
-         - mapping: peopleitem
-            condition:
-            function: equal
-            parameters:
-              - [str1, $(paper)]
-              - [str2, $(id)]
-      - p: co:toolAuthortItem
-        o:
-         - mapping: peopleitem
-            condition:
-            function: equal
-            parameters:
-              - [str1, $(tool)]
-              - [str2, $(id)]
-      - p: co:awardWinnersItem
-        o:
-         - mapping: peopleitem
-            condition:
-            function: equal
-            parameters:
-              - [str1, $(award)]
-              - [str2, $(id)]
-      - p: co:papersitem
-        o:
-          - mapping: papersitem
-            condition:
-            function: equal
-            parameters:
-              - [str1, $(paper_list)]
-              - [str2, $(id)]
-        - p: ex:awardsItem
-          o:
-            - mapping: awardsitem
-              condition:
-              function: equal
-              parameters:
-                - [str1, $(awards_list)]
-                - [str2, $(id)]               
-                  
-  #   winnersList:
-  #     sources:
-  #       - ['csv/winnersList.csv~csv']
-  #     s: 'http://example.com/resources/WinnersList/$(id)'
-  #     po:
-  #     - [a, [co:List, foaf:Group]]
-  #     - p: co:item
-  #       o:
-  #        - mapping: winneritem
-  #          condition:
-  #           function: equal
-  #           parameters:
-  #             - [str1, $(id)]
-  #             - [str2, $(awardId)]
-  # winneritem:
-  #   sources:
-  #     - ['csv/winners-award.csv~csv']
-  #   s: http://example.com/resources/WinnerItem/$(id)
-  #   po:
-  #     - [a, co:ListItem]
-  #     - [co:index, $(winnernumber)]
-  #     - p: co:itemContent
-  #       o:
-  #        - mapping: winner
-  #          condition:
-  #           function: equal
-  #           parameters:
-  #             - [str1, $(winner)]
-  #             - [str2, $(id)]
-  # winner:
-  #   sources:
-  #     - ['csv/winner.csv~csv']
-  #   s: http://example.com/resources/Author/$(id)
-  #   po:
-  #     - [a, schema:Person]
-  #     - [schema:name, $(name)]
-  #     - p: ex:Member
-  #       o:
-  #         - mapping: member
-  #           condition:
-  #           function: equal
-  #           parameters:
-  #             - [str1, $(name)]
-  #             - [str2, $(name)]
-  # awardslist:
-  # sources:
-  #   - ['awardsList.csv~csv']
-  # s: 'http://example.com/resources/AwardsList/$(paper)'
-  # po:
-  #   - [a, co:List]
-  #   - p: ex:awardItem
-  #     o:
-  #       - mapping: awardsitem
-  #         condition:
-  #         function: equal
-  #         parameters:
-  #           - [str1, $(awardItem)]
-  #           - [str2, $(id)]
+    - p: ex:people
+      o:
+      - mapping: people
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(person_id)]
+          - [str2, $(id)]
+    - p: ex:tool
+      o:
+      - mapping: tool
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(tool_id)]
+          - [str2, $(id)]  
+  
+  people_awards:
+    sources:
+      - [csv/people_awards.csv]
+    s: ex:people#$(person_id)/award#$(award_id)
+    po:
+    - p: ex:people
+      o:
+      - mapping: people
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(person_id)]
+          - [str2, $(id)]
+    - p: ex:award
+      o:
+      - mapping: award
+        condition:
+        function: equal
+        parameters:
+          - [str1, $(award_id)]
+          - [str2, $(id)]  
