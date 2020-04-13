@@ -1,4 +1,5 @@
 id,title,description,paper_link
-0,Virtual Statistics Knowledge Graph Generation from CSV files,NONE,https://dchaves.oeg-upm.net/resources/papers/virtual-semstat-2018/
-1,Formalisation and experiences of R2RML-based SPARQL to SQL query translation using morph,NONE,https://dl.acm.org/doi/10.1145/2566486.2567981
-2,Morph-GraphQL: GraphQL Server Generation from R2RML Mappings,NONE,https://www.researchgate.net/publication/333719890_morph-GraphQL_GraphQL_Servers_Generation_from_R2RML_Mappings
+0,"Virtual Statistics Knowledge Graph Generation from CSV files",NONE,"https://dchaves.oeg-upm.net/resources/papers/virtual-semstat-2018/"
+1,"Formalisation and experiences of R2RML-based SPARQL to SQL query translation using morph",NONE,"https://dl.acm.org/doi/10.1145/2566486.2567981"
+2,"Morph-GraphQL: GraphQL Server Generation from R2RML Mappings",NONE,"https://www.researchgate.net/publication/333719890_morph-GraphQL_GraphQL_Servers_Generation_from_R2RML_Mappings"
+
