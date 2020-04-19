@@ -3,17 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@antv/g6": "^3.4.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "antd": "^4.1.2",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "graphql-ld": "^1.1.0",
+    "graphql-ld-comunica": "^1.0.1",
+    "graphql-to-sparql": "^2.1.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.9.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "sparqljson-to-tree": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

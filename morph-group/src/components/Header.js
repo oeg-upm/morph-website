@@ -1,24 +1,32 @@
 import React from 'react'
-import {NavLink, withRouter}  from 'react-router-dom'
+import {Link}  from 'react-router-dom'
+import {Menu, Row, Col} from 'antd'
+import logo from '../assets/logo.svg'
 class Header extends React.Component {
-    getNavLinkClass = (path) => {
-        return this.props.location.pathname === path ? 'active' : '';
-    }
     render() {
         return (
-            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                <li className={this.getNavLinkClass("/"), "nav-link"}><NavLink to="/" >Home</NavLink></li>
-                </ul>
-            </div>
-            </nav>
+            <Row  align="middle" style={{marginBottom:10}}>
+                <Col span={8}>
+                    <img className="img-fluid" src={logo} alt=""/>
+                </Col>
+                <Col span={16} justify="right" align="right">
+                <Menu mode="horizontal" style={{ borderBottom: 'none', paddingTop: 16 }}>
+                    <Menu.Item key="portfolio" style={{ float: 'right' }}>
+                        <Link to="/">Tools</Link>
+                    </Menu.Item>
+                    <Menu.Item key="posts" style={{ float: 'right' }}>
+                    <Link to="/">Team</Link>
+                    </Menu.Item>
+                    <Menu.Item key="home" style={{ float: 'right' }}>
+                    <Link to="/">Home</Link>
+                    </Menu.Item>        
+                </Menu>                
+                </Col>
+            </Row>
+
+    
         )
     }
 };
-Header = withRouter(Header);
+
 export default Header;
