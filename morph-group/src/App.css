@@ -15,6 +15,9 @@
   padding: 10px 8px;
   box-shadow: rgb(174, 174, 174) 0px 0px 10px;
 }
+.ant-typography-expand{
+  color: #007bff!important;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

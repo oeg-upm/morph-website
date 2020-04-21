@@ -4,6 +4,7 @@ import { Row, Col, Typography, Divider } from 'antd'
 import vkg from '../assets/vkg.svg'
 import CardList from '../components/CardList'
 import MorphGraph from '../components/MorphGraph'
+import MemberList from '../components/members/MemberList'
 const {Title} = Typography
 const {Paragraph} = Typography
 const property = "LA PROPIEDAD"
@@ -26,6 +27,12 @@ export default class Home extends React.Component{
                     </Col>
                 </Row>
                 <Divider></Divider>
+                <Row>
+                    <Col>
+                    <Title level={2}>The Team</Title>
+                    </Col>
+                </Row>
+                <MemberList></MemberList>
                 <Row>
                     <Col>
                         <Title level={2}>Recent Publications:</Title>

@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import Member from './pages/Member';
 
 //Enabling Tooltips:
 $(function () {
@@ -18,6 +19,7 @@ class App extends React.Component {
     return (
         <BrowserRouter>
             <Route exact path="/" component={Home} />
+            <Route path="/member/:member" component={Member}/>
         </BrowserRouter>
     );
   }

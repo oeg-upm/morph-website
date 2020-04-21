@@ -1,0 +1,249 @@
+<http://example.com/resources/Person/0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/0> <http://schema.org/name> "Luis Pozo Gilo".
+<http://example.com/resources/Person/0> <http://example.com/github> <http://github.com/w0xter>.
+<http://example.com/resources/Person/0> <http://example.com/hasDevelop> <http://example.com/peopletool/0_0>.
+<http://example.com/resources/Person/0> <http://example.com/webpage> <http://luispozo.es>.
+<http://example.com/resources/Person/0> <http://open.vocab.org/terms/twitter-id> <http://twitter.com/luispozodev>.
+<http://example.com/resources/Person/0> <http://schema.org/memberOf> "OEG".
+<http://example.com/resources/Person/0> <http://schema.org/image> <http://www.luispozo.es/image/yoHead.png>.
+<http://example.com/resources/Person/0> <http://schema.org/description> "none".
+<http://example.com/resources/Person/0> <http://schema.org/email> "luis.pozo@upm.es".
+<http://example.com/resources/Person/0> <http://schema.org/jobTitle> "none".
+<http://example.com/resources/Person/0> <http://example.com/linkedin> <http://www.linkedin.com/in/luis-pozo-472b6317a/>.
+<http://example.com/resources/Person/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/1> <http://schema.org/name> "DAVID CHAVES-FRAGA".
+<http://example.com/resources/Person/1> <http://example.com/github> <http://github.com/dchavesf>.
+<http://example.com/resources/Person/1> <http://example.com/hasWrite> <http://example.com/paperperson/0_1>.
+<http://example.com/resources/Person/1> <http://example.com/hasWrite> <http://example.com/paperperson/2_1>.
+<http://example.com/resources/Person/1> <http://example.com/hasDevelop> <http://example.com/peopletool/1_0>.
+<http://example.com/resources/Person/1> <http://example.com/hasWon> <http://example.com/peopleaward/1_0>.
+<http://example.com/resources/Person/1> <http://example.com/hasWon> <http://example.com/peopleaward/1_1>.
+<http://example.com/resources/Person/1> <http://open.vocab.org/terms/twitter-id> <http://twitter.com/dachafra>.
+<http://example.com/resources/Person/1> <http://schema.org/memberOf> "OEG".
+<http://example.com/resources/Person/1> <http://schema.org/image> <http://morph.oeg-upm.net/img/team/dchaves.jpg>.
+<http://example.com/resources/Person/1> <http://schema.org/description> "David Chaves-Fraga is a researcher and PhD student of the Ontology Engineering Group - Universidad Politécnica de Madrid since 2016, his work is currently focused on the generation of virtual knowledge graph from CSV on the Web using mapping languages.".
+<http://example.com/resources/Person/1> <http://schema.org/email> "dchaves@fi.upm.es".
+<http://example.com/resources/Person/1> <http://schema.org/jobTitle> "Researcher and PhD student".
+<http://example.com/resources/Person/1> <http://example.com/linkedin> <http://www.linkedin.com/in/david-chaves-fraga/>.
+<http://example.com/resources/Person/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/2> <http://schema.org/name> "OSCAR CORCHO ".
+<http://example.com/resources/Person/2> <http://example.com/github> <http://github.com/ocorcho>.
+<http://example.com/resources/Person/2> <http://example.com/hasWrite> <http://example.com/paperperson/0_2>.
+<http://example.com/resources/Person/2> <http://example.com/hasWrite> <http://example.com/paperperson/1_2>.
+<http://example.com/resources/Person/2> <http://example.com/hasWrite> <http://example.com/paperperson/2_2>.
+<http://example.com/resources/Person/2> <http://example.com/hasWon> <http://example.com/peopleaward/2_0>.
+<http://example.com/resources/Person/2> <http://example.com/hasWon> <http://example.com/peopleaward/2_1>.
+<http://example.com/resources/Person/2> <http://open.vocab.org/terms/twitter-id> <http://twitter.com/ocorcho>.
+<http://example.com/resources/Person/2> <http://schema.org/memberOf> "OEG".
+<http://example.com/resources/Person/2> <http://schema.org/image> <http://morph.oeg-upm.net/img/team/ocorcho.jpg>.
+<http://example.com/resources/Person/2> <http://schema.org/description> "Oscar Corcho is a full professor at Universidad Politécnica de Madrid and one of the leaders of the Ontology Engineering Group. He also leads the Data Integration area of the group and he been working and teaching Data Integration, OBDA, and Linked Data since 2004.".
+<http://example.com/resources/Person/2> <http://schema.org/email> "ocorcho@fi.upm.es".
+<http://example.com/resources/Person/2> <http://schema.org/jobTitle> "Full professor".
+<http://example.com/resources/Person/2> <http://example.com/linkedin> <http://www.linkedin.com/in/ocorcho/>.
+<http://example.com/resources/Person/3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/3> <http://schema.org/name> "FREDDY PRIYATNA ".
+<http://example.com/resources/Person/3> <http://example.com/hasWrite> <http://example.com/paperperson/0_3>.
+<http://example.com/resources/Person/3> <http://example.com/hasWrite> <http://example.com/paperperson/1_3>.
+<http://example.com/resources/Person/3> <http://example.com/hasWrite> <http://example.com/paperperson/2_3>.
+<http://example.com/resources/Person/3> <http://example.com/hasDevelop> <http://example.com/peopletool/3_1>.
+<http://example.com/resources/Person/3> <http://example.com/hasDevelop> <http://example.com/peopletool/3_2>.
+<http://example.com/resources/Person/3> <http://example.com/hasWon> <http://example.com/peopleaward/3_0>.
+<http://example.com/resources/Person/3> <http://example.com/hasWon> <http://example.com/peopleaward/3_1>.
+<http://example.com/resources/Person/3> <http://schema.org/memberOf> "OEG".
+<http://example.com/resources/Person/3> <http://schema.org/image> <http://morph.oeg-upm.net/img/team/fpriyatna.jpg>.
+<http://example.com/resources/Person/3> <http://schema.org/description> "Freddy Priyatna is a postdoctoral researcher at the Ontology Engineering Group - Universidad Politécnica de Madrid since 2012. He holds a PhD in the same research group where he developed the R2RML engine morph-RDB together with R2RML mapping generator, MIRROR. His main research area is on providing query access to virtual knowledge graph.".
+<http://example.com/resources/Person/3> <http://schema.org/jobTitle> "Postdoctoral researcher".
+<http://example.com/resources/Person/4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/4> <http://schema.org/name> "JHON TOLEDO ".
+<http://example.com/resources/Person/4> <http://example.com/hasDevelop> <http://example.com/peopletool/4_0>.
+<http://example.com/resources/Person/4> <http://schema.org/memberOf> "OEG".
+<http://example.com/resources/Person/4> <http://schema.org/image> <http://morph.oeg-upm.net/img/team/jtoledo.jpg>.
+<http://example.com/resources/Person/4> <http://schema.org/description> "Jhon Toledo is a research assistant at the Ontology Engineering Group - Universidad Politécnica de Madrid.".
+<http://example.com/resources/Person/4> <http://schema.org/jobTitle> "Research assistant".
+<http://example.com/resources/Person/5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/5> <http://schema.org/name> "AHMAD ALOBAID ".
+<http://example.com/resources/Person/5> <http://example.com/hasWrite> <http://example.com/paperperson/2_5>.
+<http://example.com/resources/Person/5> <http://example.com/hasDevelop> <http://example.com/peopletool/5_2>.
+<http://example.com/resources/Person/5> <http://example.com/hasWon> <http://example.com/peopleaward/5_0>.
+<http://example.com/resources/Person/5> <http://schema.org/memberOf> "OEG".
+<http://example.com/resources/Person/5> <http://schema.org/image> <http://morph.oeg-upm.net/img/team/aahmad.jpg>.
+<http://example.com/resources/Person/5> <http://schema.org/description> "Ahmad Alobaid is a researcher and PhD student of the Ontology Engineering Group - Universidad Politécnica de Madrid since 2016, his main research area is on the semantic labelling of tabular data using machine learning and existing knowledge graphs.".
+<http://example.com/resources/Person/5> <http://schema.org/jobTitle> "Researcher and PhD student".
+<http://example.com/resources/Person/6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/6> <http://schema.org/name> "Ana Iglesias-Molina ".
+<http://example.com/resources/Person/6> <http://example.com/github> <http://github.com/_aieme>.
+<http://example.com/resources/Person/6> <http://open.vocab.org/terms/twitter-id> <http://twitter.com/anaigmo>.
+<http://example.com/resources/Person/6> <http://schema.org/memberOf> "OEG".
+<http://example.com/resources/Person/6> <http://schema.org/image> <http://morph.oeg-upm.net/img/team/anaiglesias.jpg>.
+<http://example.com/resources/Person/6> <http://schema.org/description> "Ana Iglesias-Molina is a researcher and PhD student of the Ontology Engineering Group - Universidad Politécnica de Madrid since 2019. Her work is mainly focused on data integration of diverse sources from the biological domain.".
+<http://example.com/resources/Person/6> <http://schema.org/email> "ana.iglesiasm@upm.es".
+<http://example.com/resources/Person/6> <http://schema.org/jobTitle> "Researcher and PhD student".
+<http://example.com/resources/Person/6> <http://example.com/linkedin> <http://www.linkedin.com/in/ana-iglesias-molina/>.
+<http://example.com/resources/Person/7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/7> <http://schema.org/name> "Idafen Perez-Santana".
+<http://example.com/resources/Person/7> <http://example.com/hasWrite> <http://example.com/paperperson/0_7>.
+<http://example.com/resources/Person/7> <http://example.com/hasWon> <http://example.com/peopleaward/7_1>.
+<http://example.com/resources/Person/8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person>.
+<http://example.com/resources/Person/8> <http://schema.org/name> "Juan Sequeda".
+<http://example.com/resources/Person/8> <http://example.com/hasWrite> <http://example.com/paperperson/1_8>.
+<http://example.com/resources/Article/0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Article>.
+<http://example.com/resources/Article/0> <http://schema.org/name> "Virtual Statistics Knowledge Graph Generation from CSV files".
+<http://example.com/resources/Article/0> <http://example.com/paperLink> "https://dchaves.oeg-upm.net/resources/papers/virtual-semstat-2018/".
+<http://example.com/resources/Article/0> <http://example.com/description> "NONE".
+<http://example.com/resources/Article/0> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/0_1>.
+<http://example.com/resources/Article/0> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/0_2>.
+<http://example.com/resources/Article/0> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/0_3>.
+<http://example.com/resources/Article/0> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/0_7>.
+<http://example.com/resources/Article/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Article>.
+<http://example.com/resources/Article/1> <http://schema.org/name> "Formalisation and experiences of R2RML-based SPARQL to SQL query translation using morph".
+<http://example.com/resources/Article/1> <http://example.com/paperLink> "https://dl.acm.org/doi/10.1145/2566486.2567981".
+<http://example.com/resources/Article/1> <http://example.com/description> "NONE".
+<http://example.com/resources/Article/1> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/1_3>.
+<http://example.com/resources/Article/1> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/1_2>.
+<http://example.com/resources/Article/1> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/1_8>.
+<http://example.com/resources/Article/1> <http://example.com/tool> <http://example.com/papertool/1_1>.
+<http://example.com/resources/Article/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Article>.
+<http://example.com/resources/Article/2> <http://schema.org/name> "Morph-GraphQL: GraphQL Server Generation from R2RML Mappings".
+<http://example.com/resources/Article/2> <http://example.com/paperLink> "https://www.researchgate.net/publication/333719890_morph-GraphQL_GraphQL_Servers_Generation_from_R2RML_Mappings".
+<http://example.com/resources/Article/2> <http://example.com/description> "NONE".
+<http://example.com/resources/Article/2> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/2_1>.
+<http://example.com/resources/Article/2> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/2_2>.
+<http://example.com/resources/Article/2> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/2_3>.
+<http://example.com/resources/Article/2> <http://purl.org/dc/terms/creator> <http://example.com/paperperson/2_5>.
+<http://example.com/resources/Article/2> <http://example.com/award> <http://example.com/paperaward/2_0>.
+<http://example.com/resources/Article/2> <http://example.com/tool> <http://example.com/papertool/2_2>.
+<http://example.com/resources/Tools/0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/Software>.
+<http://example.com/resources/Tools/0> <http://schema.org/name> "Morph-CSV".
+<http://example.com/resources/Tools/0> <http://example.com/repository> "https://github.com/oeg-upm/morph-csv".
+<http://example.com/resources/Tools/0> <http://example.com/zenodoDoi> "none".
+<http://example.com/resources/Tools/0> <http://example.com/description> "Enhancing virtual KG access over tabular data with RML and CSVW".
+<http://example.com/resources/Tools/0> <http://example.com/readmelink> "https://raw.githubusercontent.com/oeg-upm/morph-csv/master/README.md".
+<http://example.com/resources/Tools/0> <http://schema.org/image> "https://raw.githubusercontent.com/oeg-upm/morph-csv/master/figures/architecture.png".
+<http://example.com/resources/Tools/0> <http://purl.org/dc/terms/creator> <http://example.com/peopletool/0_0>.
+<http://example.com/resources/Tools/0> <http://purl.org/dc/terms/creator> <http://example.com/peopletool/1_0>.
+<http://example.com/resources/Tools/0> <http://purl.org/dc/terms/creator> <http://example.com/peopletool/4_0>.
+<http://example.com/resources/Tools/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/Software>.
+<http://example.com/resources/Tools/1> <http://schema.org/name> "Morph-RDB".
+<http://example.com/resources/Tools/1> <http://example.com/repository> "https://github.com/oeg-upm/morph-rdb".
+<http://example.com/resources/Tools/1> <http://example.com/zenodoDoi> "none".
+<http://example.com/resources/Tools/1> <http://example.com/description> "Morph-RDB is an RDB2RDF engine that translates SPARQL queries to SQL using R2RML mappings.".
+<http://example.com/resources/Tools/1> <http://example.com/readmelink> "https://raw.githubusercontent.com/oeg-upm/morph-rdb/master/README.md".
+<http://example.com/resources/Tools/1> <http://schema.org/image> "https://morph.oeg-upm.net/img/morph/morph-rdb.svg".
+<http://example.com/resources/Tools/1> <http://purl.org/dc/terms/creator> <http://example.com/peopletool/3_1>.
+<http://example.com/resources/Tools/1> <http://example.com/paper> <http://example.com/papertool/1_1>.
+<http://example.com/resources/Tools/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/Software>.
+<http://example.com/resources/Tools/2> <http://schema.org/name> "Morph-GraphQL".
+<http://example.com/resources/Tools/2> <http://example.com/repository> "https://github.com/oeg-upm/morph-graphql".
+<http://example.com/resources/Tools/2> <http://example.com/zenodoDoi> "none".
+<http://example.com/resources/Tools/2> <http://example.com/description> "Morph-GraphQL generates a GraphQL server from a R2RML mapping for providing access to an RDB.".
+<http://example.com/resources/Tools/2> <http://example.com/readmelink> "https://raw.githubusercontent.com/oeg-upm/morph-graphql/master/README.md".
+<http://example.com/resources/Tools/2> <http://schema.org/image> "https://morph.oeg-upm.net/img/morph/morph-graphql.svg".
+<http://example.com/resources/Tools/2> <http://purl.org/dc/terms/creator> <http://example.com/peopletool/3_2>.
+<http://example.com/resources/Tools/2> <http://purl.org/dc/terms/creator> <http://example.com/peopletool/5_2>.
+<http://example.com/resources/Tools/2> <http://example.com/paper> <http://example.com/papertool/2_2>.
+<http://example.com/resources/Tools/2> <http://example.com/award> <http://example.com/awardtool/0_2>.
+<http://example.com/resources/Award/0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/Award>.
+<http://example.com/resources/Award/0> <http://example.com/awardName> "Best Demo Paper award at SEKE 2019".
+<http://example.com/resources/Award/0> <http://example.com/Date> "2019-06-28".
+<http://example.com/resources/Award/0> <http://example.com/awardLink> "http://ksiresearchorg.ipage.com/seke/seke19awardlet.html".
+<http://example.com/resources/Award/0> <http://example.com/Winners> <http://example.com/peopleaward/1_0>.
+<http://example.com/resources/Award/0> <http://example.com/Winners> <http://example.com/peopleaward/2_0>.
+<http://example.com/resources/Award/0> <http://example.com/Winners> <http://example.com/peopleaward/3_0>.
+<http://example.com/resources/Award/0> <http://example.com/Winners> <http://example.com/peopleaward/5_0>.
+<http://example.com/resources/Award/0> <http://example.com/Papers> <http://example.com/paperaward/2_0>.
+<http://example.com/resources/Award/0> <http://example.com/Tools> <http://example.com/awardtool/0_2>.
+<http://example.com/resources/Award/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/Award>.
+<http://example.com/resources/Award/1> <http://example.com/awardName> "Best paper award at SemStats@ISWC2018".
+<http://example.com/resources/Award/1> <http://example.com/Date> "2018-10-08".
+<http://example.com/resources/Award/1> <http://example.com/awardLink> "http://ebooks.iospress.nl/volumearticle/50538".
+<http://example.com/resources/Award/1> <http://example.com/Winners> <http://example.com/peopleaward/1_1>.
+<http://example.com/resources/Award/1> <http://example.com/Winners> <http://example.com/peopleaward/2_1>.
+<http://example.com/resources/Award/1> <http://example.com/Winners> <http://example.com/peopleaward/3_1>.
+<http://example.com/resources/Award/1> <http://example.com/Winners> <http://example.com/peopleaward/7_1>.
+<http://example.com/paperperson/0_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/0_1> <http://example.com/paper> <http://example.com/resources/Article/0>.
+<http://example.com/paperperson/0_1> <http://example.com/person> <http://example.com/resources/Person/1>.
+<http://example.com/paperperson/0_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/0_2> <http://example.com/paper> <http://example.com/resources/Article/0>.
+<http://example.com/paperperson/0_2> <http://example.com/person> <http://example.com/resources/Person/2>.
+<http://example.com/paperperson/0_3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/0_3> <http://example.com/paper> <http://example.com/resources/Article/0>.
+<http://example.com/paperperson/0_3> <http://example.com/person> <http://example.com/resources/Person/3>.
+<http://example.com/paperperson/0_7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/0_7> <http://example.com/paper> <http://example.com/resources/Article/0>.
+<http://example.com/paperperson/0_7> <http://example.com/person> <http://example.com/resources/Person/7>.
+<http://example.com/paperperson/1_3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/1_3> <http://example.com/paper> <http://example.com/resources/Article/1>.
+<http://example.com/paperperson/1_3> <http://example.com/person> <http://example.com/resources/Person/3>.
+<http://example.com/paperperson/1_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/1_2> <http://example.com/paper> <http://example.com/resources/Article/1>.
+<http://example.com/paperperson/1_2> <http://example.com/person> <http://example.com/resources/Person/2>.
+<http://example.com/paperperson/1_8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/1_8> <http://example.com/paper> <http://example.com/resources/Article/1>.
+<http://example.com/paperperson/1_8> <http://example.com/person> <http://example.com/resources/Person/8>.
+<http://example.com/paperperson/2_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/2_1> <http://example.com/paper> <http://example.com/resources/Article/2>.
+<http://example.com/paperperson/2_1> <http://example.com/person> <http://example.com/resources/Person/1>.
+<http://example.com/paperperson/2_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/2_2> <http://example.com/paper> <http://example.com/resources/Article/2>.
+<http://example.com/paperperson/2_2> <http://example.com/person> <http://example.com/resources/Person/2>.
+<http://example.com/paperperson/2_3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/2_3> <http://example.com/paper> <http://example.com/resources/Article/2>.
+<http://example.com/paperperson/2_3> <http://example.com/person> <http://example.com/resources/Person/3>.
+<http://example.com/paperperson/2_5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperperson/2_5> <http://example.com/paper> <http://example.com/resources/Article/2>.
+<http://example.com/paperperson/2_5> <http://example.com/person> <http://example.com/resources/Person/5>.
+<http://example.com/paperaward/2_0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/paperaward/2_0> <http://example.com/paper> <http://example.com/resources/Article/2>.
+<http://example.com/paperaward/2_0> <http://example.com/award> <http://example.com/resources/Award/0>.
+<http://example.com/papertool/1_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/papertool/1_1> <http://example.com/paper> <http://example.com/resources/Article/1>.
+<http://example.com/papertool/1_1> <http://example.com/tool> <http://example.com/resources/Tools/1>.
+<http://example.com/papertool/2_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/papertool/2_2> <http://example.com/paper> <http://example.com/resources/Article/2>.
+<http://example.com/papertool/2_2> <http://example.com/tool> <http://example.com/resources/Tools/2>.
+<http://example.com/awardtool/0_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/awardtool/0_2> <http://example.com/award> <http://example.com/resources/Award/0>.
+<http://example.com/awardtool/0_2> <http://example.com/tool> <http://example.com/resources/Tools/2>.
+<http://example.com/peopletool/0_0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopletool/0_0> <http://example.com/people> <http://example.com/resources/Person/0>.
+<http://example.com/peopletool/0_0> <http://example.com/tool> <http://example.com/resources/Tools/0>.
+<http://example.com/peopletool/1_0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopletool/1_0> <http://example.com/people> <http://example.com/resources/Person/1>.
+<http://example.com/peopletool/1_0> <http://example.com/tool> <http://example.com/resources/Tools/0>.
+<http://example.com/peopletool/4_0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopletool/4_0> <http://example.com/people> <http://example.com/resources/Person/4>.
+<http://example.com/peopletool/4_0> <http://example.com/tool> <http://example.com/resources/Tools/0>.
+<http://example.com/peopletool/3_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopletool/3_1> <http://example.com/people> <http://example.com/resources/Person/3>.
+<http://example.com/peopletool/3_1> <http://example.com/tool> <http://example.com/resources/Tools/1>.
+<http://example.com/peopletool/3_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopletool/3_2> <http://example.com/people> <http://example.com/resources/Person/3>.
+<http://example.com/peopletool/3_2> <http://example.com/tool> <http://example.com/resources/Tools/2>.
+<http://example.com/peopletool/5_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopletool/5_2> <http://example.com/people> <http://example.com/resources/Person/5>.
+<http://example.com/peopletool/5_2> <http://example.com/tool> <http://example.com/resources/Tools/2>.
+<http://example.com/peopleaward/1_0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopleaward/1_0> <http://example.com/people> <http://example.com/resources/Person/1>.
+<http://example.com/peopleaward/1_0> <http://example.com/award> <http://example.com/resources/Award/0>.
+<http://example.com/peopleaward/2_0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopleaward/2_0> <http://example.com/people> <http://example.com/resources/Person/2>.
+<http://example.com/peopleaward/2_0> <http://example.com/award> <http://example.com/resources/Award/0>.
+<http://example.com/peopleaward/3_0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopleaward/3_0> <http://example.com/people> <http://example.com/resources/Person/3>.
+<http://example.com/peopleaward/3_0> <http://example.com/award> <http://example.com/resources/Award/0>.
+<http://example.com/peopleaward/5_0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopleaward/5_0> <http://example.com/people> <http://example.com/resources/Person/5>.
+<http://example.com/peopleaward/5_0> <http://example.com/award> <http://example.com/resources/Award/0>.
+<http://example.com/peopleaward/1_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopleaward/1_1> <http://example.com/people> <http://example.com/resources/Person/1>.
+<http://example.com/peopleaward/1_1> <http://example.com/award> <http://example.com/resources/Award/1>.
+<http://example.com/peopleaward/2_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopleaward/2_1> <http://example.com/people> <http://example.com/resources/Person/2>.
+<http://example.com/peopleaward/2_1> <http://example.com/award> <http://example.com/resources/Award/1>.
+<http://example.com/peopleaward/3_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopleaward/3_1> <http://example.com/people> <http://example.com/resources/Person/3>.
+<http://example.com/peopleaward/3_1> <http://example.com/award> <http://example.com/resources/Award/1>.
+<http://example.com/peopleaward/7_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/relation>.
+<http://example.com/peopleaward/7_1> <http://example.com/people> <http://example.com/resources/Person/7>.
+<http://example.com/peopleaward/7_1> <http://example.com/award> <http://example.com/resources/Award/1>.
