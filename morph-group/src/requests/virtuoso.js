@@ -80,6 +80,7 @@ const queryMemberInfo = (member) => (`
     twitter @optional @single
     webpage @optional @single
     memberOf @single
+    as
   }
 `);
 export function getAllArticles(){

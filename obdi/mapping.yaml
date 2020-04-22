@@ -4,17 +4,18 @@ prefixes:
     idlab-fn: http://example.com/idlab/function/
     grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
     ex: http://example.com/
+    doi: http://doi.org/
+    oeg: http://oeg-upm.net/resource/
 
 mappings:
-
   person:
     sources:
       - [/data/files/person.csv~csv]
-    s: http://example.com/resources/Person/$(id)
+    s: oeg:Person/$(id)
     po:
     - [a, schema:Person]
     - [schema:name, $(name), xsd:string]
-    - [ex:webpage, $(webpage)~iri]
+    - [schema:WebPage, $(webpage)~iri]
     - [ov:twitter-id, "http://twitter.com/$(twitter)~iri"]
     - [schema:memberOf, $(organization), xsd:string]
     - [schema:image, $(photo)~iri]
@@ -23,7 +24,8 @@ mappings:
     - [schema:jobTitle, $(role), xsd:string]
     - [ex:linkedin, $(linkedin)~iri]
     - [ex:github, "http://github.com/$(github)~iri"]
-    - p: ex:hasWrite
+    - [schema:startDate, $(startDate), xsd:date]
+    - p: schema:Article
       o:
         - mapping: papers_people
           condition:
@@ -48,20 +50,21 @@ mappings:
               - [str1, $(id)]
               - [str2, $(person_id)]
 
-
-
   paper:
     sources:
       - [/data/files/paper.csv~csv]
-    s: http://example.com/resources/Article/$(id)
+    s: oeg:Article/$(id)
     po:
     - [a, schema:Article]
     - [schema:name, $(title), xsd:string]
 #    - [schema:review, $(review)~iri]
 #    - [http://example.com/paperType, $(type), xsd:string]
-    - [ex:paperLink, $(paper_link), xsd:string]
-    - [ex:description, $(description), xsd:string]
-    - p: dcterms:creator
+    - [schema:Event, $(event)~iri]
+    - [ex:eventName, $(eventName), xsd:string]
+    - [schema:datePublished, $(date_published), xsd:date]
+    - [schema:url, $(paper_link)~iri]
+    - [schema:abstract, $(description), xsd:string]
+    - p: schema:author
       o:
         - mapping: papers_people
           condition:
@@ -77,7 +80,7 @@ mappings:
             parameters:
               - [str1, $(id)]
               - [str2, $(paper_id)]
-    - p: schema:CreativeWork
+    - p: schema:exampleOfWork
       o:
         - mapping: papers_tools
           condition:
@@ -88,16 +91,17 @@ mappings:
   tool:
     sources:
       - [/data/files/tool.csv~csv]
-    s: http://example.com/resources/Tools/$(id)
+    s: oeg:Tool/$(id)
     po:
-    - [a, ex:Software]
+    - [a, schema:SoftwareSourceCode]
     - [schema:name, $(name), xsd:string]
-    - [ex:repository, $(ghrepo), xsd:string]
-    - [ex:zenodoDoi, $(zenodo), xsd:string]
-    - [ex:description, $(description)~iri]
-    - [ex:readmelink, $(raw_readme_link)~iri]
+    - [schema:codeRepository, $(ghrepo)~iri]
+    - [doi:name, $(zenodo), xsd:string]
+    - [schema:about, $(description), xsd:string]
+    - [schema:abstract, $(raw_readme_link)~iri]
     - [schema:image, $(image_link)~iri]
-    - p: schema:creator
+    - [schema:datePublished, $(date_published), xsd:date]
+    - p: schema:author
       o:
         - mapping: people_tools
           condition:
@@ -125,14 +129,14 @@ mappings:
   award:
     sources:
       - [/data/files/award.csv~csv]
-    s: http://example.com/resources/Award/$(id)
+    s: oeg:Award/$(id)
     po:
     - [a, schema:award]
-    - [ex:awardName, $(name), xsd:date]
-    - [ex:awardDescription,$(description), xsd:date]
-    - [ex:Date, $(date), xsd:date]
-    - [ex:awardLink, $(award_link)~iri]
-    - p: schema:Person
+    - [schema:name, $(name), xsd:string]
+    - [schema:about,$(description), xsd:string]
+    - [schema:Date, $(date), xsd:date]
+    - [schema:url, $(award_link)~iri]
+    - p: schema:winner
       o:
         - mapping: people_awards
           condition:
@@ -148,7 +152,7 @@ mappings:
             parameters:
               - [str1, $(id)]
               - [str2, $(award_id)]
-    - p: schema:CreativeWork
+    - p: schema:SoftwareSourceCode
       o:
         - mapping: awards_tools
           condition:
@@ -160,9 +164,10 @@ mappings:
   papers_people:
     sources:
       - [/data/files/papers_people.csv~csv]
-    s: ex:paperperson/$(paper_id)_$(person_id)
+    s: oeg:Paper_person/$(paper_id)_$(person_id)
     po:
-    - [a, ex:relation]
+    - [a, schema:isRelatedTo]
+    - [schema:position, $(position), xsd:integer]
     - p: schema:Article
       o:
       - mapping: paper
@@ -183,9 +188,9 @@ mappings:
   papers_awards:
     sources:
       - [/data/files/papers_awards.csv~csv]
-    s: ex:paperaward/$(paper_id)_$(award_id)
+    s: oeg:Paper_award/$(paper_id)_$(award_id)
     po:
-    - [a, ex:relation]
+    - [a, schema:isRelatedTo]
     - p: schema:Article
       o:
       - mapping: paper
@@ -206,9 +211,9 @@ mappings:
   papers_tools:
     sources:
       - [/data/files/papers_tools.csv~csv]
-    s: ex:papertool/$(paper_id)_$(tool_id)
+    s: oeg:Paper_tool/$(paper_id)_$(tool_id)
     po:
-    - [a, ex:relation]
+    - [a, schema:isRelatedTo]
     - p: schema:Article
       o:
       - mapping: paper
@@ -217,7 +222,7 @@ mappings:
           parameters:
             - [str1, $(paper_id)]
             - [str2, $(id)]
-    - p: schema:CreativeWork
+    - p: schema:SoftwareSourceCode
       o:
       - mapping: tool
         condition:
@@ -229,9 +234,9 @@ mappings:
   awards_tools:
     sources:
       - [/data/files/awards_tools.csv~csv]
-    s: ex:awardtool/$(award_id)_$(tool_id)
+    s: oeg:Award_tool/$(award_id)_$(tool_id)
     po:
-    - [a, ex:relation]
+    - [a, schema:isRelatedTo]
     - p: schema:award
       o:
       - mapping: award
@@ -240,7 +245,7 @@ mappings:
           parameters:
             - [str1, $(award_id)]
             - [str2, $(id)]
-    - p: schema:CreativeWork
+    - p: schema:SoftwareSourceCode
       o:
       - mapping: tool
         condition:
@@ -252,9 +257,9 @@ mappings:
   people_tools:
     sources:
       - [/data/files/people_tools.csv~csv]
-    s: ex:peopletool/$(person_id)_$(tool_id)
+    s: oeg:Person_tool/$(person_id)_$(tool_id)
     po:
-    - [a, ex:relation]
+    - [a, schema:isRelatedTo]
     - p: schema:Person
       o:
       - mapping: person
@@ -263,7 +268,7 @@ mappings:
           parameters:
             - [str1, $(person_id)]
             - [str2, $(id)]
-    - p: schema:CreativeWork
+    - p: schema:SoftwareSourceCode
       o:
       - mapping: tool
         condition:
@@ -275,9 +280,10 @@ mappings:
   people_awards:
     sources:
       - [/data/files/people_awards.csv~csv]
-    s: ex:peopleaward/$(person_id)_$(award_id)
+    s: oeg:Person_award/$(person_id)_$(award_id)
     po:
-    - [a, ex:relation]
+    - [a, schema:isRelatedTo]
+    - [schema:position, $(position), xsd:integer]
     - p: schema:Person
       o:
       - mapping: person
