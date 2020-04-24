@@ -25,7 +25,7 @@ mappings:
     - [ex:linkedin, $(linkedin)~iri]
     - [ex:github, "http://github.com/$(github)~iri"]
     - [schema:startDate, $(startDate), xsd:date]
-    - p: schema:Article
+    - p: ex:hasWrite
       o:
         - mapping: papers_people
           condition:
@@ -57,8 +57,6 @@ mappings:
     po:
     - [a, schema:Article]
     - [schema:name, $(title), xsd:string]
-#    - [schema:review, $(review)~iri]
-#    - [http://example.com/paperType, $(type), xsd:string]
     - [schema:Event, $(event)~iri]
     - [ex:eventName, $(eventName), xsd:string]
     - [schema:datePublished, $(date_published), xsd:date]

@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { Row, Col, Typography, Divider } from 'antd'
 import vkg from '../assets/vkg.svg'
-import CardList from '../components/CardList'
+import ArticleList from '../components/ArticleList'
 import MorphGraph from '../components/MorphGraph'
 import MemberList from '../components/members/MemberList'
 const {Title} = Typography
@@ -38,7 +38,7 @@ export default class Home extends React.Component{
                         <Title level={2}>Recent Publications:</Title>
                     </Col>
                 </Row>
-                <CardList></CardList>
+                <ArticleList/>
                 <Divider></Divider>
             </Layout>
         )
