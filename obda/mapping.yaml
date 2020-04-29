@@ -5,27 +5,30 @@ prefixes:
     grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
     ex: http://example.com/
     doi: http://doi.org/
-    oeg: http://oeg-upm.net/resource/
+    oeg: http://www.oeg-upm.net/resource/
 
 mappings:
   person:
     sources:
       - [/data/files/person.csv~csv]
-    s: oeg:Person/$(id)
+    s: oeg:person/$(id)
     po:
     - [a, schema:Person]
     - [schema:name, $(name), xsd:string]
-    - [schema:WebPage, $(webpage)~iri]
+    - [schema:url, $(webpage)~iri]
     - [ov:twitter-id, "http://twitter.com/$(twitter)~iri"]
-    - [schema:memberOf, $(organization), xsd:string]
+    - [schema:memberOf, $(organization), xsd:string]    #TODO: THIS HAS TO BE A URI OF TYPE ORGANISATION, E.G., REPRESENTING OEG
+    - [schema:affiliation, $(organization), xsd:string]  #TODO: SAME HERE
+    - [schema:worksFor, $(organization), xsd:string]    #TODO: THIS HAS TO BE A URI OF TYPE ORGANISATION, E.G., REPRESENTING OEG
     - [schema:image, $(photo)~iri]
     - [schema:description, $(biography), xsd:string]
     - [schema:email, $(email), xsd:string]
     - [schema:jobTitle, $(role), xsd:string]
-    - [ex:linkedin, $(linkedin)~iri]
-    - [ex:github, "http://github.com/$(github)~iri"]
+    - [ex:linkedin, $(linkedin)~iri]    # TODO: Podría ser también schema:identifier
+    - [ex:github, "http://github.com/$(github)~iri"]   #TODO: Lo mismo aquí schema:identifier, o URL
     - [schema:startDate, $(startDate), xsd:date]
-    - p: ex:hasWrite
+    - [schema:nationality, $(nationality), xsd:string]  #TODO: Add this in the CSV
+    - p: ex:hasWrite   #TODO: This one does not exist in schema.org. We should see whether adding it because it is useful for the website or not
       o:
         - mapping: papers_people
           condition:
@@ -41,7 +44,7 @@ mappings:
             parameters:
               - [str1, $(id)]
               - [str2, $(person_id)]
-    - p: ex:hasWon
+    - p: schema:award   #TODO: in schema.org this is a text. Not sure why we want to have it as a resource.
       o:
         - mapping: people_awards
           condition:
@@ -53,7 +56,7 @@ mappings:
   paper:
     sources:
       - [/data/files/paper.csv~csv]
-    s: oeg:Article/$(id)
+    s: oeg:paper/$(id)
     po:
     - [a, schema:Article]
     - [schema:name, $(title), xsd:string]
