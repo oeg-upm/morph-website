@@ -24,7 +24,7 @@ mappings:
     - [schema:jobTitle, $(role), xsd:string]
     - [ex:linkedin, $(linkedin)~iri]
     - [ex:github, "http://github.com/$(github)~iri"]
-    - [schema:startDate, $(startDate), xsd:date]
+    - [schema:startDate, $(start_date), xsd:date]
     - p: ex:hasWrite
       o:
         - mapping: papers_people
@@ -58,7 +58,7 @@ mappings:
     - [a, schema:Article]
     - [schema:name, $(title), xsd:string]
     - [schema:Event, $(event)~iri]
-    - [ex:eventName, $(eventName), xsd:string]
+    - [ex:eventName, $(event_name), xsd:string]
     - [schema:datePublished, $(date_published), xsd:date]
     - [schema:url, $(paper_link)~iri]
     - [schema:abstract, $(description), xsd:string]
@@ -133,6 +133,8 @@ mappings:
     - [schema:name, $(name), xsd:string]
     - [schema:about,$(description), xsd:string]
     - [schema:Date, $(date), xsd:date]
+    - [schema:Event, $(event)~iri]
+    - [ex:eventName, $(event_name), xsd:string]    
     - [schema:url, $(award_link)~iri]
     - p: schema:winner
       o:
