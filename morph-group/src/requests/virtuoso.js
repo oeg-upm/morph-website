@@ -1,14 +1,14 @@
 import axios from 'axios'
 import {Client} from "graphql-ld";
 import {QueryEngineComunica} from "graphql-ld-comunica";
-import MorphGraph from '../assets/morph.nt'
 const API = 'http://0.0.0.0:8890/sparql'
 const uris = {
   schema:'http://schema.org/',
   dcterms:'http://purl.org/dc/terms/',
   ex:'http://example.com/',
   rdf:'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-  ov: 'http://open.vocab.org/terms/'
+  ov: 'http://open.vocab.org/terms/',
+  doi:'http://doi.org/'
 
 }
 const context = {
@@ -31,7 +31,7 @@ const context = {
       worksFor:`${uris.schema}worksFor`,
       "description":`${uris.schema}description`,
       memberOf:`${uris.schema}memberOf`,
-      twitter:`${uris.ov}twitter`,
+      twitter:`${uris.ov}twitter-id`,
       linkedin:`${uris.ex}linkedin`,
       github:`${uris.ex}github`,
       jobTitle:`${uris.schema}jobTitle`,
@@ -41,15 +41,23 @@ const context = {
       software: `${uris.ex}Software`,
       award:`${uris.ex}award`,
       paper:`${uris.ex}paper`,
-      repository: `${uris.ex}repository`,
-      zenodoDoi: `${uris.ex}zenodoDoi`,
-      readmelink:`${uris.ex}readmeLink`
+      codeRepository: `${uris.schema}codeRepository`,
+      zenodoDoi: `${uris.doi}name`,
+      readmelink:`${uris.ex}readmeLink`,
+      position:`${uris.schema}position`,
+      hasDevelop:`${uris.ex}hasDevelop`,
+      hasWrite:`${uris.ex}hasWrite`,
+      hasWon:`${uris.ex}hasWon`,
+      SoftwareSourceCode:`${uris.schema}SoftwareSourceCode`,
+      code:`${uris.ex}code`,
+      about:`${uris.schema}about`
+
     }
   };
 
 const comunicaConfig = {
     sources: [
-      { type: "file", value:MorphGraph },
+      { type: "sparql", value:API },
     ],
   };
   const client = new Client({ context, queryEngine: new QueryEngineComunica(comunicaConfig) });
@@ -58,19 +66,21 @@ const comunicaConfig = {
   const queryAllArticles = `
     query{
         id(a:Article) @single 
-        name
-        url
-        abstract
-        author{
-          Person @plural{
-            name
-            image @optional
+        name  @single 
+        url  @single 
+        abstract  @single 
+        author @single{
+          position
+          Person{
+            name @single 
+            image @optional @single 
           }
         }
     }`;
   const queryAllTools =`
     query{
       id(a:software) @single
+      code
       name @single
       image @single
       award 
@@ -84,7 +94,7 @@ const comunicaConfig = {
   `
   const queryAllMembers = `
   query{
-    id(a:schemaPerson) @single
+    id(a:Person) @single
     name  @single
     image @optional  @single
     description @optional @single
@@ -93,13 +103,65 @@ const comunicaConfig = {
     github @optional @single
     email @optional @single
     twitter @optional @single
-    webpage @optional @single
+    url @optional @single
     memberOf @single
   }
   `
+const queryArticle = (code) => (
+  `
+  query{
+      Article: (${code}){
+      name  @single 
+      url  @single 
+      abstract  @single 
+      author @single{
+        Person{
+          name @single 
+          image @optional @single 
+        }
+      }
+      }
+  }`
+)
+const queryTool = (code) => {
+  return(
+    `
+  query @single(scope: all){
+      id(a:SoftwareSourceCode, code: "${code}")
+      code
+      name
+      image @optional
+      award @optional {
+        award @plural{
+          name @single
+          code @single
+        }
+      }
+      Article @optional {
+        Article @plural{
+          name @single
+          code @code
+        }
+      }
+      about @optional
+      author @optional {
+        Person @plural{
+          name @single
+          code @single
+          image @single @optional
+        }
+      }
+      codeRepository  @optional
+      zenodoDoi  @optional
+      abstract @optional
+    }
+    `
+  )  
+}
 const queryMemberInfo = (member) => (`
   query{
-    id(name: "${member}")
+    id(name: "${member}") @single
+    name @single
     image @optional  @single
     description @optional @single
     jobTitle @optional  @single
@@ -107,9 +169,28 @@ const queryMemberInfo = (member) => (`
     github @optional @single
     email @optional @single
     twitter @optional @single
-    webpage @optional @single
+    url @optional @single
     memberOf @single
-    as
+    hasDevelop @single @optional{
+      SoftwareSourceCode{
+        name @single
+        image @single
+        id @single
+        code @single
+      }
+    }
+    hasWrite @single @optional{
+      Article{
+        name @single
+        id @single
+      }
+    }
+    hasWon @single @optional{
+      award{
+        name @single
+        id @single
+      }
+    }
   }
 `);
 export function getAllArticles(){
@@ -134,8 +215,25 @@ export function getAllMembers(){
   });
 }
 export function getMemberInfo(member){
-  return new Promise((resolve, reject) => {
-    client.query({'query':queryMemberInfo(member)}).then((response) => {
+  return new Promise(async (resolve, reject) => {
+    const query = await queryMemberInfo(member)
+    client.query({'query':query}).then((response) => {
+      resolve({data:response.data, context:context['@context']})
+    }).catch((err) => reject(err))
+  });
+}
+export function getArticle(id){
+  return new Promise(async (resolve, reject) => {
+    const query = await queryArticle(id)
+    client.query({'query':query}).then((response) => {
+      resolve({data:response.data, context:context['@context']})
+    }).catch((err) => reject(err))
+  });
+}
+export function getTool(id){
+  return new Promise(async (resolve, reject) => {
+    const query = await queryTool(id)
+    client.query({'query':query}).then((response) => {
       resolve({data:response.data, context:context['@context']})
     }).catch((err) => reject(err))
   });

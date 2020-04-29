@@ -3,10 +3,11 @@ import Route from 'react-router-dom/Route'
 import Home from './pages/Home'
 import { BrowserRouter } from 'react-router-dom'
 import "./App.css";
-import 'antd/dist/antd.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import 'antd/dist/antd.css'; 
+
 import Member from './pages/Member';
 
 //Enabling Tooltips:
