@@ -50,7 +50,8 @@ const context = {
       hasWon:`${uris.ex}hasWon`,
       SoftwareSourceCode:`${uris.schema}SoftwareSourceCode`,
       code:`${uris.ex}code`,
-      about:`${uris.schema}about`
+      about:`${uris.schema}about`,
+      datePublished:`${uris.schema}datePublished`
 
     }
   };
@@ -65,61 +66,44 @@ const comunicaConfig = {
   // Define a query
   const queryAllArticles = `
     query{
-        id(a:Article) @single 
-        name  @single 
-        url  @single 
-        abstract  @single 
-        author @single{
-          position
-          Person{
-            name @single 
-            image @optional @single 
-          }
-        }
+        id(a:Article) @single
+        code @single
+        datePublished @single
+
     }`;
   const queryAllTools =`
     query{
       id(a:software) @single
-      code
-      name @single
-      image @single
-      award 
-      paper
-      description @single
-      creator
-      repository @single
-      zenodoDoi @single
-      readmeLink @single
+      code @single
     }
   `
   const queryAllMembers = `
   query{
-    id(a:Person) @single
-    name  @single
-    image @optional  @single
-    description @optional @single
-    jobTitle @optional  @single
-    linkedin @optional @single
-    github @optional @single
-    email @optional @single
-    twitter @optional @single
-    url @optional @single
-    memberOf @single
+    id(a: Person, memberOf:"OEG") @single
+    code @single
   }
   `
 const queryArticle = (code) => (
   `
-  query{
-      Article: (${code}){
-      name  @single 
-      url  @single 
-      abstract  @single 
-      author @single{
-        Person{
+  query @single(scope: all){
+      id(a:Article, code: "${code}")
+      name  
+      url  @optional
+      datePublished @optional
+      Event @optional
+      eventName @optional
+      abstract  @optional
+      author @optional{
+        Person @plural{
           name @single 
           image @optional @single 
         }
       }
+      award @optional {
+        award @plural{
+          name @single
+          code @single
+        }
       }
   }`
 )
@@ -127,24 +111,24 @@ const queryTool = (code) => {
   return(
     `
   query @single(scope: all){
-      id(a:SoftwareSourceCode, code: "${code}")
+      id(a:SoftwareSourceCode, code: "${code}") @single
       code
       name
       image @optional
       award @optional {
-        award @plural{
+        award @plural {
           name @single
           code @single
         }
       }
-      Article @optional {
+      Article @optional @single{
         Article @plural{
           name @single
           code @code
         }
       }
       about @optional
-      author @optional {
+      author @optional @single{
         Person @plural{
           name @single
           code @single
@@ -158,21 +142,30 @@ const queryTool = (code) => {
     `
   )  
 }
-const queryMemberInfo = (member) => (`
-  query{
-    id(name: "${member}") @single
-    name @single
-    image @optional  @single
-    description @optional @single
-    jobTitle @optional  @single
-    linkedin @optional @single
-    github @optional @single
-    email @optional @single
-    twitter @optional @single
-    url @optional @single
-    memberOf @single
+const queryMemberCode = (name) => (
+  `
+    query @single(scope: all){
+      id(a:Person, name: "${name}")
+      code
+    }
+  `
+)
+
+const queryMemberInfo = (code) => (`
+  query @single(scope: all){
+    id(code: "${code}")
+    name
+    image @optional 
+    description @optional
+    jobTitle @optional 
+    linkedin @optional
+    github @optional
+    email @optional
+    twitter @optional
+    url @optional
+    memberOf
     hasDevelop @single @optional{
-      SoftwareSourceCode{
+      SoftwareSourceCode @plural{
         name @single
         image @single
         id @single
@@ -180,13 +173,13 @@ const queryMemberInfo = (member) => (`
       }
     }
     hasWrite @single @optional{
-      Article{
+      Article  @plural{
         name @single
         id @single
       }
     }
     hasWon @single @optional{
-      award{
+      award  @plural{
         name @single
         id @single
       }
@@ -196,31 +189,39 @@ const queryMemberInfo = (member) => (`
 export function getAllArticles(){
   return new Promise((resolve, reject) => {
     client.query({'query':queryAllArticles}).then((response) => {
-      resolve({data:response.data, context:context['@context']})
+      resolve(response.data)
     }).catch((err) => reject(err))
   });
 }
 export function getAllTools(){
   return new Promise((resolve, reject) => {
     client.query({'query':queryAllTools}).then((response) => {
-      resolve({data:response.data, context:context['@context']})
+      resolve(response.data)
     }).catch((err) => reject(err))
   });
 }
 export function getAllMembers(){
   return new Promise((resolve, reject) => {
     client.query({'query':queryAllMembers}).then((response) => {
-      resolve({data:response.data, context:context['@context']})
+      resolve(response.data)
     }).catch((err) => reject(err))
   });
 }
-export function getMemberInfo(member){
+export function getMemberInfo(code){
   return new Promise(async (resolve, reject) => {
-    const query = await queryMemberInfo(member)
+    const query = await queryMemberInfo(code)
     client.query({'query':query}).then((response) => {
       resolve({data:response.data, context:context['@context']})
     }).catch((err) => reject(err))
   });
+}
+export function getCodeMember(name){
+  return new Promise(async (resolve, reject) => {
+    const query = await queryMemberCode(name)
+    client.query({'query':query}).then((response) => {
+      resolve(response.data)
+    }).catch((err) => reject(err))
+  });  
 }
 export function getArticle(id){
   return new Promise(async (resolve, reject) => {

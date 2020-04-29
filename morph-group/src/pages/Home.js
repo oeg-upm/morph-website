@@ -2,9 +2,9 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { Row, Col, Typography, Divider } from 'antd'
 import vkg from '../assets/vkg.svg'
-import ArticleList from '../components/ArticleList'
+import ArticleList from '../components/Articles/ArticleList'
 import MorphGraph from '../components/MorphGraph'
-import MemberList from '../components/members/MemberList'
+import MemberList from '../components/Members/MemberList'
 const {Title} = Typography
 const {Paragraph} = Typography
 const property = "LA PROPIEDAD"
@@ -29,17 +29,17 @@ export default class Home extends React.Component{
                 <Divider></Divider>
                 <Row>
                     <Col>
+                        <Title level={2}>Recent Publications:</Title>
+                    </Col>
+                </Row>
+                <ArticleList limit={3}/>
+                <Divider></Divider>
+                <Row>
+                    <Col>
                     <Title level={2}>The Team</Title>
                     </Col>
                 </Row>
                 <MemberList></MemberList>
-                <Row>
-                    <Col>
-                        <Title level={2}>Recent Publications:</Title>
-                    </Col>
-                </Row>
-                <ArticleList/>
-                <Divider></Divider>
             </Layout>
         )
     }

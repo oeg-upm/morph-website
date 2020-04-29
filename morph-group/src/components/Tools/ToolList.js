@@ -6,8 +6,7 @@ export default class ToolList extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            tools:[],
-            context:[]
+            tools:[]
         }
     }
 
@@ -17,20 +16,19 @@ export default class ToolList extends React.Component{
         }else{
             let response = await getAllTools().catch((err) =>  console.log(err))
             let limit = await this.props.limit
-            let data = await limit !== -1?response.data.splice(0, limit):response.data
+            let data = await limit !== -1?response.data.slice(0, limit):response.data
             this.setState({tools:data})
-            this.setState({context:response.context})
         }
     }
 
     render(){
         return(
-            <Row>
+            <Row gutter={[16,16]}>
             {
             this.state.tools.map((tool) => {
             return (
                 <Col xs={24} md={12} lg={8}>
-                    <ToolCard data={tool} context={this.state.context}/>
+                    <ToolCard data={tool}/>
                 </Col>
             )})
             }
