@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {Client} from "graphql-ld";
 import {QueryEngineComunica} from "graphql-ld-comunica";
-
+import MorphGraph from '../assets/morph.nt'
 const API = 'http://0.0.0.0:8890/sparql'
 const uris = {
   schema:'http://schema.org/',
@@ -14,21 +14,30 @@ const uris = {
 const context = {
     "@context": {
       "a":`${uris.rdf}type` ,
-      "article":`${uris.schema}Article`,
+      "Article":`${uris.schema}Article`,
+      Event:`${uris.schema}Event`,
+      eventName:`${uris.ex}eventName`,
       "name":`${uris.schema}name`,
       "paperLink":`${uris.ex}paperLink`,
-      "creator":`${uris.dcterms}creator`,
-      "person":`${uris.ex}person`,
+      datePublished:`${uris.schema}datePublished`,
+      abstract:`${uris.schema}abstract`,
+      author:`${uris.schema}author`,
+      award:`${uris.schema}award`,
+      exampleOfWork:`${uris.schema}exampleOfWork`,
+      "Person":`${uris.schema}Person`,
       "image":`${uris.schema}image`, 
-      "description":`${uris.ex}description`,
+      "url":`${uris.schema}url`,
+      affiliation:`${uris.schema}affiliation`,
+      worksFor:`${uris.schema}worksFor`,
+      "description":`${uris.schema}description`,
       memberOf:`${uris.schema}memberOf`,
       twitter:`${uris.ov}twitter`,
       linkedin:`${uris.ex}linkedin`,
       github:`${uris.ex}github`,
-      webpage:`${uris.ex}webpage`,
       jobTitle:`${uris.schema}jobTitle`,
       email:`${uris.schema}email`,
-      schemaPerson:`${uris.schema}Person`,
+      startDate:`${uris.schema}startDate`,
+      nationality:`${uris.schema}nationality`,
       software: `${uris.ex}Software`,
       award:`${uris.ex}award`,
       paper:`${uris.ex}paper`,
@@ -40,7 +49,7 @@ const context = {
 
 const comunicaConfig = {
     sources: [
-      { type: "sparql", value:API },
+      { type: "file", value:MorphGraph },
     ],
   };
   const client = new Client({ context, queryEngine: new QueryEngineComunica(comunicaConfig) });
@@ -48,12 +57,12 @@ const comunicaConfig = {
   // Define a query
   const queryAllArticles = `
     query{
-        id(a:article) @single 
+        id(a:Article) @single 
         name
-        paperLink
-        description
-        creator {
-          person @plural{
+        url
+        abstract
+        author{
+          Person @plural{
             name
             image @optional
           }
