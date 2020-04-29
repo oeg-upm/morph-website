@@ -28,7 +28,13 @@ const context = {
       webpage:`${uris.ex}webpage`,
       jobTitle:`${uris.schema}jobTitle`,
       email:`${uris.schema}email`,
-      schemaPerson:`${uris.schema}Person`
+      schemaPerson:`${uris.schema}Person`,
+      software: `${uris.ex}Software`,
+      award:`${uris.ex}award`,
+      paper:`${uris.ex}paper`,
+      repository: `${uris.ex}repository`,
+      zenodoDoi: `${uris.ex}zenodoDoi`,
+      readmelink:`${uris.ex}readmeLink`
     }
   };
 
@@ -53,6 +59,20 @@ const comunicaConfig = {
           }
         }
     }`;
+  const queryAllTools =`
+    query{
+      id(a:software) @single
+      name @single
+      image @single
+      award 
+      paper
+      description @single
+      creator
+      repository @single
+      zenodoDoi @single
+      readmeLink @single
+    }
+  `
   const queryAllMembers = `
   query{
     id(a:schemaPerson) @single
@@ -86,6 +106,13 @@ const queryMemberInfo = (member) => (`
 export function getAllArticles(){
   return new Promise((resolve, reject) => {
     client.query({'query':queryAllArticles}).then((response) => {
+      resolve({data:response.data, context:context['@context']})
+    }).catch((err) => reject(err))
+  });
+}
+export function getAllTools(){
+  return new Promise((resolve, reject) => {
+    client.query({'query':queryAllTools}).then((response) => {
       resolve({data:response.data, context:context['@context']})
     }).catch((err) => reject(err))
   });

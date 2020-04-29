@@ -26,10 +26,11 @@ export default class ArticleList extends React.Component{
         return(
             <Col xs={24} id={this.createId(card.name)}>
                     <Card
+                    className="shadowEffect"
                     title={<><span property={this.state.context.name}>{card.name}</span><span className="badge"><a href={"/#" + this.createId(card.name)}> <FaAnchor/></a></span></>}
                     extra={<Text>12/01/2019</Text>} 
                     actions={[
-                        <a href="#">
+                        <a property={this.state.context.paperLink} href={card.paperLink}>
                         Read more
                         <span className="badge"><FiExternalLink key="read" /></span>
                         </a>
