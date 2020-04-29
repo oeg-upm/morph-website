@@ -1,4 +1,4 @@
-id,title,description,paper_link, event, event-name, date_published
+id,title,description,paper_link,event,event_name,date_published
 0,"Virtual Statistics Knowledge Graph Generation from CSV files",NONE,"https://dchaves.oeg-upm.net/resources/papers/virtual-semstat-2018/","http://semstats.org/2018/","6th International Workshop on Semantic Statistics co-located with the 17th International Semantic Web Conference",2018
 1,"Formalisation and experiences of R2RML-based SPARQL to SQL query translation using morph",NONE,"https://dl.acm.org/doi/10.1145/2566486.2567981","http://www2014.wwwconference.org/","23rd International World Wide Web Conference",2014
 2,"Morph-GraphQL: GraphQL Server Generation from R2RML Mappings",NONE,"https://www.researchgate.net/publication/333719890_morph-GraphQL_GraphQL_Servers_Generation_from_R2RML_Mappings","http://ksiresearchorg.ipage.com/seke/seke19.html","The 31st International Conference on Software Engineering and Knowledge Engineering",2019

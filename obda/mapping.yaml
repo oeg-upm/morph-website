@@ -10,7 +10,7 @@ prefixes:
 mappings:
   person:
     sources:
-      - [/data/files/person.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/person.csv~csv]
     s: oeg:person/$(id)
     po:
     - [a, schema:Person]
@@ -26,7 +26,7 @@ mappings:
     - [schema:jobTitle, $(role), xsd:string]
     - [ex:linkedin, $(linkedin)~iri]    # TODO: Podría ser también schema:identifier
     - [ex:github, "http://github.com/$(github)~iri"]   #TODO: Lo mismo aquí schema:identifier, o URL
-    - [schema:startDate, $(startDate), xsd:date]
+    - [schema:startDate, $(start_date), xsd:date]
     - [schema:nationality, $(nationality), xsd:string]  #TODO: Add this in the CSV
     - p: ex:hasWrite   #TODO: This one does not exist in schema.org. We should see whether adding it because it is useful for the website or not
       o:
@@ -55,7 +55,7 @@ mappings:
 
   paper:
     sources:
-      - [/data/files/paper.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/paper.csv~csv]
     s: oeg:paper/$(id)
     po:
     - [a, schema:Article]
@@ -91,7 +91,7 @@ mappings:
               - [str2, $(paper_id)]              
   tool:
     sources:
-      - [/data/files/tool.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/tool.csv~csv]
     s: oeg:Tool/$(id)
     po:
     - [a, schema:SoftwareSourceCode]
@@ -129,7 +129,7 @@ mappings:
 
   award:
     sources:
-      - [/data/files/award.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/award.csv~csv]
     s: oeg:Award/$(id)
     po:
     - [a, schema:award]
@@ -166,7 +166,7 @@ mappings:
                                 
   papers_people:
     sources:
-      - [/data/files/papers_people.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/papers_people.csv~csv]
     s: oeg:Paper_person/$(paper_id)_$(person_id)
     po:
     - [a, schema:isRelatedTo]
@@ -190,7 +190,7 @@ mappings:
 
   papers_awards:
     sources:
-      - [/data/files/papers_awards.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/papers_awards.csv~csv]
     s: oeg:Paper_award/$(paper_id)_$(award_id)
     po:
     - [a, schema:isRelatedTo]
@@ -213,7 +213,7 @@ mappings:
 
   papers_tools:
     sources:
-      - [/data/files/papers_tools.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/papers_tools.csv~csv]
     s: oeg:Paper_tool/$(paper_id)_$(tool_id)
     po:
     - [a, schema:isRelatedTo]
@@ -236,7 +236,7 @@ mappings:
 
   awards_tools:
     sources:
-      - [/data/files/awards_tools.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/awards_tools.csv~csv]
     s: oeg:Award_tool/$(award_id)_$(tool_id)
     po:
     - [a, schema:isRelatedTo]
@@ -259,7 +259,7 @@ mappings:
 
   people_tools:
     sources:
-      - [/data/files/people_tools.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/people_tools.csv~csv]
     s: oeg:Person_tool/$(person_id)_$(tool_id)
     po:
     - [a, schema:isRelatedTo]
@@ -282,7 +282,7 @@ mappings:
   
   people_awards:
     sources:
-      - [/data/files/people_awards.csv~csv]
+      - [/home/w0xter/Desktop/oeg/morph-website/obda/files/people_awards.csv~csv]
     s: oeg:Person_award/$(person_id)_$(award_id)
     po:
     - [a, schema:isRelatedTo]
