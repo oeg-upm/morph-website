@@ -5,6 +5,7 @@ import vkg from '../assets/vkg.svg'
 import ArticleList from '../components/Articles/ArticleList'
 import MorphGraph from '../components/MorphGraph'
 import MemberList from '../components/Members/MemberList'
+import ToolList from '../components/Tools/ToolList'
 const {Title} = Typography
 const {Paragraph} = Typography
 const property = "LA PROPIEDAD"
@@ -36,10 +37,18 @@ export default class Home extends React.Component{
                 <Divider></Divider>
                 <Row>
                     <Col>
+                        <Title level={2}>Recent Tools:</Title>
+                    </Col>
+                </Row>                
+                <ToolList limit={3}/>
+                <Divider/>
+                <Row>
+                    <Col>
                     <Title level={2}>The Team</Title>
                     </Col>
                 </Row>
                 <MemberList></MemberList>
+                <Divider></Divider>
             </Layout>
         )
     }

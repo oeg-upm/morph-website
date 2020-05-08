@@ -14,9 +14,9 @@ export default class  MemberList extends React.Component{
     render(){
         return(
             <Row gutter={[16,16]}>
-                {this.state.team.map((member) => {
+                {this.state.team.map((member, idx) => {
                     return(
-                        <Col xs={12} md={8} lg={6} className="col-xs-6 col-md-4 col-lg-3 py-2 align-self-center">
+                        <Col key={idx} xs={12} md={8} lg={6} className="col-xs-6 col-md-4 col-lg-3 py-2 align-self-center">
                             <Member size="small" code={member.code}></Member>
                         </Col>
                     )

@@ -17,9 +17,9 @@ export default class ArticleList extends React.Component{
     render(){
     return (
         <Row gutter={[16,16]}>
-            { this.state.articles.map((article) => {
+            { this.state.articles.map((article, idx) => {
                 return(
-                    <ArticleCard size="large" code={article.code}/>
+                    <ArticleCard key={idx} size="large" code={article.code}/>
                 )
             })}
         </Row>

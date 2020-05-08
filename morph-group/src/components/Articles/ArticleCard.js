@@ -1,8 +1,9 @@
 import React from 'react'
-import {Card, Row, Col, Typography, Avatar, Tooltip} from 'antd'
+import {Card, Row, Col, Typography, Avatar, Tooltip, Divider} from 'antd'
 import { getArticle } from '../../requests/virtuoso';
 import {FiExternalLink} from 'react-icons/fi'
 import {FaAnchor} from 'react-icons/fa'
+import ToolList from '../Tools/ToolList'
 const {Title} = Typography
 const {Text} = Typography
 const {Paragraph} = Typography
@@ -30,7 +31,15 @@ export default class ArticleCard extends React.Component{
     
     async getArticleData(){
         const response = await getArticle(this.props.code);
-        this.setState({data:response.data, context:response.context})
+        let data = await response.data
+        if(Object.keys(data).includes('author')){
+            const sortedAuthors = await new Array(data.author.position.length)
+            await data.author.position.map((pos, idx) => {
+                sortedAuthors[pos -1] = data.author.Person[idx]
+            })
+            data.author.Person = sortedAuthors
+        }
+        this.setState({data:data, context:response.context})
 
     }
     async componentDidMount(){
@@ -44,7 +53,6 @@ export default class ArticleCard extends React.Component{
         }
     }
     render(){
-        console.log(this.state.data)
         return(
             Object.keys(this.state.data).length !== 0?(
                 this.props.size === "large" ?(
@@ -52,7 +60,7 @@ export default class ArticleCard extends React.Component{
                 ):this.props.size === "small" ?(
                     this.small()
                 ):(
-                    <h1>PAGE</h1>
+                    this.page()
                 )
             ):''
 
@@ -65,14 +73,120 @@ export default class ArticleCard extends React.Component{
             </Col>
         )
     }
+    page = () => {
+        return(
+        <span property={this.state.context.Article}>
+            <Row gutter={[8,8]} align="middle">
+                <Col>
+                <span property={this.state.context·name}>
+                    <Title level={2}>
+                        {this.state.data.name}
+                    </Title>
+                </span>
+                <span property={this.state.context.datePublished}>
+                    <Text strong>
+                        {this.state.data.datePublished.getFullYear()}
+                    </Text>
+                </span>
+                </Col>
+            </Row>
+            <Row align="top" gutter={[8,8]}>
+                <Col>
+                <Title level={4}>
+                    Published at: 
+                </Title>
+                </Col>
+                <Col>
+                <Title level={4}>
+                <a property={this.state.context.Event} href={this.state.data.Event}>{this.state.data.eventName}</a>
+
+                </Title>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                <Text strong>
+                <a href={this.state.data.url}>Read the paper</a>
+                </Text>
+                </Col>
+            </Row>
+            { Object.keys(this.state.data).includes('author')?(
+            <>
+            <Row>
+                <Col>
+                    <Title level={4}>Authors:</Title>
+                </Col>
+            </Row>
+            <Row gutter={[16,16]}>
+                            {this.state.data.author.Person.map((person, idx) => {
+                            //const person = this.state.data.author.Person[pos - 1]
+                            const url= Object.keys(person).includes('memberOf') && person.memberOf == "OEG" ? person.name:""
+                            return(
+                            <Col key={idx} className="text-center">
+                                <Row justify="center">
+                                    <Col>
+                                    <a href={url.length !== 0 ?("/member/" + url):"#"}>
+                                    <span property={this.state.context.Person}>
+                                    <Avatar className={url.length !== 0?"hoverEffect":""} src={Object.keys(person).includes('image') ? person.image:''} size={100}>
+                                        {initials(person.name)}
+                                    </Avatar>
+                                    </span>
+                                    </a>
+                                    </Col>
+                                </Row>
+                                <Row justify="center">
+                                    <Col>
+                                    <span property={this.state.context.name}>
+                                        <Text>
+                                            <a className={url.length === 0? "text-dark":""} href={url.length !== 0 ?("/member/" + url):"#"}>
+                                                {person.name}
+                                            </a>
+                                        </Text>
+                                    </span>
+                                    </Col>
+                                </Row>
+                            </Col>
+                            )
+                            })}
+            </Row>
+            </>
+            ):''}
+            <Row>
+                <Col>
+                    <Title level={4}>Abstract:</Title>
+                    <span property={this.state.context.abstract}>
+                        <Paragraph className="text-justify">
+                            {this.state.data.abstract}
+                        </Paragraph>
+                    </span>
+                </Col>
+            </Row>
+            <Divider></Divider>
+            {
+                Object.keys(this.state.data).includes('exampleOfWork') ?(
+                    <>
+                    <Row>
+                        <Col>
+                            <Title level={4}>Proofs of Concept: </Title>
+                        </Col>
+                    </Row>
+                    <span property={this.state.context.exampleOfWork}>
+                    <ToolList tools={this.state.data.exampleOfWork.SoftwareSourceCode}/>
+                    </span>                    
+                    </>
+                ):''
+            }
+        </span>
+        )
+    }
     large = () => {
         return(
             <Col span={24}>
                     <Card
                     id={createId(this.state.data.name)}
-                    className=""
+                    className="shadow"
                     actions={[
-                        <a property={this.state.context.paperLink} href={this.state.data.paperLink}>
+                        <a property={this.state.context.Article} href={"/article/" + this.state.data.code}>
                         Read more
                         <span className="badge"><FiExternalLink key="read" /></span>
                         </a>
@@ -83,7 +197,7 @@ export default class ArticleCard extends React.Component{
                                 <Title level={4}>
                                 <>
                                 <span property={this.state.context.name}>{this.state.data.name}</span>
-                                <span className="badge"><a href={"/#" + createId(this.state.data.name)}> <FaAnchor/></a></span>
+                                <span className="badge"><a href={ document.location.href.split("#")[0] + "#" + createId(this.state.data.name)}> <FaAnchor/></a></span>
                                 </>
                                 </Title>                            
                             </Col>
@@ -114,15 +228,17 @@ export default class ArticleCard extends React.Component{
                         { Object.keys(this.state.data).includes('author')?(
                         <Row gutter={[5,5]}>
                             {this.state.data.author.Person.map((person, idx) => {
-                            //const person = this.state.data.author.Person[pos - 1] 
+                            const url= Object.keys(person).includes('memberOf') && person.memberOf == "OEG" ? person.name:""
                             return(
-                            <Col>
+                            <Col key={idx}>
                                 <Tooltip title={person.name} placement="bottom">
-                                <span property={this.state.context.Person}>
-                                <Avatar src={Object.keys(person).includes('image') ? person.image:''} size="large">
-                                    {initials(person.name)}
-                                </Avatar>
-                                </span>
+                                <a href={url.length !== 0 ?("/member/" + url):"#"}>
+                                    <span property={this.state.context.Person}>
+                                    <Avatar className={url.length !== 0?"hoverEffect":""} src={Object.keys(person).includes('image') ? person.image:''} size="large">
+                                        {initials(person.name)}
+                                    </Avatar>
+                                    </span>
+                                </a>
                                 </Tooltip>                    
                             </Col>
                             )

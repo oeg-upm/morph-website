@@ -39,7 +39,6 @@ const context = {
       startDate:`${uris.schema}startDate`,
       nationality:`${uris.schema}nationality`,
       software: `${uris.ex}Software`,
-      award:`${uris.ex}award`,
       paper:`${uris.ex}paper`,
       codeRepository: `${uris.schema}codeRepository`,
       zenodoDoi: `${uris.doi}name`,
@@ -50,15 +49,14 @@ const context = {
       hasWon:`${uris.ex}hasWon`,
       SoftwareSourceCode:`${uris.schema}SoftwareSourceCode`,
       code:`${uris.ex}code`,
-      about:`${uris.schema}about`,
-      datePublished:`${uris.schema}datePublished`
-
+      about:`${uris.schema}about`
     }
   };
 
 const comunicaConfig = {
     sources: [
-      { type: "sparql", value:API },
+      { type: "sparql", value:API,
+     },
     ],
   };
   const client = new Client({ context, queryEngine: new QueryEngineComunica(comunicaConfig) });
@@ -73,14 +71,16 @@ const comunicaConfig = {
     }`;
   const queryAllTools =`
     query{
-      id(a:software) @single
+      id(a:SoftwareSourceCode) @single
       code @single
+      datePublished @single @optional
     }
   `
   const queryAllMembers = `
   query{
     id(a: Person, memberOf:"OEG") @single
     code @single
+    startDate @single @optional
   }
   `
 const queryArticle = (code) => (
@@ -88,15 +88,23 @@ const queryArticle = (code) => (
   query @single(scope: all){
       id(a:Article, code: "${code}")
       name  
+      code
       url  @optional
       datePublished @optional
       Event @optional
       eventName @optional
       abstract  @optional
       author @optional{
+        position @plural
         Person @plural{
           name @single 
-          image @optional @single 
+          image @optional @single
+          memberOf @single @optional 
+        }
+      }
+      exampleOfWork @optional{
+        SoftwareSourceCode @plural{
+          code @single
         }
       }
       award @optional {
@@ -133,6 +141,7 @@ const queryTool = (code) => {
           name @single
           code @single
           image @single @optional
+          memberOf @single @optional
         }
       }
       codeRepository  @optional
@@ -166,22 +175,19 @@ const queryMemberInfo = (code) => (`
     memberOf
     hasDevelop @single @optional{
       SoftwareSourceCode @plural{
-        name @single
-        image @single
-        id @single
         code @single
       }
     }
     hasWrite @single @optional{
       Article  @plural{
         name @single
-        id @single
+        code @single
       }
     }
-    hasWon @single @optional{
+    award @single @optional{
       award  @plural{
         name @single
-        id @single
+        code @single
       }
     }
   }
@@ -223,6 +229,7 @@ export function getCodeMember(name){
     }).catch((err) => reject(err))
   });  
 }
+
 export function getArticle(id){
   return new Promise(async (resolve, reject) => {
     const query = await queryArticle(id)

@@ -98,7 +98,7 @@ export default class Member extends React.Component{
                                 <Text strong> Articles: </Text> <span>{Object.keys(this.state.data).includes('hasWrite')?this.state.data.hasWrite.Article.length:0} <RiArticleLine/></span>
                             </List.Item>
                             <List.Item>
-                                <Text strong> Awards: </Text> <span>{Object.keys(this.state.data).includes('hasWon')?this.state.data.hasWon.award.length:0} <FaAward/></span>
+                                <Text strong> Awards: </Text> <span>{Object.keys(this.state.data).includes('award')?this.state.data.award.award.length:0} <FaAward/></span>
                             </List.Item>
                             <List.Item>
                                 <Text strong> Tools: </Text> <span>{Object.keys(this.state.data).includes('hasDevelop')?this.state.data.hasDevelop.SoftwareSourceCode.length:0} <BsGear/></span>
@@ -133,23 +133,50 @@ export default class Member extends React.Component{
                 <Divider/>
                 {
                     Object.keys(this.state.data).includes('hasWrite')?(
-                        <Title level={3}>Has write:</Title>
+                        <>
+                        <List 
+                        header={<Title level={3}>Has write:</Title>}
+                        dataSource={this.state.data.hasWrite.Article}
+                        renderItem={(item) => (
+                            <List.Item>
+                            <a property={this.state.context.Article} href={"/article/" + item.code}>
+                               {item.name}
+                            </a>
+                            </List.Item>
+                        )}
+                        />
+                        <Divider></Divider>            
+                        </>
                     ):''
                 }
                                 {
-                    Object.keys(this.state.data).includes('hasWon')?(
-                        <Title level={3}>Has won:</Title>
-                    ):''
+                    Object.keys(this.state.data).includes('award')?(
+                        <>
+                        <List 
+                        header={<Title level={3}>Has Won:</Title>}
+                        dataSource={this.state.data.award.award}
+                        renderItem={(item) => (
+                            <List.Item>
+                            <a property={this.state.context.award} href={"#"}>
+                               {item.name}
+                            </a>
+                            </List.Item>
+                        )}
+                        />
+                        <Divider></Divider>            
+                        </>
+                    ):''           
                 }
                 {
                     Object.keys(this.state.data).includes('hasDevelop')?(
                         <>
                         <Title level={3}>Has develop:</Title>
                         <ToolList context={this.state.context}
-                        data={this.state.data.hasDevelop.SoftwareSourceCode}/>
+                        tools={this.state.data.hasDevelop.SoftwareSourceCode}/>
+                        <Divider></Divider>            
                         </>
                     ):''
-                }            
+                }
             </>
         )
     }
