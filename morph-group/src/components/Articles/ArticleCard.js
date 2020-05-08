@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Row, Col, Typography, Avatar, Tooltip, Divider} from 'antd'
+import {Card, Row, Col, Typography, Avatar, Tooltip, Divider, Button} from 'antd'
 import { getArticle } from '../../requests/virtuoso';
 import {FiExternalLink} from 'react-icons/fi'
 import {FaAnchor} from 'react-icons/fa'
@@ -76,37 +76,30 @@ export default class ArticleCard extends React.Component{
     page = () => {
         return(
         <span property={this.state.context.Article}>
-            <Row gutter={[8,8]} align="middle">
+            <Row justify="end">
+                <Col>
+                    <Button type="primary" href={this.state.data.url}>Read the paper</Button>
+                </Col>
+            </Row>
+            <Row gutter={[8,8]} align="top">
                 <Col>
                 <span property={this.state.context·name}>
                     <Title level={2}>
                         {this.state.data.name}
                     </Title>
                 </span>
-                <span property={this.state.context.datePublished}>
-                    <Text strong>
-                        {this.state.data.datePublished.getFullYear()}
-                    </Text>
-                </span>
                 </Col>
             </Row>
             <Row align="top" gutter={[8,8]}>
                 <Col>
-                <Title level={4}>
+                <Text level={4} strong>
                     Published at: 
-                </Title>
+                </Text>
                 </Col>
                 <Col>
-                <Title level={4}>
+                <Text level={4}>
                 <a property={this.state.context.Event} href={this.state.data.Event}>{this.state.data.eventName}</a>
 
-                </Title>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                <Text strong>
-                <a href={this.state.data.url}>Read the paper</a>
                 </Text>
                 </Col>
             </Row>
@@ -149,9 +142,10 @@ export default class ArticleCard extends React.Component{
                             )
                             })}
             </Row>
+            <Divider></Divider>
             </>
             ):''}
-            <Row>
+            {/* <Row>
                 <Col>
                     <Title level={4}>Abstract:</Title>
                     <span property={this.state.context.abstract}>
@@ -160,8 +154,7 @@ export default class ArticleCard extends React.Component{
                         </Paragraph>
                     </span>
                 </Col>
-            </Row>
-            <Divider></Divider>
+            </Row> */}
             {
                 Object.keys(this.state.data).includes('exampleOfWork') ?(
                     <>
