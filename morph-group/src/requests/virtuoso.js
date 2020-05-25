@@ -13,23 +13,23 @@ const uris = {
 }
 const context = {
     "@context": {
-      "a":`${uris.rdf}type` ,
-      "Article":`${uris.schema}Article`,
+      a:`${uris.rdf}type` ,
+      Article:`${uris.schema}Article`,
       Event:`${uris.schema}Event`,
       eventName:`${uris.ex}eventName`,
-      "name":`${uris.schema}name`,
-      "paperLink":`${uris.ex}paperLink`,
+      name:`${uris.schema}name`,
+      paperLink:`${uris.ex}paperLink`,
       datePublished:`${uris.schema}datePublished`,
       abstract:`${uris.schema}abstract`,
       author:`${uris.schema}author`,
       award:`${uris.schema}award`,
       exampleOfWork:`${uris.schema}exampleOfWork`,
-      "Person":`${uris.schema}Person`,
-      "image":`${uris.schema}image`, 
-      "url":`${uris.schema}url`,
+      Person:`${uris.schema}Person`,
+      image:`${uris.schema}image`, 
+      url:`${uris.schema}url`,
       affiliation:`${uris.schema}affiliation`,
       worksFor:`${uris.schema}worksFor`,
-      "description":`${uris.schema}description`,
+      description:`${uris.schema}description`,
       memberOf:`${uris.schema}memberOf`,
       twitter:`${uris.ov}twitter-id`,
       linkedin:`${uris.ex}linkedin`,
@@ -49,8 +49,10 @@ const context = {
       hasWon:`${uris.ex}hasWon`,
       SoftwareSourceCode:`${uris.schema}SoftwareSourceCode`,
       code:`${uris.ex}code`,
-      about:`${uris.schema}about`
-    }
+      about:`${uris.schema}about`,
+      isRelatedTo:`${uris.schema}isRelatedTo`,
+      identifier:`${uris.schema}identifier`
+      }
   };
 
 const comunicaConfig = {
@@ -87,7 +89,7 @@ const queryArticle = (code) => (
   `
   query @single(scope: all){
       id(a:Article, code: "${code}")
-      name  
+      name
       code
       url  @optional
       datePublished @optional
@@ -97,10 +99,11 @@ const queryArticle = (code) => (
       author @optional{
         position @plural
         Person @plural{
+          id @single
           name @single 
           image @optional @single
-          memberOf @single @optional 
-        }
+          memberOf @plural @optional
+          }
       }
       exampleOfWork @optional{
         SoftwareSourceCode @plural{
@@ -138,10 +141,11 @@ const queryTool = (code) => {
       about @optional
       author @optional @single{
         Person @plural{
+          id @single
           name @single
           code @single
           image @single @optional
-          memberOf @single @optional
+          memberOf @plural @optional
         }
       }
       codeRepository  @optional
@@ -160,25 +164,50 @@ const queryMemberCode = (name) => (
   `
 )
 
-const queryMemberInfo = (code) => (`
+const queryMemberInfo = (id) => (`
   query @single(scope: all){
-    id(code: "${code}")
-    name
-    image @optional 
-    description @optional
-    jobTitle @optional 
-    linkedin @optional
-    github @optional
-    email @optional
-    twitter @optional
-    url @optional
-    memberOf
-    hasDevelop @single @optional{
+    person: id(_: Person, code: "${id}"){
+      name
+      id
+      image @optional 
+      description @optional
+      jobTitle @optional 
+      identifier @optional @plural
+      email @optional
+      url @optional
+      memberOf @plural @optional
+    }
+    relatedTo: id(a:isRelatedTo) @optional{
+      Person(code:"${id}")
+      Article @optional @plural{
+        name @single
+        code @single
+      }
+      SoftwareSourceCode @optional @plural{
+        name @single
+        code @single
+      }
+      award @optional @plural{
+        name @single
+        code @single
+      }
+    }    
+    } 
+`);
+/**
+ * 
+ *     software: a(_:SoftwareSourcecode){
+      code
+      author @single{
+        Person(_:${id})
+      }
+    }
+ *      @single @optional{
       SoftwareSourceCode @plural{
         code @single
       }
     }
-    hasWrite @single @optional{
+    Article @single @optional{
       Article  @plural{
         name @single
         code @single
@@ -190,8 +219,7 @@ const queryMemberInfo = (code) => (`
         code @single
       }
     }
-  }
-`);
+ */
 export function getAllArticles(){
   return new Promise((resolve, reject) => {
     client.query({'query':queryAllArticles}).then((response) => {
@@ -259,7 +287,6 @@ export function getAllMembersRelations(){
 export function membersFromRdfJSonToGraph(){
   return new Promise((resolve, reject) => {
     getAllMembersRelations().then(async (response) => {
-      console.log(response)
       let nodeList = [];
       let result = {'edges':[], 'nodes':[]}
       await response.results.bindings.map((node) => {

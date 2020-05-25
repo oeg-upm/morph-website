@@ -25,61 +25,66 @@ export default class Member extends React.Component{
         }
     }
     async getMember(){
-        const response = await getMemberInfo(this.props.code)
-        const socialMedia = await !(!Object.keys(response.data).includes('linkedin') && 
-        !Object.keys(response.data).includes('github') &&
-        !Object.keys(response.data).includes('twitter') &&
-        !Object.keys(response.data).includes('email') );
+        const response = await getMemberInfo(this.props.code).catch((err) => console.log(err))
+        const socialMedia = await !(!Object.keys(response.data.person).includes("indentifier") &&
+        !Object.keys(response.data.person).includes('email') );
         await this.setState({data:response.data, context:response.context, socialMedia:socialMedia})
     }
     render(){
+        console.log(this.props.code)
+        console.log(this.state.data)
         return(
-            this.props.size === "small"?(
+            Object.keys(this.state.data).length !== 0 ?(
+            <>
+            {this.props.size === "small"?(
                 this.small()
-            ):(this.page())
-        )
+            ):(this.page())}
+            </>
+        ):'')
 
         }
     social = () => {
         return (
             <>
-                {Object.keys(this.state.data).includes('twitter') ? (
-                <Col className="text-center">
-                    <a property={this.state.context.twitter} target="_blank" href={"https://twitter.com/" + this.state.data.twitter}>
-                    <TwitterOutlined />
-                    </a>
-                </Col>
-                ):''}
-                {Object.keys(this.state.data).includes('linkedin') ? (
-                <Col className="text-center">
-                    <a property={this.state.context.linkedin} target="_blank" href={this.state.data.linkedin}>
-                    <LinkedinFilled />
-                    </a>
-                </Col>
-                ):''}
-                {Object.keys(this.state.data).includes('github') ? (
-                <Col className="text-center">
-                    <a target="_blank" property={this.state.context.github} href={"https://github.com/" + this.state.data.github}>
-                    <GithubOutlined />
-                    </a>
-                </Col>
-                ):''}
+                {Object.keys(this.state.data.person).includes('identifier') ? (
+                    this.state.data.person.identifier.map((identifier) => {
+                        return(
+                        (identifier.includes("twitter.com"))?(
+                                <Col className="text-center">
+                                <a property={this.state.context.identifier} target="_blank" href={identifier}>
+                                <TwitterOutlined />
+                                </a>
+                                </Col>
+                         ):(identifier.includes("github.com"))?(
+                                <Col className="text-center">
+                                <a target="_blank" property={this.state.context.identifier} href={identifier}>
+                                <GithubOutlined />
+                                </a>
+                                </Col>
+                            ):(
+                                <Col className="text-center">
+                                <a property={this.state.context.identifier} target="_blank" href={identifier}>
+                                <LinkedinFilled />
+                                </a>
+                                </Col>                                
+                            )
+                        )})):''}
             </>
     )}    
     page = () => {
         return(
-            <>
+            <div resource={this.state.data.person.id} typeof={this.state.context.Person}>
                 <Row align="middle" gutter={[16,16]}>
                     <Col xs={24} md={12}>
                         <List
-                            header={<Text strong>{this.state.data.name}</Text>}
+                            header={<Text strong>{this.state.data.person.name}</Text>}
                         >
                             <List.Item>
-                                <Text strong>Role: </Text> {this.state.data.jobTitle}
+                                <Text strong>Role: </Text> {this.state.data.person.jobTitle}
                             </List.Item>
                             {Object.keys(this.state.data).includes('email') ?(
                             <List.Item>
-                                <Text strong>Email: </Text> <a property={this.state.context.email} href={"mailto:" + this.state.data.email}>{this.state.data.email}</a>
+                                <Text strong>Email: </Text> <a property={this.state.context.email} href={"mailto:" + this.state.data.person.email}>{this.state.data.person.email}</a>
                             </List.Item>
                             ):''
                             }
@@ -95,13 +100,13 @@ export default class Member extends React.Component{
                             ):''
                             }
                             <List.Item>
-                                <Text strong> Articles: </Text> <span>{Object.keys(this.state.data).includes('hasWrite')?this.state.data.hasWrite.Article.length:0} <RiArticleLine/></span>
+                                <Text strong> Articles: </Text> <span>{Object.keys(this.state.data.relatedTo).includes('Article')?this.state.data.relatedTo.Article.length:0} <RiArticleLine/></span>
                             </List.Item>
                             <List.Item>
-                                <Text strong> Awards: </Text> <span>{Object.keys(this.state.data).includes('award')?this.state.data.award.award.length:0} <FaAward/></span>
+                                <Text strong> Awards: </Text> <span>{Object.keys(this.state.data.relatedTo).includes('award')?this.state.data.relatedTo.award.length:0} <FaAward/></span>
                             </List.Item>
                             <List.Item>
-                                <Text strong> Tools: </Text> <span>{Object.keys(this.state.data).includes('hasDevelop')?this.state.data.hasDevelop.SoftwareSourceCode.length:0} <BsGear/></span>
+                                <Text strong> Tools: </Text> <span>{Object.keys(this.state.data.relatedTo).includes('SoftwareSourceCode')?this.state.data.relatedTo.SoftwareSourceCode.length:0} <BsGear/></span>
                             </List.Item>                                                        
 
                         </List>
@@ -110,7 +115,7 @@ export default class Member extends React.Component{
                     <Row gutter={[16,16]}>
                     <Col>
                         <span property={this.state.context.image}>
-                            <Avatar shape="square" src={this.state.data.image} size={200}/>
+                            <Avatar shape="square" src={this.state.data.person.image} size={200}/>
                         </span>
                     </Col>
                 </Row>
@@ -118,12 +123,12 @@ export default class Member extends React.Component{
                 <Col>
                         <span property={this.state.context.name}>
                             <Title level={2}>
-                                {this.state.data.name}
+                                {this.state.data.person.name}
                             </Title>
                         </span>
                         <span property={this.state.context.description}>
                             <Paragraph className="text-justify">
-                                {this.state.data.description}
+                                {this.state.data.person.description}
                             </Paragraph>
                         </span>
                     </Col>                    
@@ -132,11 +137,11 @@ export default class Member extends React.Component{
                 </Row>
                 <Divider/>
                 {
-                    Object.keys(this.state.data).includes('hasWrite')?(
+                    Object.keys(this.state.data.relatedTo).includes('Article')?(
                         <>
                         <List 
                         header={<Title level={3}>Has write:</Title>}
-                        dataSource={this.state.data.hasWrite.Article}
+                        dataSource={this.state.data.relatedTo.Article}
                         renderItem={(item) => (
                             <List.Item>
                             <a property={this.state.context.Article} href={"/article/" + item.code}>
@@ -150,11 +155,11 @@ export default class Member extends React.Component{
                     ):''
                 }
                                 {
-                    Object.keys(this.state.data).includes('award')?(
+                    Object.keys(this.state.data.relatedTo).includes('award')?(
                         <>
                         <List 
                         header={<Title level={3}>Has Won:</Title>}
-                        dataSource={this.state.data.award.award}
+                        dataSource={this.state.data.relatedTo.award}
                         renderItem={(item) => (
                             <List.Item>
                             <a property={this.state.context.award} href={"#"}>
@@ -168,62 +173,74 @@ export default class Member extends React.Component{
                     ):''           
                 }
                 {
-                    Object.keys(this.state.data).includes('hasDevelop')?(
+                    Object.keys(this.state.data.relatedTo).includes('SoftwareSourceCode')?(
                         <>
                         <Title level={3}>Has develop:</Title>
                         <ToolList context={this.state.context}
-                        tools={this.state.data.hasDevelop.SoftwareSourceCode}/>
+                        tools={this.state.data.relatedTo.SoftwareSourceCode}/>
                         <Divider></Divider>            
                         </>
                     ):''
                 }
-            </>
+            </div>
         )
     }
     small = () => {
         return(
-            <>
+            <div resource={this.state.data.person.id} typeof={this.state.context.Person}>
             <Row justify="center">
                 <Col>
-                <a property={this.state.context.image} href={"/member/" + this.state.data.name}>
-                    <Avatar className="hoverEffect" size={150} src={this.state.data.image}></Avatar>
+                <a href={"/member/" + this.state.data.person.name}>
+                    <Avatar
+                    className="hoverEffect"
+                    size={150}
+                    src={this.state.data.person.image}
+                    property={this.state.context.image}
+                    ></Avatar>
                 </a>
                 </Col>
             </Row>
             <Row justify="center">
                 <Col className="text-center">
-                    <a property={this.state.context.name} href={"/member/" + this.state.data.name}>
-                        {this.state.data.name}
+                    <a href={"/member/" + this.state.data.person.name} typeof={this.state.context.Person} resource={this.state.data.person.id}>
+                        <span property={this.state.context.name}>
+                        {this.state.data.person.name}
+                        </span>
                     </a>
                 </Col>
-            </Row>        
+            </Row>
+            {Object.keys(this.state.data.person).includes('email') ? (
+                <Row justify="center" className="">
+                    <Col className="text-center">
+                        <a target="_blank" href={"mailto:" + this.state.data.person.email} typeof={this.state.context.Person} resource={this.state.data.person.id}>
+                            <span property={this.state.context.email} >
+                                {this.state.data.person.email}
+                            </span>
+                        </a>
+                    </Col> 
+                </Row>        
+            ):''}                    
             <Row justify="center" className="mt-1">
                     <Col className="">
-                        <span property={this.state.context.jobTitle}>
                         <Text>
-                            {this.state.data.jobTitle}
-                        </Text>
+                        <span property={this.state.context.jobTitle}>
+                            {this.state.data.person.jobTitle}
                         </span>
+                        </Text>
                     </Col>
-            </Row>        
+            </Row>
             <Row justify="center" gutter={[8,8]}>
                     {
                         this.social()
                     }
-                    {Object.keys(this.state.data).includes('email') ? (
-                    <Col className="text-center">
-                        <a target="_blank" property={this.state.context.email} href={"mailto:" + this.state.data.email}>
-                        <MailOutlined />
-                        </a>
-                    </Col>                 
-                    ):''}
+                
                     {this.state.socialMedia === false ? (
                         <Col>
                         <MailOutlined style={{opacity:0}} />
                         </Col>
                     ):''}  
             </Row>        
-            </>
+            </div>
         )
     }
 }

@@ -31,8 +31,8 @@ export default class ToolCard extends React.Component{
             await this.setState({data:response.data, context:response.context})
             if(Object.keys(response.data).includes('abstract')){
                 const abstract = await axios.get(this.state.data.abstract).catch((err) => console.log(err))
-                console.log("Abstract")
-                console.log(abstract.data)
+                // console.log("Abstract")
+                // console.log(abstract.data)
                 this.setState({abstract:abstract.data})
             }
     }
@@ -59,7 +59,7 @@ export default class ToolCard extends React.Component{
     page =() => {
         console.log(this.state.data)
         return(
-        <>
+    <div resource={this.state.data.id} typeof={this.state.context.SoftwareSourceCode}>
         <Row>
             <Col>
                 <Title level={2}>
@@ -102,7 +102,7 @@ export default class ToolCard extends React.Component{
             <Row gutter={[16,16]}>
                             {this.state.data.author.Person.map((person, idx) => {
                             //const person = this.state.data.author.Person[pos - 1]
-                            const url= Object.keys(person).includes('memberOf') && person.memberOf == "OEG" ? person.name:""
+                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.name:""
                             return(
                             <Col key={idx} className="text-center">
                                 <Row justify="center">
@@ -179,12 +179,14 @@ export default class ToolCard extends React.Component{
             <Divider></Divider>
             </>
         ):''}
-        </>
+        </div>
         )
     }
     minCard = () => {
         return(
-            <Card 
+            <Card
+            resource={this.state.data.id}
+            typeof={this.state.context.SoftwareSourceCode}
             className="shadow"
             actions={[
                 <a href={this.state.data.codeRepository} property={this.state.context.codeRepository}>
