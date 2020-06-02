@@ -79,10 +79,11 @@ const comunicaConfig = {
     }
   `
   const queryAllMembers = `
-  query{
+  query {
     id(a: Person, memberOf:"OEG") @single
     code @single
-    startDate @single @optional
+    position @single
+
   }
   `
 const queryArticle = (code) => (
@@ -101,6 +102,8 @@ const queryArticle = (code) => (
         Person @plural{
           id @single
           name @single 
+          code @single
+          url @optional @single
           image @optional @single
           memberOf @plural @optional
           }
@@ -168,7 +171,9 @@ const queryMemberInfo = (id) => (`
   query @single(scope: all){
     person: id(_: Person, code: "${id}"){
       name
+      code
       id
+      position @optional
       image @optional 
       description @optional
       jobTitle @optional 
@@ -180,14 +185,17 @@ const queryMemberInfo = (id) => (`
     relatedTo: id(a:isRelatedTo) @optional{
       Person(code:"${id}")
       Article @optional @plural{
+        id @single
         name @single
         code @single
       }
       SoftwareSourceCode @optional @plural{
+        id @single
         name @single
         code @single
       }
       award @optional @plural{
+        id @single
         name @single
         code @single
       }

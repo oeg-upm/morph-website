@@ -16,7 +16,7 @@ export default class Member extends React.Component{
     async componentDidMount(){
         const {member} = await this.props.match.params
         const response = await getCodeMember(member).catch(err => console.log(err))    
-        this.setState({code:response.code})
+        this.setState({code:member})
     }
 
     render(){

@@ -15,6 +15,7 @@ mappings:
     po:
     - [a, schema:Person]
     - [ex:code, $(id), xsd:string]
+    - [schema:position, $(position), xsd:integer]
     - [schema:name, $(name), xsd:string]
     - [schema:url, $(webpage)~iri]
     - [schema:identifier, "http://twitter.com/$(twitter)~iri"]

@@ -78,11 +78,7 @@ export default class ArticleCard extends React.Component{
         <span                     
         source={this.state.data.id}
         typeof={this.state.context.Article}>
-            <Row justify="end">
-                <Col>
-                    <Button type="primary" href={this.state.data.url}>Read the paper</Button>
-                </Col>
-            </Row>
+
             <Row gutter={[8,8]} align="top">
                 <Col>
                 <span property={this.state.context·name}>
@@ -105,6 +101,12 @@ export default class ArticleCard extends React.Component{
                 </Text>
                 </Col>
             </Row>
+            <Row className="py-2">
+                <Col>
+                    <Button type="primary" href={this.state.data.url}>Read the paper</Button>
+                </Col>
+            </Row>     
+            <Divider></Divider>       
             { Object.keys(this.state.data).includes('author')?(
             <>
             <Row>
@@ -115,7 +117,7 @@ export default class ArticleCard extends React.Component{
             <Row gutter={[16,16]}>
                             {this.state.data.author.Person.map((person, idx) => {
                             //const person = this.state.data.author.Person[pos - 1]
-                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.name:""
+                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.code:""
                             return(
                             <span property={this.state.context.author}>
                             <Col 
@@ -126,7 +128,7 @@ export default class ArticleCard extends React.Component{
                             >
                                 <Row justify="center">
                                     <Col>
-                                    <a href={url.length !== 0 ?("/member/" + url):"#"}>
+                                    <a href={url.length !== 0 ?("/member/" + url):person.url}>
                                     <Avatar className={url.length !== 0?"hoverEffect":""} src={Object.keys(person).includes('image') ? person.image:''} size={100}>
                                         {initials(person.name)}
                                     </Avatar>
@@ -152,16 +154,6 @@ export default class ArticleCard extends React.Component{
             <Divider></Divider>
             </>
             ):''}
-            {/* <Row>
-                <Col>
-                    <Title level={4}>Abstract:</Title>
-                    <span property={this.state.context.abstract}>
-                        <Paragraph className="text-justify">
-                            {this.state.data.abstract}
-                        </Paragraph>
-                    </span>
-                </Col>
-            </Row> */}
             {
                 Object.keys(this.state.data).includes('exampleOfWork') ?(
                     <>
@@ -173,6 +165,7 @@ export default class ArticleCard extends React.Component{
                     <span property={this.state.context.exampleOfWork}>
                     <ToolList tools={this.state.data.exampleOfWork.SoftwareSourceCode}/>
                     </span>                    
+                    <Divider></Divider>
                     </>
                 ):''
             }
@@ -180,6 +173,20 @@ export default class ArticleCard extends React.Component{
         )
     }
     large = () => {
+        let actions = [
+            <a property={this.state.context.url} target="_blank" rel="noopener noreferrer" href={this.state.data.url}>
+            Read the paper
+            <span className="badge"><FiExternalLink key="read" /></span>
+            </a>
+        ]
+        const learnMore = Object.keys(this.state.data).includes('exampleOfWork') || Object.keys(this.state.data).includes('award');
+        const articlePage = (
+            <a property={this.state.context.url} href={"/article/" + this.state.data.code}>
+                Learn more
+            </a>
+        )
+        if(learnMore)
+            actions.push(articlePage)
         return(
             <Col span={24}>
                     <Card
@@ -187,15 +194,7 @@ export default class ArticleCard extends React.Component{
                     typeof={this.state.context.Article}
                     id={createId(this.state.data.name)}
                     className="shadow"
-                    actions={[
-                        <a property={this.state.context.url} target="_blank" href={this.state.data.url}>
-                        Read the paper
-                        <span className="badge"><FiExternalLink key="read" /></span>
-                        </a>,
-                        <a property={this.state.context.url} target="_blank" href={"/article/" + this.state.data.code}>
-                        Learn more
-                        </a>
-                    ]}
+                    actions={actions}
                     >
                         <Row align="middle" justify="space-between">
                             <Col>
@@ -223,21 +222,10 @@ export default class ArticleCard extends React.Component{
                             <a property={this.state.context.Event} href={this.state.data.Event}>{this.state.data.eventName}</a>
                             </Col>
                         </Row>
-                        {/* <span property={this.state.context.abstract}>
-                        <Text strong>Abstract: </Text>
-                        <Paragraph 
-                        className="text-justify"
-                        ellipsis={{
-                        rows: 3,
-                        expandable: true
-                        }}>
-                            {this.state.data.abstract}
-                        </Paragraph>
-                        </span> */}
                         { Object.keys(this.state.data).includes('author')?(
                         <Row gutter={[5,5]}>
                             {this.state.data.author.Person.map((person, idx) => {
-                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.name:""
+                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.code:""
                             return(
                             <span property={this.state.context.author}>
                             <Col key={idx}
@@ -245,10 +233,10 @@ export default class ArticleCard extends React.Component{
                             typeof={this.state.context.Person}
                             >
                                 <Tooltip title={<span property={this.state.context.name}>{person.name}</span>} placement="bottom">
-                                <a href={url.length !== 0 ?("/member/" + url):"#"}>
+                                <a href={url.length !== 0 ?("/member/" + url):person.url}>
                                     <Avatar className={url.length !== 0?"hoverEffect":""}
                                     src={Object.keys(person).includes('image') ? person.image:''}
-                                    size="large"
+                                    size="lperson.urle"
                                     property={Object.keys(person).includes('image')? this.state.context.image:''}
                                     >
                                         {initials(person.name)}

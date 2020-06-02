@@ -81,7 +81,7 @@ export default class ToolCard extends React.Component{
             </Col>
             <Col>
                 <a href={"https://doi.org/" + this.state.data.zenodoDoi}>
-                    <img src={"https://zenodo.org/badge/DOI/" + this.state.data.zenodoDoi} alt={this.state.data.zenodoDoi}/>
+                    <img src={"https://zenodo.org/badge/DOI/" + this.state.data.zenodoDoi + ".svg"} alt={this.state.data.zenodoDoi}/>
                 </a>
             </Col>
         </Row>
@@ -102,7 +102,7 @@ export default class ToolCard extends React.Component{
             <Row gutter={[16,16]}>
                             {this.state.data.author.Person.map((person, idx) => {
                             //const person = this.state.data.author.Person[pos - 1]
-                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.name:""
+                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.code:""
                             return(
                             <Col key={idx} className="text-center">
                                 <Row justify="center">
@@ -176,7 +176,6 @@ export default class ToolCard extends React.Component{
             <span property={this.state.context.abstract}>
                 <ReactMarkdown source={this.state.abstract}></ReactMarkdown>
             </span>
-            <Divider></Divider>
             </>
         ):''}
         </div>
@@ -189,7 +188,7 @@ export default class ToolCard extends React.Component{
             typeof={this.state.context.SoftwareSourceCode}
             className="shadow"
             actions={[
-                <a href={this.state.data.codeRepository} property={this.state.context.codeRepository}>
+                <a href={this.state.data.codeRepository} target="_blank" rel="noopener noreferrer" property={this.state.context.codeRepository}>
                      <GithubOutlined/>
                  </a>,
                  <a href={"/tool/" + this.state.data.code}>
@@ -203,20 +202,16 @@ export default class ToolCard extends React.Component{
                  </Row>
                  <Row>
                      <Col>
-                         <Title level={3}>
-                             <span property={this.state.context.name}>
+                         <Title level={3}  property={this.state.context.name}>
                                  {this.state.data.name}
-                             </span>
                          </Title>                
                      </Col>
                  </Row>
                  <Row>
                      <Col>
-                     <span property={this.state.context.about}>
-                         <Paragraph>
-                             {this.state.data.about}
+                         <Paragraph  property={this.state.context.about}>
+                                {this.state.data.about}
                          </Paragraph>
-                     </span>
                      </Col>
                  </Row>
              </Card>            

@@ -51,19 +51,19 @@ export default class Member extends React.Component{
                         return(
                         (identifier.includes("twitter.com"))?(
                                 <Col className="text-center">
-                                <a property={this.state.context.identifier} target="_blank" href={identifier}>
+                                <a property={this.state.context.url} target="_blank" rel="noopener noreferrer" href={identifier}>
                                 <TwitterOutlined />
                                 </a>
                                 </Col>
                          ):(identifier.includes("github.com"))?(
                                 <Col className="text-center">
-                                <a target="_blank" property={this.state.context.identifier} href={identifier}>
+                                <a target="_blank" rel="noopener noreferrer" property={this.state.context.url} href={identifier}>
                                 <GithubOutlined />
                                 </a>
                                 </Col>
                             ):(
                                 <Col className="text-center">
-                                <a property={this.state.context.identifier} target="_blank" href={identifier}>
+                                <a property={this.state.context.url} target="_blank" rel="noopener noreferrer" href={identifier}>
                                 <LinkedinFilled />
                                 </a>
                                 </Col>                                
@@ -72,7 +72,9 @@ export default class Member extends React.Component{
             </>
     )}    
     page = () => {
+        console.log(this.state.data)
         return(
+            <>
             <div resource={this.state.data.person.id} typeof={this.state.context.Person}>
                 <Row align="middle" gutter={[16,16]}>
                     <Col xs={24} md={12}>
@@ -80,11 +82,18 @@ export default class Member extends React.Component{
                             header={<Text strong>{this.state.data.person.name}</Text>}
                         >
                             <List.Item>
-                                <Text strong>Role: </Text> {this.state.data.person.jobTitle}
+                                <Text strong>Role: </Text> <span property={this.state.context.jobTitle}>{this.state.data.person.jobTitle}</span>
                             </List.Item>
-                            {Object.keys(this.state.data).includes('email') ?(
+
+                            {Object.keys(this.state.data.person).includes('email') ?(
                             <List.Item>
-                                <Text strong>Email: </Text> <a property={this.state.context.email} href={"mailto:" + this.state.data.person.email}>{this.state.data.person.email}</a>
+                                <Text strong>Email: <span> </span>                               
+                                    <a property={this.state.context.url} href={"mailto:" + this.state.data.person.email}>
+                                        <span  property={this.state.context.email} >
+                                            {this.state.data.person.email}
+                                        </span>
+                                    </a>
+                                </Text> 
                             </List.Item>
                             ):''
                             }
@@ -94,19 +103,20 @@ export default class Member extends React.Component{
                                         <Col>
                                             <Text strong>Social:</Text>                                         
                                         </Col>
-                                    {this.social()}
+                                        
+                                            {this.social()}
                                     </Row>
                                 </List.Item>
                             ):''
                             }
                             <List.Item>
-                                <Text strong> Articles: </Text> <span>{Object.keys(this.state.data.relatedTo).includes('Article')?this.state.data.relatedTo.Article.length:0} <RiArticleLine/></span>
+                                <Text strong> Articles: </Text> <span>{Object.keys(this.state.data).includes('relatedTo') && Object.keys(this.state.data.relatedTo).includes('Article')?this.state.data.relatedTo.Article.length:0} <RiArticleLine/></span>
                             </List.Item>
                             <List.Item>
-                                <Text strong> Awards: </Text> <span>{Object.keys(this.state.data.relatedTo).includes('award')?this.state.data.relatedTo.award.length:0} <FaAward/></span>
+                                <Text strong> Awards: </Text> <span>{Object.keys(this.state.data).includes('relatedTo') && Object.keys(this.state.data.relatedTo).includes('award')?this.state.data.relatedTo.award.length:0} <FaAward/></span>
                             </List.Item>
                             <List.Item>
-                                <Text strong> Tools: </Text> <span>{Object.keys(this.state.data.relatedTo).includes('SoftwareSourceCode')?this.state.data.relatedTo.SoftwareSourceCode.length:0} <BsGear/></span>
+                                <Text strong> Tools: </Text> <span>{Object.keys(this.state.data).includes('relatedTo') && Object.keys(this.state.data.relatedTo).includes('SoftwareSourceCode')?this.state.data.relatedTo.SoftwareSourceCode.length:0} <BsGear/></span>
                             </List.Item>                                                        
 
                         </List>
@@ -114,9 +124,7 @@ export default class Member extends React.Component{
                     <Col xs={24} md={12}>
                     <Row gutter={[16,16]}>
                     <Col>
-                        <span property={this.state.context.image}>
-                            <Avatar shape="square" src={this.state.data.person.image} size={200}/>
-                        </span>
+                        <Avatar shape="square" property={this.state.context.image} src={this.state.data.person.image} size={200}/>
                     </Col>
                 </Row>
                 <Row>
@@ -137,6 +145,27 @@ export default class Member extends React.Component{
                 </Row>
                 <Divider/>
                 {
+                    Object.keys(this.state.data).includes('relatedTo') && Object.keys(this.state.data.relatedTo).includes('award')?(
+                        <div>
+                        <List 
+                        header={<Title level={3}>Awards:</Title>}
+                        dataSource={this.state.data.relatedTo.award}
+                        renderItem={(item) => (
+                            <List.Item>
+                                <span property={this.state.context.award}>
+                                    {item.name}
+                                </span>
+                            </List.Item>
+                        )}
+                        />
+                        <Divider></Divider>            
+                        </div>
+                    ):''           
+                }                
+                </div>
+                {Object.keys(this.state.data).includes('relatedTo')?(
+                <div>
+                {
                     Object.keys(this.state.data.relatedTo).includes('Article')?(
                         <>
                         <List 
@@ -144,45 +173,34 @@ export default class Member extends React.Component{
                         dataSource={this.state.data.relatedTo.Article}
                         renderItem={(item) => (
                             <List.Item>
-                            <a property={this.state.context.Article} href={"/article/" + item.code}>
-                               {item.name}
+                            <div resource={item.id} typeof={this.state.context.Article}>
+                            <a property={this.state.context.url} href={"/article/" + item.code}>
+                                <span property={this.state.context.name}>
+                                {item.name}
+                                </span>
                             </a>
+                            </div>
                             </List.Item>
                         )}
                         />
                         <Divider></Divider>            
                         </>
                     ):''
-                }
-                                {
-                    Object.keys(this.state.data.relatedTo).includes('award')?(
-                        <>
-                        <List 
-                        header={<Title level={3}>Has Won:</Title>}
-                        dataSource={this.state.data.relatedTo.award}
-                        renderItem={(item) => (
-                            <List.Item>
-                            <a property={this.state.context.award} href={"#"}>
-                               {item.name}
-                            </a>
-                            </List.Item>
-                        )}
-                        />
-                        <Divider></Divider>            
-                        </>
-                    ):''           
                 }
                 {
                     Object.keys(this.state.data.relatedTo).includes('SoftwareSourceCode')?(
-                        <>
-                        <Title level={3}>Has develop:</Title>
-                        <ToolList context={this.state.context}
+                        <div>
+                        <Title level={3}>Tools:</Title>
+                        <ToolList
                         tools={this.state.data.relatedTo.SoftwareSourceCode}/>
-                        <Divider></Divider>            
-                        </>
+                        </div>
                     ):''
                 }
             </div>
+            
+                ):''}
+
+            </>
         )
     }
     small = () => {
@@ -190,7 +208,7 @@ export default class Member extends React.Component{
             <div resource={this.state.data.person.id} typeof={this.state.context.Person}>
             <Row justify="center">
                 <Col>
-                <a href={"/member/" + this.state.data.person.name}>
+                <a href={"/member/" + this.state.data.person.code}>
                     <Avatar
                     className="hoverEffect"
                     size={150}
@@ -202,7 +220,7 @@ export default class Member extends React.Component{
             </Row>
             <Row justify="center">
                 <Col className="text-center">
-                    <a href={"/member/" + this.state.data.person.name} typeof={this.state.context.Person} resource={this.state.data.person.id}>
+                    <a href={"/member/" + this.state.data.person.code} typeof={this.state.context.Person} resource={this.state.data.person.id}>
                         <span property={this.state.context.name}>
                         {this.state.data.person.name}
                         </span>
@@ -212,7 +230,7 @@ export default class Member extends React.Component{
             {Object.keys(this.state.data.person).includes('email') ? (
                 <Row justify="center" className="">
                     <Col className="text-center">
-                        <a target="_blank" href={"mailto:" + this.state.data.person.email} typeof={this.state.context.Person} resource={this.state.data.person.id}>
+                        <a target="_blank" rel="noopener noreferrer" href={"mailto:" + this.state.data.person.email} typeof={this.state.context.Person} resource={this.state.data.person.id}>
                             <span property={this.state.context.email} >
                                 {this.state.data.person.email}
                             </span>
