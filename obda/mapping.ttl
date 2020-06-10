@@ -300,7 +300,7 @@
 :map_paper_0 rr:predicateObjectMap :pom_28.
 :pm_28 a rr:PredicateMap.
 :pom_28 rr:predicateMap :pm_28.
-:pm_28 rr:constant <http://schema.org/exampleOfWork>.
+:pm_28 rr:constant <http://schema.org/workExample>.
 :pom_28 rr:objectMap :om_28.
 :map_tool_0 rml:logicalSource :source_2.
 :source_2 a rml:LogicalSource;
@@ -416,7 +416,7 @@
 :map_tool_0 rr:predicateObjectMap :pom_40.
 :pm_40 a rr:PredicateMap.
 :pom_40 rr:predicateMap :pm_40.
-:pm_40 rr:constant <http://schema.org/Article>.
+:pm_40 rr:constant <http://schema.org/exampleOfWork>.
 :pom_40 rr:objectMap :om_40.
 :pom_41 a rr:PredicateObjectMap.
 :map_tool_0 rr:predicateObjectMap :pom_41.

@@ -85,7 +85,7 @@ mappings:
             parameters:
               - [str1, $(id)]
               - [str2, $(paper_id)]
-    - p: schema:exampleOfWork
+    - p: schema:workExample
       o:
         - mapping: papers_tools
           condition:
@@ -116,7 +116,7 @@ mappings:
             parameters:
               - [str1, $(id)]
               - [str2, $(tool_id)]
-    - p: schema:Article
+    - p: schema:exampleOfWork
       o:
         - mapping: papers_tools
           condition:

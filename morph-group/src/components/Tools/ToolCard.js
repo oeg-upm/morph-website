@@ -79,11 +79,13 @@ export default class ToolCard extends React.Component{
 
             </Button>
             </Col>
-            <Col>
-                <a href={"https://doi.org/" + this.state.data.zenodoDoi}>
-                    <img src={"https://zenodo.org/badge/DOI/" + this.state.data.zenodoDoi + ".svg"} alt={this.state.data.zenodoDoi}/>
-                </a>
-            </Col>
+            {Object.keys(this.state.data).includes('zenodoDoi')?(
+                <Col>
+                    <a href={"https://doi.org/" + this.state.data.zenodoDoi}>
+                        <img src={"https://zenodo.org/badge/DOI/" + this.state.data.zenodoDoi + ".svg"} alt={this.state.data.zenodoDoi}/>
+                    </a>
+                </Col>
+            ):null}
         </Row>
         <Row justify="center">
             <Col xs={24} md={16}>
@@ -102,12 +104,12 @@ export default class ToolCard extends React.Component{
             <Row gutter={[16,16]}>
                             {this.state.data.author.Person.map((person, idx) => {
                             //const person = this.state.data.author.Person[pos - 1]
-                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.code:""
+                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? "/member/" + person.code:person.url
                             return(
                             <Col key={idx} className="text-center">
                                 <Row justify="center">
                                     <Col>
-                                    <a href={url.length !== 0 ?("/member/" + url):"#"}>
+                                    <a href={url}>
                                     <span property={this.state.context.Person}>
                                     <Avatar className={url.length !== 0?"hoverEffect":""} src={Object.keys(person).includes('image') ? person.image:''} size={100}>
                                         {initials(person.name)}
@@ -120,7 +122,7 @@ export default class ToolCard extends React.Component{
                                     <Col>
                                     <span property={this.state.context.name}>
                                         <Text>
-                                            <a className={url.length === 0? "text-dark":""} href={url.length !== 0 ?("/member/" + url):"#"}>
+                                            <a  href={url}>
                                                 {person.name}
                                             </a>
                                         </Text>
@@ -135,15 +137,17 @@ export default class ToolCard extends React.Component{
             </>
             ):''}        
         {
-                    Object.keys(this.state.data).includes('Article')?(
+                    Object.keys(this.state.data).includes('exampleOfWork')?(
                         <>
                         <List 
                         header={<Title level={3}>Publications:</Title>}
-                        dataSource={this.state.data.Article.Article}
+                        dataSource={this.state.data.exampleOfWork.Article}
                         renderItem={(item) => (
                             <List.Item>
-                            <a property={this.state.context.Article} href={"/article/" + item.code}>
-                               {item.name}
+                            <a property={this.state.context.exampleOfWork} href={"/article/" + item.code}>
+                                <span property={this.state.context.name}>
+                                    {item.name}
+                                </span>
                             </a>
                             </List.Item>
                         )}
@@ -160,7 +164,7 @@ export default class ToolCard extends React.Component{
                         dataSource={this.state.data.award.award}
                         renderItem={(item) => (
                             <List.Item>
-                            <a property={this.state.context.award} href={"#"}>
+                            <a target="_blank"  rel="noopener noreferrer"  property={this.state.context.award} href={item.url}>
                                {item.name}
                             </a>
                             </List.Item>

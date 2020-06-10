@@ -155,15 +155,15 @@ export default class ArticleCard extends React.Component{
             </>
             ):''}
             {
-                Object.keys(this.state.data).includes('exampleOfWork') ?(
+                Object.keys(this.state.data).includes('workExample') ?(
                     <>
                     <Row>
                         <Col>
                             <Title level={4}>Proofs of Concept: </Title>
                         </Col>
                     </Row>
-                    <span property={this.state.context.exampleOfWork}>
-                    <ToolList tools={this.state.data.exampleOfWork.SoftwareSourceCode}/>
+                    <span property={this.state.context.workExample}>
+                    <ToolList tools={this.state.data.workExample.SoftwareSourceCode}/>
                     </span>                    
                     <Divider></Divider>
                     </>
@@ -179,7 +179,7 @@ export default class ArticleCard extends React.Component{
             <span className="badge"><FiExternalLink key="read" /></span>
             </a>
         ]
-        const learnMore = Object.keys(this.state.data).includes('exampleOfWork') || Object.keys(this.state.data).includes('award');
+        const learnMore = Object.keys(this.state.data).includes('workExample') || Object.keys(this.state.data).includes('award');
         const articlePage = (
             <a property={this.state.context.url} href={"/article/" + this.state.data.code}>
                 Learn more

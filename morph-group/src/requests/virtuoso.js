@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {Client} from "graphql-ld";
 import {QueryEngineComunica} from "graphql-ld-comunica";
-const API = 'http://0.0.0.0:8890/sparql'
+const API = 'https://morph.oeg.fi.upm.es/sparql'
 const uris = {
   schema:'http://schema.org/',
   dcterms:'http://purl.org/dc/terms/',
@@ -51,7 +51,8 @@ const context = {
       code:`${uris.ex}code`,
       about:`${uris.schema}about`,
       isRelatedTo:`${uris.schema}isRelatedTo`,
-      identifier:`${uris.schema}identifier`
+      identifier:`${uris.schema}identifier`,
+      workExample:`${uris.schema}workExample`
       }
   };
 
@@ -108,7 +109,7 @@ const queryArticle = (code) => (
           memberOf @plural @optional
           }
       }
-      exampleOfWork @optional{
+      workExample @optional{
         SoftwareSourceCode @plural{
           code @single
         }
@@ -133,9 +134,10 @@ const queryTool = (code) => {
         award @plural {
           name @single
           code @single
+          url @optional @single
         }
       }
-      Article @optional @single{
+      exampleOfWork @optional @single{
         Article @plural{
           name @single
           code @code
@@ -147,6 +149,7 @@ const queryTool = (code) => {
           id @single
           name @single
           code @single
+          url @optional @single
           image @single @optional
           memberOf @plural @optional
         }
