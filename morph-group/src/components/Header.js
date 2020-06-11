@@ -7,7 +7,9 @@ class Header extends React.Component {
         return (
             <Row  align="middle" style={{marginBottom:16}} justify="space-between">
                 <Col>
+                <a href="/">
                     <img className="img-fluid" src={logo} alt=""/>
+                </a>
                 </Col>
                 <Col>
                 <Menu mode="horizontal" style={{ borderBottom: 'none', paddingTop: 16 }}>

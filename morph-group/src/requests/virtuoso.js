@@ -52,7 +52,8 @@ const context = {
       about:`${uris.schema}about`,
       isRelatedTo:`${uris.schema}isRelatedTo`,
       identifier:`${uris.schema}identifier`,
-      workExample:`${uris.schema}workExample`
+      workExample:`${uris.schema}workExample`,
+      status:`${uris.ex}status`
       }
   };
 
@@ -79,14 +80,14 @@ const comunicaConfig = {
       datePublished @single @optional
     }
   `
-  const queryAllMembers = `
+  const queryAllMembers = (status) => ( `
   query {
-    id(a: Person, memberOf:"OEG") @single
+    id(a: Person, status:"${status}") @single
     code @single
-    position @single
+    position @single @optional
 
   }
-  `
+  `)
 const queryArticle = (code) => (
   `
   query @single(scope: all){
@@ -172,10 +173,11 @@ const queryMemberCode = (name) => (
 
 const queryMemberInfo = (id) => (`
   query @single(scope: all){
-    person: id(_: Person, code: "${id}"){
+    person: id(a: Person, code: "${id}"){
       name
       code
       id
+      status
       position @optional
       image @optional 
       description @optional
@@ -245,9 +247,9 @@ export function getAllTools(){
     }).catch((err) => reject(err))
   });
 }
-export function getAllMembers(){
+export function getAllMembers(status){
   return new Promise((resolve, reject) => {
-    client.query({'query':queryAllMembers}).then((response) => {
+    client.query({'query':queryAllMembers(status)}).then((response) => {
       resolve(response.data)
     }).catch((err) => reject(err))
   });

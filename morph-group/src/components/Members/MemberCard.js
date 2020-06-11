@@ -7,6 +7,14 @@ import {Row, Col, Avatar, Typography, List, Divider} from 'antd'
 import {getMemberInfo} from '../../requests/virtuoso'
 import ToolList from '../Tools/ToolList'
 const {Text, Title, Paragraph} = Typography
+const initials = (name) => {
+    let words = name.toString().split(' ')
+    let result = ""
+    words.map((val) => {
+        result += val[0]
+    })
+    return result
+} 
 export default class Member extends React.Component{
     constructor(props){
         super(props);
@@ -95,7 +103,19 @@ export default class Member extends React.Component{
                                     </a>
                                 </Text> 
                             </List.Item>
-                            ):''
+                            ):''                            
+                            }
+                            {Object.keys(this.state.data.person).includes('url') ?(
+                            <List.Item>
+                                <Text strong>Website: <span> </span>                               
+                                    <a property={this.state.context.url} href={this.state.data.person.url}>
+                                        <span  property={this.state.context.url} >
+                                            {this.state.data.person.url}
+                                        </span>
+                                    </a>
+                                </Text> 
+                            </List.Item>
+                            ):''                            
                             }
                             {this.state.socialMedia !== false?(
                                 <List.Item>
@@ -204,23 +224,28 @@ export default class Member extends React.Component{
         )
     }
     small = () => {
+        const active = this.state.data.person.status == "active" 
+        const url = active?("/member/" + this.state.data.person.code):this.state.data.person.url
+        const image = Object.keys(this.state.data.person).includes('image');
         return(
             <div resource={this.state.data.person.id} typeof={this.state.context.Person}>
             <Row justify="center">
                 <Col>
-                <a href={"/member/" + this.state.data.person.code}>
+                <a href={url}>
                     <Avatar
                     className="hoverEffect"
                     size={150}
-                    src={this.state.data.person.image}
+                    src={image?this.state.data.person.image:null}
                     property={this.state.context.image}
-                    ></Avatar>
+                    >
+                        {image?null:initials(this.state.data.person.name)}
+                    </Avatar>
                 </a>
                 </Col>
             </Row>
             <Row justify="center">
                 <Col className="text-center">
-                    <a href={"/member/" + this.state.data.person.code} typeof={this.state.context.Person} resource={this.state.data.person.id}>
+                    <a href={url} typeof={this.state.context.Person} resource={this.state.data.person.id}>
                         <span property={this.state.context.name}>
                         {this.state.data.person.name}
                         </span>

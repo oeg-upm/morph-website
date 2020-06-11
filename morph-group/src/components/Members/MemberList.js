@@ -25,7 +25,7 @@ export default class  MemberList extends React.Component{
         )
     }
     async componentDidMount(){
-        const response = await getAllMembers().catch(err => console.log(err))
+        const response = await getAllMembers(this.props.status).catch(err => console.log(err))
         console.log(response)
         await response.sort(function(a,b){
             return b.position < a.position;

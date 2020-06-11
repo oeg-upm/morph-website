@@ -47,7 +47,21 @@ export default class Home extends React.Component{
                     <Title level={2}>The Team</Title>
                     </Col>
                 </Row>
-                <MemberList></MemberList>
+                <MemberList status="active"></MemberList>
+                <Divider></Divider>
+                <Row>
+                    <Col>
+                    <Title level={2}>Past Contributors</Title>
+                    </Col>
+                </Row>
+                <MemberList status="past"></MemberList>
+                <Divider></Divider>
+                <Row>
+                    <Col>
+                    <Title level={2}>Collaborators</Title>
+                    </Col>
+                </Row>
+                <MemberList status="collaborator"></MemberList>                
             </Layout>
         )
     }
