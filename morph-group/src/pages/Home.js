@@ -51,7 +51,7 @@ export default class Home extends React.Component{
                 <Divider></Divider>
                 <Row>
                     <Col>
-                    <Title level={2}>Past Contributors</Title>
+                    <Title level={2}>Past Members</Title>
                     </Col>
                 </Row>
                 <MemberList status="past"></MemberList>
