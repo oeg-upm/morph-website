@@ -22,6 +22,9 @@ class Header extends React.Component {
                     <Menu.Item key="tools">
                         <Link to="/tools">Tools</Link>
                     </Menu.Item>
+                    <Menu.Item>
+                        <a href="https://morph.oeg.fi.upm.es/sparql">Sparql Endpoint</a>
+                    </Menu.Item>
                 </Menu>                
                 </Col>
             </Row>
