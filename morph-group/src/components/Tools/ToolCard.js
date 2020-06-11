@@ -188,9 +188,10 @@ export default class ToolCard extends React.Component{
     minCard = () => {
         return(
             <Card
+            type="inner"
             resource={this.state.data.id}
             typeof={this.state.context.SoftwareSourceCode}
-            className="shadow"
+            className="shadow toolCard"
             actions={[
                 <a href={this.state.data.codeRepository} target="_blank" rel="noopener noreferrer" property={this.state.context.codeRepository}>
                      <GithubOutlined/>

@@ -60,3 +60,8 @@
 .fullScreen{
   min-height: 80vh;
 }
+.toolCard > .ant-card-body{
+  min-height: 360px!important;
+  height: 360px!important;
+  max-height: 360px!important;
+}

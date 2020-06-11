@@ -1,14 +1,14 @@
 import React from 'react'
 import {Link}  from 'react-router-dom'
 import {Menu, Row, Col} from 'antd'
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.png'
 class Header extends React.Component {
     render() {
         return (
-            <Row  align="middle" style={{marginBottom:16}} justify="space-between">
+            <Row  align="bottom" style={{marginBottom:16}} justify="space-between">
                 <Col>
                 <a href="/">
-                    <img className="img-fluid" src={logo} alt=""/>
+                    <img className="img-fluid" src={logo} alt="" style={{height:60}}/>
                 </a>
                 </Col>
                 <Col>
