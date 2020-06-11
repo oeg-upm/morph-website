@@ -46,7 +46,10 @@ export default class Member extends React.Component{
             <>
             {this.props.size === "small"?(
                 this.small()
-            ):(this.page())}
+            ):this.props.size === 'xsmall' ?(
+                this.xsmall()
+            ):
+            (this.page())}
             </>
         ):'')
 
@@ -286,4 +289,36 @@ export default class Member extends React.Component{
             </div>
         )
     }
+    xsmall = () => {
+        const active = this.state.data.person.status == "active" 
+        const url = active?("/member/" + this.state.data.person.code):this.state.data.person.url
+        const image = Object.keys(this.state.data.person).includes('image');
+        return(
+            <div resource={this.state.data.person.id} typeof={this.state.context.Person}>
+            <Row justify="center">
+                <Col>
+                <a href={url}>
+                    <Avatar
+                    className="hoverEffect"
+                    size={100}
+                    src={image?this.state.data.person.image:null}
+                    property={this.state.context.image}
+                    >
+                        {image?null:initials(this.state.data.person.name)}
+                    </Avatar>
+                </a>
+                </Col>
+            </Row>
+            <Row justify="center">
+                <Col className="text-center">
+                    <a href={url} typeof={this.state.context.Person} resource={this.state.data.person.id}>
+                        <span property={this.state.context.name}>
+                        {this.state.data.person.name}
+                        </span>
+                    </a>
+                </Col>
+            </Row>  
+            </div>
+        )
+    }    
 }

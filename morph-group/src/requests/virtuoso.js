@@ -107,6 +107,7 @@ const queryArticle = (code) => (
           code @single
           url @optional @single
           image @optional @single
+          status @single
           memberOf @plural @optional
           }
       }
@@ -153,6 +154,7 @@ const queryTool = (code) => {
           url @optional @single
           image @single @optional
           memberOf @plural @optional
+          status @single
         }
       }
       codeRepository  @optional

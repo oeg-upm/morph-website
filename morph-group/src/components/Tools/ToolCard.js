@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Button, Row, Col, Typography, Avatar, Divider, List} from 'antd'
 import {ShareAltOutlined, GithubOutlined} from '@ant-design/icons'
+import MemberList from '../Members/MemberList'
 import ReactMarkdown from 'react-markdown'
 import axios from 'axios'
 import {getTool} from '../../requests/virtuoso'
@@ -101,38 +102,7 @@ export default class ToolCard extends React.Component{
                     <Title level={3}>Developers:</Title>
                 </Col>
             </Row>
-            <Row gutter={[16,16]}>
-                            {this.state.data.author.Person.map((person, idx) => {
-                            //const person = this.state.data.author.Person[pos - 1]
-                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? "/member/" + person.code:person.url
-                            return(
-                            <Col key={idx} className="text-center">
-                                <Row justify="center">
-                                    <Col>
-                                    <a href={url}>
-                                    <span property={this.state.context.Person}>
-                                    <Avatar className={url.length !== 0?"hoverEffect":""} src={Object.keys(person).includes('image') ? person.image:''} size={100}>
-                                        {initials(person.name)}
-                                    </Avatar>
-                                    </span>
-                                    </a>
-                                    </Col>
-                                </Row>
-                                <Row justify="center">
-                                    <Col>
-                                    <span property={this.state.context.name}>
-                                        <Text>
-                                            <a  href={url}>
-                                                {person.name}
-                                            </a>
-                                        </Text>
-                                    </span>
-                                    </Col>
-                                </Row>
-                            </Col>
-                            )
-                            })}
-            </Row>
+            <MemberList size="xsmall" list={this.state.data.author.Person}></MemberList>
             <Divider></Divider>
             </>
             ):''}        

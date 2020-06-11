@@ -4,6 +4,7 @@ import { getArticle } from '../../requests/virtuoso';
 import {FiExternalLink} from 'react-icons/fi'
 import {FaAnchor} from 'react-icons/fa'
 import ToolList from '../Tools/ToolList'
+import MemberList from '../Members/MemberList'
 const {Title} = Typography
 const {Text} = Typography
 const {Paragraph} = Typography
@@ -114,43 +115,7 @@ export default class ArticleCard extends React.Component{
                     <Title level={4}>Authors:</Title>
                 </Col>
             </Row>
-            <Row gutter={[16,16]}>
-                            {this.state.data.author.Person.map((person, idx) => {
-                            //const person = this.state.data.author.Person[pos - 1]
-                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.code:""
-                            return(
-                            <span property={this.state.context.author}>
-                            <Col 
-                            key={idx}
-                            className="text-center"
-                            source={person.id}
-                            typeof={this.state.context.Person}
-                            >
-                                <Row justify="center">
-                                    <Col>
-                                    <a href={url.length !== 0 ?("/member/" + url):person.url}>
-                                    <Avatar className={url.length !== 0?"hoverEffect":""} src={Object.keys(person).includes('image') ? person.image:''} size={100}>
-                                        {initials(person.name)}
-                                    </Avatar>
-                                    </a>
-                                    </Col>
-                                </Row>
-                                <Row justify="center">
-                                    <Col>
-                                        <Text>
-                                            <a className={url.length === 0? "text-dark":""} href={url.length !== 0 ?("/member/" + url):"#"}>
-                                                <span property={this.state.context.name}>
-                                                {person.name}
-                                                </span>
-                                            </a>
-                                        </Text>
-                                    </Col>
-                                </Row>
-                            </Col>
-                            </span>
-                            )
-                            })}
-            </Row>
+            <MemberList size="xsmall" list={this.state.data.author.Person}></MemberList>
             <Divider></Divider>
             </>
             ):''}
@@ -225,7 +190,7 @@ export default class ArticleCard extends React.Component{
                         { Object.keys(this.state.data).includes('author')?(
                         <Row gutter={[5,5]}>
                             {this.state.data.author.Person.map((person, idx) => {
-                            const url= Object.keys(person).includes('memberOf') && person.memberOf.includes("OEG") ? person.code:""
+                            const url= person.status === 'active' ? person.code:""
                             return(
                             <span property={this.state.context.author}>
                             <Col key={idx}
@@ -236,7 +201,7 @@ export default class ArticleCard extends React.Component{
                                 <a href={url.length !== 0 ?("/member/" + url):person.url}>
                                     <Avatar className={url.length !== 0?"hoverEffect":""}
                                     src={Object.keys(person).includes('image') ? person.image:''}
-                                    size="lperson.urle"
+                                    size="small"
                                     property={Object.keys(person).includes('image')? this.state.context.image:''}
                                     >
                                         {initials(person.name)}
