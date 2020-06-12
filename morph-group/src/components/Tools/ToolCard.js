@@ -34,7 +34,9 @@ export default class ToolCard extends React.Component{
                 const abstract = await axios.get(this.state.data.abstract).catch((err) => console.log(err))
                 // console.log("Abstract")
                 // console.log(abstract.data)
-                this.setState({abstract:abstract.data})
+                const rawEndpoint = this.state.data.abstract.replace('README.md','')
+                const readme = abstract.data.replace('src="./', 'src="' + rawEndpoint)
+                this.setState({abstract:readme})
             }
     }
         }
@@ -148,7 +150,7 @@ export default class ToolCard extends React.Component{
         {this.state.abstract.length !== 0 ?(
             <>
             <span property={this.state.context.abstract}>
-                <ReactMarkdown source={this.state.abstract}></ReactMarkdown>
+                <ReactMarkdown source={this.state.abstract} escapeHtml={false}></ReactMarkdown>
             </span>
             </>
         ):''}
@@ -172,7 +174,7 @@ export default class ToolCard extends React.Component{
              ]}>
                  <Row>
                      <Col span={24}>
-                         <img className="img-fluid" property={this.state.context.image} src={this.state.data.image} alt="" />
+                         <img className="img-fluid p-2" property={this.state.context.image} src={this.state.data.image} alt="" />
                      </Col>
                  </Row>
                  <Row>

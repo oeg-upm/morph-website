@@ -23,7 +23,7 @@ class Header extends React.Component {
                         <Link to="/tools">Tools</Link>
                     </Menu.Item>
                     <Menu.Item>
-                        <a href="https://morph.oeg.fi.upm.es/sparql">Sparql Endpoint</a>
+                        <a href="https://morph.oeg.fi.upm.es/sparql">SPARQL Endpoint</a>
                     </Menu.Item>
                 </Menu>                
                 </Col>

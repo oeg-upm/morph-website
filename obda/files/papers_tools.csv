@@ -1,3 +1,5 @@
 tool_id,paper_id
 "morph-rdb","formalisation-and-experiences-of-r2rml-based-sparql-to-sql-query-translation-using-morph-23rd-international-world-wide-web-conference-2014"
 "morph-graphql","morph-graphql-graphql-server-generation-from-r2rml-mappings-the-31st-international-conference-on-software-engineering-and-knowledge-engineering-2019"
+"morph-csv","enhancing-obda-query-translation-over-tabular-data-with-morph-csv-pre-print-2020"
+"mapeathor","towards-the-definition-of-a-language-independent-mapping-template-for-knowledge-graph-creation"
