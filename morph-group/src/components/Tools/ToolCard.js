@@ -35,7 +35,7 @@ export default class ToolCard extends React.Component{
                 // console.log("Abstract")
                 // console.log(abstract.data)
                 const rawEndpoint = this.state.data.abstract.replace('README.md','')
-                const readme = abstract.data.replace('src="./', 'src="' + rawEndpoint)
+                const readme = abstract.data.replace(/src\=\"\.\//g, 'src="' + rawEndpoint)
                 this.setState({abstract:readme})
             }
     }
