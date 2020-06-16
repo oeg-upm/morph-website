@@ -201,7 +201,7 @@ export default class ArticleCard extends React.Component{
                                 <a href={url.length !== 0 ?("/member/" + url):person.url}>
                                     <Avatar className={url.length !== 0?"hoverEffect":""}
                                     src={Object.keys(person).includes('image') ? person.image:''}
-                                    size="small"
+                                    size="large"
                                     property={Object.keys(person).includes('image')? this.state.context.image:''}
                                     >
                                         {initials(person.name)}

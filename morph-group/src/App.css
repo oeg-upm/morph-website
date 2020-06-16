@@ -65,3 +65,8 @@
   height: 360px!important;
   max-height: 360px!important;
 }
+.toolCardImage{
+  height: 150px!important;
+  width: auto;
+  max-width: 100%!important;
+}

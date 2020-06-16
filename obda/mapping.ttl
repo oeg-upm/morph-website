@@ -382,8 +382,9 @@
 :pm_36 rr:constant <http://schema.org/abstract>.
 :pom_36 rr:objectMap :om_36.
 :om_36 a rr:ObjectMap;
-    rml:reference "raw_readme_link";
-    rr:termType rr:IRI.
+    rml:reference "abstract";
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#string>.
 :pom_37 a rr:PredicateObjectMap.
 :map_tool_0 rr:predicateObjectMap :pom_37.
 :pm_37 a rr:PredicateMap.

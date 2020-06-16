@@ -27,18 +27,18 @@ export default class ToolCard extends React.Component{
         }
     }
     async getData(){
-        const response = await getTool(this.props.code)
+        const response = await getTool(this.props.code).catch(err => console.log(err))
         if(Object.keys(response).length !== 0 ){
-            await this.setState({data:response.data, context:response.context})
-            if(Object.keys(response.data).includes('abstract')){
-                const abstract = await axios.get(this.state.data.abstract).catch((err) => console.log(err))
-                // console.log("Abstract")
-                // console.log(abstract.data)
-                const rawEndpoint = this.state.data.abstract.replace('README.md','')
-                const readme = abstract.data.replace(/src\=\"\.\//g, 'src="' + rawEndpoint)
-                this.setState({abstract:readme})
-            }
-    }
+         this.setState({data:response.data, context:response.context})
+            // if(Object.keys(response.data).includes('abstract')){
+            //     const abstract = await axios.get(this.state.data.abstract).catch((err) => console.log(err))
+            //     // console.log("Abstract")
+            //     // console.log(abstract.data)
+            //     const rawEndpoint = this.state.data.abstract.replace('README.md','')
+            //     const readme = abstract.data.replace(/src\=\"\.\//g, 'src="' + rawEndpoint)
+            //     this.setState({abstract:readme})
+            // }
+        }
         }
 
     async componentDidMount(){
@@ -96,7 +96,17 @@ export default class ToolCard extends React.Component{
             </Col>
         </Row>
         <Divider></Divider>
-
+        {Object.keys(this.state.data).includes('abstract') ?(
+            <>
+            <Title level={3}>
+                Description:
+            </Title>
+            <Paragraph className="text-justify"  property={this.state.context.abstract}>
+                {this.state.data.abstract}
+            </Paragraph>
+            </>
+        ):''}
+        <Divider></Divider>
         { Object.keys(this.state.data).includes('author')?(
             <>
             <Row>
@@ -124,7 +134,7 @@ export default class ToolCard extends React.Component{
                             </List.Item>
                         )}
                         />
-                        <Divider></Divider>            
+                        {Object.keys(this.state.data).includes('award')?<Divider></Divider>:''}
                         </>
                     ):''
                 }
@@ -142,18 +152,9 @@ export default class ToolCard extends React.Component{
                             </List.Item>
                         )}
                         />
-                        <Divider></Divider>            
                         </>
                     ):''           
                 }                
-                  
-        {this.state.abstract.length !== 0 ?(
-            <>
-            <span property={this.state.context.abstract}>
-                <ReactMarkdown source={this.state.abstract} escapeHtml={false}></ReactMarkdown>
-            </span>
-            </>
-        ):''}
         </div>
         )
     }
@@ -173,8 +174,8 @@ export default class ToolCard extends React.Component{
                  </a>
              ]}>
                  <Row>
-                     <Col span={24}>
-                         <img className="img-fluid p-2" property={this.state.context.image} src={this.state.data.image} alt="" />
+                     <Col span={24} className="text-center">
+                         <img className="img-fluid toolCardImage" property={this.state.context.image} src={this.state.data.image} alt="" />
                      </Col>
                  </Row>
                  <Row>

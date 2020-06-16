@@ -82,7 +82,7 @@ mappings:
     - [schema:codeRepository, $(ghrepo)~iri]
     - [doi:name, $(zenodo), xsd:string]
     - [schema:about, $(description), xsd:string]
-    - [schema:abstract, $(raw_readme_link)~iri]
+    - [schema:abstract, $(abstract), xsd:string]
     - [schema:image, $(image_link)~iri]
     - [schema:datePublished, $(date_published), xsd:date]
     - [schema:url, $(webpage)~iri]
