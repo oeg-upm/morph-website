@@ -26,7 +26,8 @@ export default class ArticleCard extends React.Component{
         super(props);
         this.state = {
             data:{},
-            context:{}
+            context:{},
+            url:null
         }
     }
     
@@ -40,7 +41,8 @@ export default class ArticleCard extends React.Component{
             })
             data.author.Person = sortedAuthors
         }
-        this.setState({data:data, context:response.context})
+        const url = Object.keys(data).includes('url') ?data.url:null;
+        this.setState({data:data, context:response.context, url:url})
 
     }
     async componentDidMount(){
@@ -104,7 +106,7 @@ export default class ArticleCard extends React.Component{
             </Row>
             <Row className="py-2">
                 <Col>
-                    <Button type="primary" href={this.state.data.url}>Read the paper</Button>
+                    <Button type={this.state.url?'primary':'ghost'} href={this.state.url}>{this.state.url?'Read the paper':'To be published'}</Button>
                 </Col>
             </Row>     
             <Divider></Divider>       
@@ -139,9 +141,13 @@ export default class ArticleCard extends React.Component{
     }
     large = () => {
         let actions = [
-            <a property={this.state.context.url} target="_blank" rel="noopener noreferrer" href={this.state.data.url}>
-            Read the paper
+            <a property={this.state.context.url} target="_blank" rel="noopener noreferrer" href={this.state.url}>
+            {this.state.url?(
+            <>
+            <span>Read the paper</span>
             <span className="badge"><FiExternalLink key="read" /></span>
+            </>
+            ):'To be published'}
             </a>
         ]
         const learnMore = Object.keys(this.state.data).includes('workExample') || Object.keys(this.state.data).includes('award');
