@@ -4,4 +4,4 @@ This code generates the website of the morph family suite open source tools gett
 
 
 ## Developers
-- [Luis Pozo(luis.pozo@upm.es)](https://github.com/w0xter)
+- [Luis Pozo (luis.pozo@upm.es)](https://github.com/w0xter)
