@@ -1,5 +1,7 @@
 import React from 'react'
-import {Row, Col, Divider} from 'antd' 
+import {Row, Col, Divider, Typography} from 'antd' 
+
+const {Text} = Typography;
 export default function Footer(props){
     return(
         <>
@@ -20,6 +22,11 @@ export default function Footer(props){
             <img style={{height:100}}class="p-1 img-fluid" src="https://raw.githubusercontent.com/oeg-upm/websiteFooterLogos/master/images/upm.png" alt=""/>
         </a>
         </Col>
+        </Row>
+        <Row justify="center p-3">
+            <Col>
+                <Text>Powered by <a href="https://oeg.fi.upm.es/">Ontology Engineering Group</a>. Source code freely available on <a href="https://github.com/oeg-upm/morph-website">GitHub</a></Text>            
+            </Col>
         </Row>
         </>
     )
