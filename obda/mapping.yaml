@@ -1,5 +1,6 @@
 prefixes:
     ov: http://open.vocab.org/terms/
+    dct: http://purl.org/dc/terms/
     co: http://purl.org/co/
     idlab-fn: http://example.com/idlab/function/
     grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
@@ -14,11 +15,11 @@ mappings:
     s: oeg:person/$(id)
     po:
     - [a, schema:Person]
-    - [ex:code, $(id), xsd:string]
-    - [schema:position, $(position), xsd:integer]
+    - [dct:identifier, $(id), xsd:string]
+    - [schema:jobTitle, $(position), xsd:integer] 
+    - [schema:jobTitle, $(role), xsd:string]
     - [schema:name, $(name), xsd:string]
     - [schema:url, $(webpage)~iri]
-    - [schema:identifier, "http://twitter.com/$(twitter)~iri"]
     - [schema:memberOf, $(group)~iri]
     - [schema:memberOf, $(organization)~iri]    
     - [schema:affiliation, $(organization)~iri]
@@ -26,12 +27,12 @@ mappings:
     - [schema:image, $(photo)~iri]
     - [schema:description, $(biography), xsd:string]
     - [schema:email, $(email), xsd:string]
-    - [schema:jobTitle, $(role), xsd:string]
+    - [schema:identifier, "http://twitter.com/$(twitter)~iri"]
     - [schema:identifier, $(linkedin)~iri]    
-    - [schema:identifier, "http://github.com/$(github)~iri"]   #TODO: Lo mismo aquí schema:identifier, o URL
-    - [schema:startDate, $(start_date), xsd:date]
+    - [schema:identifier, "http://github.com/$(github)~iri"]   
+    - [schema:startDate, $(start_date), xsd:date] # I am not sure that we need this property. It is not applicable to Person, anyway
     - [schema:nationality, $(nationality), xsd:string]  #TODO: Add this in the CSV
-    - [ex:status, $(status), xsd:string]
+    - [ex:status, $(status), xsd:string] #Is this property needed?
 
 
   paper:
@@ -39,14 +40,14 @@ mappings:
       - [/data/files/paper.csv~csv]
     s: oeg:paper/$(id)
     po:
-    - [a, schema:Article]
-    - [ex:code, $(id), xsd:string]
+    - [a, schema:ScholarlyArticle]
+    - [dct:identifier, $(id), xsd:string]
     - [schema:name, $(title), xsd:string]
-    - [schema:Event, $(event)~iri]
-    - [ex:eventName, $(event_name), xsd:string]
-    - [schema:datePublished, $(date_published), xsd:date]
-    - [schema:url, $(paper_link)~iri]
     - [schema:abstract, $(description), xsd:string]
+    - [schema:url, $(paper_link)~iri]
+    - [schema:datePublished, $(date_published), xsd:date]
+    - [schema:Event, $(event)~iri] # This not right, although in schema.org there is no way to relate an article and the event where it comes from
+    - [ex:eventName, $(event_name), xsd:string] # Indeed, I suggest removing all references to events and create a single property, or then creating an entity of type Event, etc.
     - p: schema:author
       o:
         - mapping: papers_people
@@ -77,10 +78,10 @@ mappings:
     s: oeg:Tool/$(id)
     po:
     - [a, schema:SoftwareSourceCode]
-    - [ex:code, $(id), xsd:string]
+    - [dct:identifier, $(id), xsd:string]
     - [schema:name, $(name), xsd:string]
     - [schema:codeRepository, $(ghrepo)~iri]
-    - [doi:name, $(zenodo), xsd:string]
+    - [doi:name, $(zenodo), xsd:string]  #TODO: This should be a sameAs to the URL of the DOI, instead of this. Remove
     - [schema:about, $(description), xsd:string]
     - [schema:abstract, $(abstract), xsd:string]
     - [schema:image, $(image_link)~iri]
@@ -111,13 +112,13 @@ mappings:
               - [str1, $(id)]
               - [str2, $(tool_id)]
 
-  award:
+  award:  #TODO: I would remove all structured references to Awards, since they do not exist in schema.org and are just a text, and this is how they are presented in the website. Create a text from this CSV.
     sources:
       - [/data/files/award.csv~csv]
     s: oeg:Award/$(id)
     po:
     - [a, schema:award]
-    - [ex:code, $(id), xsd:string]
+    - [dct:identifier, $(id), xsd:string]
     - [schema:name, $(name), xsd:string]
     - [schema:about,$(description), xsd:string]
     - [schema:Date, $(date), xsd:date]
@@ -156,7 +157,7 @@ mappings:
     po:
     - [a, schema:isRelatedTo]
     - [schema:position, $(position), xsd:integer]
-    - p: schema:Article
+    - p: schema:ScholarlyArticle
       o:
       - mapping: paper
         condition:
@@ -179,7 +180,7 @@ mappings:
     s: oeg:Paper_award/$(paper_id)_$(award_id)
     po:
     - [a, schema:isRelatedTo]
-    - p: schema:Article
+    - p: schema:ScholarlyArticle
       o:
       - mapping: paper
         condition:
@@ -202,7 +203,7 @@ mappings:
     s: oeg:Paper_tool/$(paper_id)_$(tool_id)
     po:
     - [a, schema:isRelatedTo]
-    - p: schema:Article
+    - p: schema:ScholarlyArticle
       o:
       - mapping: paper
         condition:
