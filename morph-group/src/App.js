@@ -13,7 +13,9 @@ import Article from './pages/Article'
 import Articles from './pages/Articles';
 import Tools from './pages/Tools';
 import Tool from './pages/Tool';
-
+import MapeathorDemo from './pages/mapeathorDemo/MapeathorDemo'
+import MorphCsvDemo from './morphCsvComponent/pages/Home'
+import MorphCsvDemoQuery from './morphCsvComponent/pages/Query'
 //Enabling Tooltips:
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
@@ -29,6 +31,10 @@ class App extends React.Component {
             <Route exact path="/articles" component={Articles}/>
             <Route path="/tool/:code" component={Tool}/>
             <Route exact path="/tools" component={Tools}/>
+            <Route exact path="/demo/mapeathor" component={MapeathorDemo}/>
+            <Route exact path="/demo/morphcsv" component={MorphCsvDemo}/>
+            <Route path="/demo/morphcsv/run/:dataset/:query" component={MorphCsvDemoQuery}/>
+
         </BrowserRouter>
     );
   }
