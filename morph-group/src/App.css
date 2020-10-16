@@ -70,3 +70,16 @@
   width: auto;
   max-width: 100%!important;
 }
+.inputFile {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.file-preview {
+margin: 0 10px;
+}

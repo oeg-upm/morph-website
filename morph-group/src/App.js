@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'antd/dist/antd.css'; 
+import 'react-circular-progressbar/dist/styles.css';
 
 import Member from './pages/Member';
 import Article from './pages/Article'

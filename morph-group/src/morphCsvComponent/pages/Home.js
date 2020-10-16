@@ -12,7 +12,7 @@ export default function Home(props){
     return(
         <Layout>
         <LayoutSider>
-           <Row gutter={16} justify="center" align="top">
+           <Row gutter={16} justify="start" align="top">
                 <Col span={22}>
                     <Title>Morph-CSV</Title>
                     <Paragraph style={{textAlign:'justify'}}>
@@ -23,14 +23,14 @@ export default function Home(props){
                     </Paragraph>
                 </Col>
             </Row>
-            <Row justify="center">
+            <Row justify="start">
             <Col span={22}>
                     <img className="img-fluid" src="https://morph.oeg.fi.upm.es/img/morph-csv.png" alt=""/>
                 </Col>
             </Row>
             <Divider />                 
 
-            <Row justify="center">
+            <Row justify="start">
                 <Col span={22}>
                     <Title level={2}>
                         Evaluation
@@ -41,17 +41,17 @@ export default function Home(props){
                 </Col>
             </Row>
             {/* GTFS */}
-            <Row style={{marginTop:16}}>
-                <Col>
+            <Row style={{marginTop:16}} justify="start">
+                <Col span={22}>
                     <Title level={3}>GTFS-BECNH-MADRID</Title>
                 </Col>
             </Row>
-            <Row >
-                <Col>
+            <Row justify="start">
+                <Col span={22}>
                     <Title level={4}>Execution Time</Title>
                 </Col>
             </Row>            
-            <Row gutter={[16,16]}>
+            <Row gutter={[16,16]} justify="start">
             {
                 Object.keys(evaluation.gtfs.sizes).map((size) => {
                     return(
@@ -64,13 +64,13 @@ export default function Home(props){
             </Row>  
             <Divider></Divider>            
             {/* BSBM */}
-            <Row style={{marginTop:16}}>
-                <Col>
+            <Row style={{marginTop:16}} justify="start">
+                <Col span={22}>
                     <Title level={3}>BERLIN SPARQL BECNHMARK</Title>
                 </Col>
             </Row>
-            <Row >
-                <Col>
+            <Row justify="start">
+                <Col span={22}>
                     <Title level={4}>Execution Time</Title>
                 </Col>
             </Row>            
