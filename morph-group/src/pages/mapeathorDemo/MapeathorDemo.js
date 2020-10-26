@@ -1,8 +1,11 @@
 import React from 'react'
 import Layout from '../../components/Layout'
-import {Form,Select,Input,Radio,Button,Upload,Row,Col,Typography } from 'antd';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
+import {Form,Select,Input,Radio,Button,Switch,Row,Col,Typography, message, Spin } from 'antd';
+import { UploadOutlined, LoadingOutlined } from '@ant-design/icons';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import {sendData} from '../../requests/mapeathorApi'
 import axios from 'axios'
@@ -37,7 +40,7 @@ const normFile = e => {
 
 
 const UPLOAD_SUCCESS_URL = "http://0.0.0.0:5000/api/"
-
+const loadingIcon = <LoadingOutlined style={{ fontSize: 48 }} spin />;
 
 const options = [
     { label: 'RML', value: 'rml' },
@@ -49,12 +52,15 @@ export default class Demo extends React.Component {
   state = {
     file:null,
     format:"rml",
+    lastFormat:"",
     uploading: false,
-    imageUri:null,
     uploadProgress:0,
     uploadStatus:false,
+    error:"",
     upload:false,
     driveUrl:"",
+    isFile:false,
+    mapping:"",
     acceptedTypes:['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']
   };
 
@@ -69,25 +75,29 @@ export default class Demo extends React.Component {
        console.log('FileType: ' + fileType)
       return this.state.acceptedTypes.includes(fileType);
   };
-   handleClick = event => {
-    // this.hiddenFileInput.current.click();
-  };
+
+  
+
    handleFileUpload = (e) => {
+      let errorMessage = ""
+      this.setState({lastFormat:this.state.format, uploading:true});
       e.preventDefault();
-      console.log(this.state.file)
-      if (!this.isValidFileType(this.state.file.type)) {
-          alert('Only XLSX files are allowed');
-          return;
-      }
-      
-      this.setState({uploading:true});
       const formData = new FormData();
-      if(this.state.file === null){
-        formData.append('url', this.state.url);
-      }else{
+      if(this.state.driveUrl.length !== 0 && !this.state.isFile){
+        formData.append('url', this.state.driveUrl);
+      }else if(this.state.file !== null && this.state.isFile){
+        if (!this.isValidFileType(this.state.file.type)) {
+          message.error('Only XLSX files are allowed');
+          return;
+        }
         formData.append('file', this.state.file);
-        formData.append('format', this.state.format);
+      }else if(this.state.file === null && this.state.driveUrl.length === 0){
+        errorMessage = this.state.isFile ?"You need to upload a XLSX file.":"Introduce a valid google drive spreadsheet link."
+        this.setState({error:errorMessage, mapping:"", uploading:false},() => message.warning(this.state.error))
+        return
       }
+      formData.append('format', this.state.format);
+
 
       axios({
           method: 'post',
@@ -106,20 +116,35 @@ export default class Demo extends React.Component {
       .then((resp) => {
           // our mocked response will always return true
           // in practice, you would want to use the actual response object
-          console.log(resp)
+          console.log(resp.data)
+          this.setState({mapping:resp.data})
           this.setState({uploadStatus:true});
           this.setState({uploading:false});
-          this.getBase64(this.state.file, (uri) => {
-              this.setState({imageUri:uri});
-          });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        if(err.response.status == 401)
+          errorMessage = "Oops somenthing goes wrong, please try it again"
+        else if(err.response.status == 500)
+          errorMessage = "Somenthing it's wrong with your files, please review the files and try it again"
+
+        this.setState({error:errorMessage, mapping:"", uploading:false}, () => message.error(this.state.error))
+      });
   };
+  changeFileInput(){
+    this.setState({isFile:!this.state.isFile})
+    if(this.state.isFile){
+      this.state.driveUrl = ""
+    }else{
+      this.state.file = null;
+    }
+  }
 
   render() {
 
     return (
         <Layout>
+
             <Row>
                 <Col xs={22} md={12}>
                 <Title level={2}>Mapeathor Demo</Title>
@@ -144,52 +169,67 @@ export default class Demo extends React.Component {
                 optionType="button"
                 />
               </Form.Item>
-              <Form.Item label="Google Spreadsheet URL">
-                  <Input onChange={(e) => this.setState({driveUrl:e.targe.value})}></Input>
-              </Form.Item>
+              <Row gutter={[16,16]}>
+                <Col>
+                    <Text>Do you prefer upload a XLSX file?</Text> 
+                </Col>
+                <Col>
+                    <Switch value={this.state.isFile} onChange={() => {this.changeFileInput()}} />            
+                </Col>
+            </Row>
+            {this.state.isFile?(
           <Form.Item label={(this.state.file)
-                      ? `File ${this.state.file.name} selected`
-                      : ' Choose File'
-                  }>
-                <label className="custom-file-upload">
-                <Input
-                      className="file-input"
-                      type="file" name="file"
-                      accept={this.state.acceptedTypes.toString()}
-                      style={{'display':'none'}}
-                      onChange={(e) => {
-                          if (e.target.files && e.target.files.length > 0) {
-                              this.setState({file:e.target.files[0]})
-                          }
-                      }} />                    
-                    <span>
-                    <UploadOutlined></UploadOutlined> Upload XLSX File
-                    </span>
-                </label>
+                ? `File ${this.state.file.name} selected`
+                : ' Choose File'
+            }>
+              <label className="custom-file-upload">
+              <Input
+                    className="file-input"
+                    type="file" name="file"
+                    accept={this.state.acceptedTypes.toString()}
+                    style={{'display':'none'}}
+                    onChange={(e) => {
+                        if (e.target.files && e.target.files.length > 0) {
+                            this.setState({file:e.target.files[0]})
+                        }
+                    }} />                    
+                  <span>
+                  <UploadOutlined></UploadOutlined> Upload XLSX File
+                  </span>
+              </label>
+        </Form.Item>
+            ):(
+              <Form.Item label="Google Spreadsheet URL">
+                  <Input onChange={(e) => this.setState({driveUrl:e.target.value})}></Input>
               </Form.Item>
-              <Form.Item>
+            )}
+
+
+          <Form.Item>
                 <Button className="upload-button" onClick={this.handleFileUpload} type="submit">
                     Upload
                 </Button>
               </Form.Item>
           </form>
           
-          {/* {(this.state.uploading)
+          {(this.state.uploading)
               ?
               <div className="progress-bar-container">
-                  <CircularProgressbar
-                      value={this.state.uploadProgress}
-                      text={`${this.state.uploadProgress}% uploaded`}
-                      styles={buildStyles({
-                          textSize: '10px',
-                          pathColor: 'teal',
-                      })}
-                  />
+                <Spin indicator={loadingIcon}></Spin>
               </div>
               : null
-          } */}
+          } 
 
       </div>
+      <Row>
+        <Col>
+          {
+            this.state.mapping.length !== 0?(
+              this.resultMapping()
+            ):null
+          }
+        </Col>
+      </Row>
         </Layout>
       // <>
 
@@ -205,6 +245,16 @@ export default class Demo extends React.Component {
       // </>
     );
   }
+   resultMapping = () => {
+    return (
+      <>
+      <Title level={3}>Generated {this.state.lastFormat.toUpperCase()} Mapping: </Title>
+      <SyntaxHighlighter language="ttl" style={docco}>
+        {this.state.mapping}
+      </SyntaxHighlighter>
+    </>
+    );
+  };
 
 }
 
