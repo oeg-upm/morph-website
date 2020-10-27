@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../../components/Layout'
 import {Form,Select,Input,Radio,Button,Switch,Row,Col,Typography, message, Spin } from 'antd';
-import { UploadOutlined, LoadingOutlined } from '@ant-design/icons';
+import { DownloadOutlined ,UploadOutlined, LoadingOutlined } from '@ant-design/icons';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -77,10 +77,19 @@ export default class Demo extends React.Component {
   };
 
   
-
+  downloadMapping(){
+    const element = document.createElement("a");
+    const file = new Blob([this.state.mapping], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    let fileFormat = this.state.format === "yarrrml" ? ".yaml":".ttl"
+    let fileName = this.state.isFile? this.state.file.name.split(".")[0]:"MapeathorMapping" 
+    element.download = fileName + fileFormat;
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();    
+  }
    handleFileUpload = (e) => {
       let errorMessage = ""
-      this.setState({lastFormat:this.state.format, uploading:true});
+      this.setState({lastFormat:this.state.format, uploading:true, mapping:""});
       e.preventDefault();
       const formData = new FormData();
       if(this.state.driveUrl.length !== 0 && !this.state.isFile){
@@ -91,53 +100,56 @@ export default class Demo extends React.Component {
           return;
         }
         formData.append('file', this.state.file);
-      }else if(this.state.file === null && this.state.driveUrl.length === 0){
+      }
+      if(this.state.file === null && this.state.driveUrl.length === 0){
         errorMessage = this.state.isFile ?"You need to upload a XLSX file.":"Introduce a valid google drive spreadsheet link."
         this.setState({error:errorMessage, mapping:"", uploading:false},() => message.warning(this.state.error))
         return
-      }
-      formData.append('format', this.state.format);
+      }else{
+        formData.append('format', this.state.format);
 
 
-      axios({
-          method: 'post',
-          headers: {
-            'accept':'binary/octet-stream',
-            'Content-Type': 'multipart/form-data',
-            'Access-Control-Allow-Headers':'*'
-        },
-          data: formData,
-          url: UPLOAD_SUCCESS_URL,
-          onUploadProgress: (ev) => {
-              const progress = ev.loaded / ev.total * 100;
-              this.setState({uploadProgress:Math.round(progress)});
+        axios({
+            method: 'post',
+            headers: {
+              'accept':'binary/octet-stream',
+              'Content-Type': 'multipart/form-data',
+              'Access-Control-Allow-Headers':'*'
           },
-      })
-      .then((resp) => {
-          // our mocked response will always return true
-          // in practice, you would want to use the actual response object
-          console.log(resp.data)
-          this.setState({mapping:resp.data})
-          this.setState({uploadStatus:true});
-          this.setState({uploading:false});
-      })
-      .catch((err) => {
-        console.error(err);
-        if(err.response.status == 401)
-          errorMessage = "Oops somenthing goes wrong, please try it again"
-        else if(err.response.status == 500)
-          errorMessage = "Somenthing it's wrong with your files, please review the files and try it again"
-
-        this.setState({error:errorMessage, mapping:"", uploading:false}, () => message.error(this.state.error))
-      });
+            data: formData,
+            url: UPLOAD_SUCCESS_URL,
+            onUploadProgress: (ev) => {
+                const progress = ev.loaded / ev.total * 100;
+                this.setState({uploadProgress:Math.round(progress)});
+            },
+        })
+        .then((resp) => {
+            // our mocked response will always return true
+            // in practice, you would want to use the actual response object
+            console.log(resp.data)
+            this.setState({mapping:resp.data})
+            this.setState({uploadStatus:true});
+            this.setState({uploading:false});
+        })
+        .catch((err) => {
+          console.error(err);
+          if(err.response.status == 401)
+            errorMessage = "Oops somenthing goes wrong, please try it again"
+          else if(err.response.status == 500)
+            errorMessage = "Somenthing it's wrong with your files, please review the files and try it again"
+  
+          this.setState({error:errorMessage, mapping:"", uploading:false}, () => message.error(this.state.error))
+        });
+      }
   };
   changeFileInput(){
-    this.setState({isFile:!this.state.isFile})
-    if(this.state.isFile){
-      this.state.driveUrl = ""
-    }else{
-      this.state.file = null;
-    }
+    this.setState({isFile:!this.state.isFile}, () => {
+      if(this.state.isFile){
+        this.setState({driveUrl:""})
+      }else{
+        this.setState({file:null})
+      }
+    })
   }
 
   render() {
@@ -231,24 +243,22 @@ export default class Demo extends React.Component {
         </Col>
       </Row>
         </Layout>
-      // <>
-
-      //   <Button
-      //     type="primary"
-      //     onClick={this.handleUpload}
-      //     disabled={fileList.length === 0}
-      //     loading={uploading}
-      //     style={{ marginTop: 16 }}
-      //   >
-      //     {uploading ? 'Uploading' : 'Start Upload'}
-      //   </Button>
-      // </>
     );
   }
    resultMapping = () => {
     return (
       <>
-      <Title level={3}>Generated {this.state.lastFormat.toUpperCase()} Mapping: </Title>
+      <Row gutter={16}>
+        <Col>
+          <Title level={3}>Generated {this.state.lastFormat.toUpperCase()} Mapping </Title>        
+        </Col>
+        <Col>
+          <Button onClick={() => this.downloadMapping()}>
+            Download Mapping
+            <DownloadOutlined />
+          </Button>
+        </Col>
+      </Row>
       <SyntaxHighlighter language="ttl" style={docco}>
         {this.state.mapping}
       </SyntaxHighlighter>

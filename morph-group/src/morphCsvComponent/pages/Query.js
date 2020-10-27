@@ -69,7 +69,7 @@ export default class Query extends React.Component{
           </Col>
         </Row>
           <Row gutter={32} justify="center" align="top">
-              <Col span={22}>
+              <Col span={24}>
                 <Title level={3}>SPARQL Query</Title>
                 <div style={{marginTop:32}}>
                 <SyntaxHighlighter language="ttl" style={docco}>
@@ -79,8 +79,8 @@ export default class Query extends React.Component{
               </Col>
           </Row>
           <Row justify="center">
-            <Col span={22}>
-                <QueryChart csvw={this.state.csvw} dataset={this.state.dataset}></QueryChart>
+            <Col span={24}>
+                <QueryChart csvw={this.state.csvw} query={"q" + this.state.queryIdx} dataset={this.state.dataset}></QueryChart>
               </Col>
           </Row>
           <Divider/>

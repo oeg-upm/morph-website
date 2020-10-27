@@ -5,10 +5,9 @@ import {data} from '../../data/data'
 import { Link } from 'react-router-dom';
 const {SubMenu} = Menu;
 export default class DatasetSelector extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
+        state = {
+            dataset:'gtfs'
+        }
     
     render(){
         return(
@@ -16,7 +15,7 @@ export default class DatasetSelector extends React.Component{
             onClick={this.handleClick}
             style={{ width: 256 }}
             defaultSelectedKeys={['1']}
-            defaultOpenKeys={this.state.dataset}
+            //defaultOpenKeys={this.state.dataset}
             mode="inline"
             style={{ height: '100%', borderRight:'10 #000000'}}
           >
@@ -41,8 +40,5 @@ export default class DatasetSelector extends React.Component{
               })}
               </Menu>
         )
-    }
-    componentDidMount(){
-        this.setState({dataset:this.props.dataset})
     }
 }

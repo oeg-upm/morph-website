@@ -380,4 +380,161 @@ const evaluation = {
       }
     }
   }
-export {data, evaluation};
+const queryMetrics = {
+    "gtfs":{
+        "q1":{
+        "datatype": 3,
+        "substitution": 4
+          },
+        "q2":{
+        "datatype": 3,
+        "substitution": 5
+          },
+        "q3":{
+        "datatype": 4,
+        "substitution": 5
+          },
+        "q4":{
+        "datatype": 0,
+        "substitution": 7
+          },
+        "q5":{
+        "datatype": 2,
+        "substitution": 2
+          },
+        "q6":{
+        "datatype": 0,
+        "substitution": 0
+          },
+        "q7":{
+        "datatype": 3,
+        "substitution": 8
+          },
+        "q8":{
+        "datatype": 3,
+        "substitution": 8
+          },
+        "q9":{
+        "datatype": 2,
+        "substitution": 3
+          },
+        "q10":{
+        "datatype": 0,
+        "substitution": 2
+          },
+        "q11":{
+        "datatype": 2,
+        "substitution": 2
+          },
+        "q12":{
+        "datatype": 1,
+        "substitution": 4
+          },
+        "q13":{
+        "datatype": 1,
+        "substitution": 3
+          },
+        "q14":{
+        "datatype": 1,
+        "substitution": 3
+          },
+        "q15":{
+        "datatype": 4,
+        "substitution": 11
+          },
+        "q16":{
+        "datatype": 2,
+        "substitution": 2
+          },
+        "q17":{
+        "datatype": 1,
+        "substitution": 4
+          },
+        "q18":{
+        "datatype": 1,
+        "substitution": 3
+          }
+    },
+    
+    "bsbm":{
+        "q1":{
+        "datatype": 7,
+        "substitution": 1
+          },
+        "q2":{
+        "datatype": 10,
+        "substitution": 12
+          },
+        "q3":{
+        "datatype": 8,
+        "substitution": 3
+          },
+        "q4":{
+        "datatype": 2,
+        "substitution": 2
+          },
+        "q5":{
+        "datatype": 6,
+        "substitution": 3
+          },
+        "q6":{
+        "datatype": 0,
+        "substitution": 1
+          },
+        "q7":{
+        "datatype": 11,
+        "substitution": 2
+          },
+        "q8":{
+        "datatype": 8,
+        "substitution": 8
+          },
+        "q9":{
+        "datatype": 0,
+        "substitution": 0
+          },
+        "q10":{
+        "datatype": 7,
+        "substitution": 2
+          },
+        "q11":{
+        "datatype": 29,
+        "substitution": 53
+          },
+        "q12":{
+        "datatype": 6,
+        "substitution": 7
+          }
+    },
+    "bio2rdf":{
+        "q1":{
+        "datatype": 0,
+        "substitution": 3
+          },
+        "q2":{
+        "datatype": 0,
+        "substitution": 7
+          },
+        "q3":{
+        "datatype": 0,
+        "substitution": 5
+          },
+        "q4":{
+        "datatype": 0,
+        "substitution": 7
+          },
+        "q5":{
+        "datatype": 0,
+        "substitution": 6
+          },
+        "q6":{
+        "datatype": 0,
+        "substitution": 2
+          },
+        "q7":{
+        "datatype": 1,
+        "substitution": 5
+          }    
+    }      
+  }
+export {data, evaluation, queryMetrics};

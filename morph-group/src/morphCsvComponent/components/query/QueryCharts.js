@@ -1,6 +1,7 @@
 import React from 'react';
 import {Pie, Doughnut} from 'react-chartjs-2';
 import {Row, Col, Typography, Statistic, Divider, Space, Button} from 'antd';
+import {queryMetrics} from '../../data/data'
 const {Title} = Typography;
 const totalElements = {
     gtfs:{
@@ -19,8 +20,8 @@ const totalElements = {
 export default function QueryChart(props){
     let foreignKeys = 0;
     let primaryKeys = 0;
-    let subtitutions = 0;
-    let dataTypes = [];
+    let substitutions = queryMetrics[props.dataset][props.query].substitution;
+    let dataTypes = queryMetrics[props.dataset][props.query].datatype;
     let totalSources = totalElements[props.dataset].sources;
     let totalColumns = totalElements[props.dataset].columns;
     let selectedColumns = 0;
@@ -31,12 +32,6 @@ export default function QueryChart(props){
         }
         selectedColumns += table.filteredRowTitles.length;
         foreignKeys += Object.keys(table.tableSchema).includes("foreignKeys") ? table.tableSchema.foreignKeys.length:0;
-        if(Object.keys(table).includes('columns')){
-            table.columns.map((col) => {
-                if(Object.keys(col).includes('datatype'))
-                    dataTypes.push(col.datatype)
-            })
-        }
     });
     let data = [
         {
@@ -95,7 +90,7 @@ export default function QueryChart(props){
                 <Statistic title={<Title level={4} type="">Foreign Keys</Title>} value={foreignKeys} />
                 </Col>
                 <Col>
-                <Statistic title={<Title level={4} type="">Substitutions</Title>} value={subtitutions} />
+                <Statistic title={<Title level={4} type="">Substitutions</Title>} value={substitutions} />
                 </Col>
                 <Col>
                 <Statistic title={<Title level={4} type="">Datatypes</Title>} value={dataTypes} />
