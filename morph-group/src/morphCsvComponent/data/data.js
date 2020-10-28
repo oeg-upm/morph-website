@@ -382,130 +382,1390 @@ const evaluation = {
   }
 const queryMetrics = {
     "gtfs":{
-        "q1":{
-        "datatype": 3,
-        "substitution": 4
-          },
-        "q2":{
-        "datatype": 3,
-        "substitution": 5
-          },
-        "q3":{
-        "datatype": 4,
-        "substitution": 5
-          },
-        "q4":{
-        "datatype": 0,
-        "substitution": 7
-          },
-        "q5":{
-        "datatype": 2,
-        "substitution": 2
-          },
-        "q6":{
-        "datatype": 0,
-        "substitution": 0
-          },
-        "q7":{
-        "datatype": 3,
-        "substitution": 8
-          },
-        "q8":{
-        "datatype": 3,
-        "substitution": 8
-          },
-        "q9":{
-        "datatype": 2,
-        "substitution": 3
-          },
-        "q10":{
-        "datatype": 0,
-        "substitution": 2
-          },
-        "q11":{
-        "datatype": 2,
-        "substitution": 2
-          },
-        "q12":{
-        "datatype": 1,
-        "substitution": 4
-          },
-        "q13":{
-        "datatype": 1,
-        "substitution": 3
-          },
-        "q14":{
-        "datatype": 1,
-        "substitution": 3
-          },
-        "q15":{
-        "datatype": 4,
-        "substitution": 11
-          },
-        "q16":{
-        "datatype": 2,
-        "substitution": 2
-          },
-        "q17":{
-        "datatype": 1,
-        "substitution": 4
-          },
-        "q18":{
-        "datatype": 1,
-        "substitution": 3
-          }
-    },
+      "q1": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.37,
+                  normalization: 0,
+                  dataPreparation: 0.286,
+                  schemaCreationLoad: 0.345,
+                  mappingTranslation: 0.506,
+                  total: 1.507
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 0.998,
+                  normalization: 0,
+                  dataPreparation: 1.201,
+                  schemaCreationLoad: 1.296,
+                  mappingTranslation: 0.509,
+                  total: 4.004
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.181,
+                  normalization: 0,
+                  dataPreparation: 11.434,
+                  schemaCreationLoad: 11.812,
+                  mappingTranslation: 0.531,
+                  total: 30.959
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 76.815,
+                  normalization: 0,
+                  dataPreparation: 140.784,
+                  schemaCreationLoad: 123.77,
+                  mappingTranslation: 0.546,
+                  total: 341.915
+              }
+            ],
+          "datatype": "3",
+          "substitution": "4"
+      },
+      "q2": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.387,
+                  normalization: 0,
+                  dataPreparation: 0.065,
+                  schemaCreationLoad: 0.075,
+                  mappingTranslation: 0.521,
+                  total: 1.049
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.005,
+                  normalization: 0,
+                  dataPreparation: 0.139,
+                  schemaCreationLoad: 0.139,
+                  mappingTranslation: 0.536,
+                  total: 1.82
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.249,
+                  normalization: 0,
+                  dataPreparation: 0.789,
+                  schemaCreationLoad: 0.751,
+                  mappingTranslation: 0.519,
+                  total: 9.308
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 73.39,
+                  normalization: 0,
+                  dataPreparation: 8.041,
+                  schemaCreationLoad: 6.843,
+                  mappingTranslation: 0.521,
+                  total: 88.795
+              }
+            ],
+          "datatype": "3",
+          "substitution": "5"
+      },
+      "q3": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.374,
+                  normalization: 0,
+                  dataPreparation: 0.062,
+                  schemaCreationLoad: 0.074,
+                  mappingTranslation: 0.532,
+                  total: 1.041
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.033,
+                  normalization: 0,
+                  dataPreparation: 0.147,
+                  schemaCreationLoad: 0.137,
+                  mappingTranslation: 0.525,
+                  total: 1.842
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.257,
+                  normalization: 0,
+                  dataPreparation: 0.941,
+                  schemaCreationLoad: 0.679,
+                  mappingTranslation: 0.507,
+                  total: 9.384
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 71.395,
+                  normalization: 0,
+                  dataPreparation: 6.826,
+                  schemaCreationLoad: 7.123,
+                  mappingTranslation: 0.528,
+                  total: 85.871
+              }
+            ],
+          "datatype": "4",
+          "substitution": "5"
+      },
+      "q4": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.376,
+                  normalization: 0,
+                  dataPreparation: 0.113,
+                  schemaCreationLoad: 0.063,
+                  mappingTranslation: 0.5,
+                  total: 1.052
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.059,
+                  normalization: 0,
+                  dataPreparation: 0.123,
+                  schemaCreationLoad: 0.067,
+                  mappingTranslation: 0.531,
+                  total: 1.78
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.294,
+                  normalization: 0,
+                  dataPreparation: 0.259,
+                  schemaCreationLoad: 0.075,
+                  mappingTranslation: 0.507,
+                  total: 8.135
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 71.686,
+                  normalization: 0,
+                  dataPreparation: 0.657,
+                  schemaCreationLoad: 0.239,
+                  mappingTranslation: 0.541,
+                  total: 73.123
+              }
+            ],
+          "datatype": "0",
+          "substitution": "7"
+      },
+      "q5": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.381,
+                  normalization: 0,
+                  dataPreparation: 0.114,
+                  schemaCreationLoad: 0.059,
+                  mappingTranslation: 0.525,
+                  total: 1.08
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.01,
+                  normalization: 0,
+                  dataPreparation: 0.13,
+                  schemaCreationLoad: 0.067,
+                  mappingTranslation: 0.524,
+                  total: 1.732
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.195,
+                  normalization: 0,
+                  dataPreparation: 0.316,
+                  schemaCreationLoad: 0.12,
+                  mappingTranslation: 0.52,
+                  total: 8.151
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 71.77,
+                  normalization: 0,
+                  dataPreparation: 0.737,
+                  schemaCreationLoad: 0.665,
+                  mappingTranslation: 0.533,
+                  total: 73.705
+              }
+            ],
+          "datatype": "2",
+          "substitution": "2"
+      },
+      "q6": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.368,
+                  normalization: 0,
+                  dataPreparation: 0.106,
+                  schemaCreationLoad: 0.051,
+                  mappingTranslation: 0.524,
+                  total: 1.049
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.012,
+                  normalization: 0,
+                  dataPreparation: 0.125,
+                  schemaCreationLoad: 0.06,
+                  mappingTranslation: 0.507,
+                  total: 1.704
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.254,
+                  normalization: 0,
+                  dataPreparation: 0.252,
+                  schemaCreationLoad: 0.085,
+                  mappingTranslation: 0.532,
+                  total: 8.123
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 72.521,
+                  normalization: 0,
+                  dataPreparation: 0.441,
+                  schemaCreationLoad: 0.271,
+                  mappingTranslation: 0.532,
+                  total: 73.766
+              }
+            ],
+          "datatype": "0",
+          "substitution": "0"
+      },
+      "q7": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.381,
+                  normalization: 0,
+                  dataPreparation: 0.337,
+                  schemaCreationLoad: 0.176,
+                  mappingTranslation: 0.536,
+                  total: 1.43
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.023,
+                  normalization: 0,
+                  dataPreparation: 0.524,
+                  schemaCreationLoad: 0.475,
+                  mappingTranslation: 0.522,
+                  total: 2.545
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.209,
+                  normalization: 0,
+                  dataPreparation: 1.946,
+                  schemaCreationLoad: 3.369,
+                  mappingTranslation: 0.526,
+                  total: 13.05
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 72.749,
+                  normalization: 0,
+                  dataPreparation: 19.167,
+                  schemaCreationLoad: 52.349,
+                  mappingTranslation: 0.541,
+                  total: 144.808
+              }
+            ],
+          "datatype": "3",
+          "substitution": "8"
+      },
+      "q8": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.386,
+                  normalization: 0,
+                  dataPreparation: 0.359,
+                  schemaCreationLoad: 0.182,
+                  mappingTranslation: 0.545,
+                  total: 1.472
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.041,
+                  normalization: 0,
+                  dataPreparation: 0.504,
+                  schemaCreationLoad: 0.467,
+                  mappingTranslation: 0.53,
+                  total: 2.542
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.305,
+                  normalization: 0,
+                  dataPreparation: 1.955,
+                  schemaCreationLoad: 3.811,
+                  mappingTranslation: 0.571,
+                  total: 13.642
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 73.408,
+                  normalization: 0,
+                  dataPreparation: 18.768,
+                  schemaCreationLoad: 52.294,
+                  mappingTranslation: 0.55,
+                  total: 145.021
+              }
+            ],
+          "datatype": "3",
+          "substitution": "8"
+      },
+      "q9": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.39,
+                  normalization: 0,
+                  dataPreparation: 0.464,
+                  schemaCreationLoad: 0.381,
+                  mappingTranslation: 0.532,
+                  total: 1.767
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.004,
+                  normalization: 0,
+                  dataPreparation: 1.378,
+                  schemaCreationLoad: 2.214,
+                  mappingTranslation: 0.522,
+                  total: 5.119
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.566,
+                  normalization: 0,
+                  dataPreparation: 11.446,
+                  schemaCreationLoad: 35.058,
+                  mappingTranslation: 0.54,
+                  total: 54.609
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 78.764,
+                  normalization: 0,
+                  dataPreparation: 126.915,
+                  schemaCreationLoad: 3121.927,
+                  mappingTranslation: 0.557,
+                  total: 3328.163
+              }
+            ],
+          "datatype": "2",
+          "substitution": "3"
+      },
+      "q10": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.378,
+                  normalization: 0,
+                  dataPreparation: 0.126,
+                  schemaCreationLoad: 0.09,
+                  mappingTranslation: 0.535,
+                  total: 1.129
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.03,
+                  normalization: 0,
+                  dataPreparation: 0.247,
+                  schemaCreationLoad: 0.323,
+                  mappingTranslation: 0.516,
+                  total: 2.116
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.581,
+                  normalization: 0,
+                  dataPreparation: 1.201,
+                  schemaCreationLoad: 2.435,
+                  mappingTranslation: 0.538,
+                  total: 11.755
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 73.982,
+                  normalization: 0,
+                  dataPreparation: 12.364,
+                  schemaCreationLoad: 66.614,
+                  mappingTranslation: 0.524,
+                  total: 153.485
+              }
+            ],
+          "datatype": "0",
+          "substitution": "2"
+      },
+      "q11": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.377,
+                  normalization: 0,
+                  dataPreparation: 0.169,
+                  schemaCreationLoad: 0.084,
+                  mappingTranslation: 0.523,
+                  total: 1.153
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.021,
+                  normalization: 0,
+                  dataPreparation: 0.193,
+                  schemaCreationLoad: 0.116,
+                  mappingTranslation: 0.536,
+                  total: 1.866
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.333,
+                  normalization: 0,
+                  dataPreparation: 0.28,
+                  schemaCreationLoad: 0.285,
+                  mappingTranslation: 0.556,
+                  total: 8.454
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 72.248,
+                  normalization: 0,
+                  dataPreparation: 1.318,
+                  schemaCreationLoad: 1.62,
+                  mappingTranslation: 0.535,
+                  total: 75.722
+              }
+            ],
+          "datatype": "2",
+          "substitution": "2"
+      },
+      "q12": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.373,
+                  normalization: 0,
+                  dataPreparation: 0.226,
+                  schemaCreationLoad: 0.13,
+                  mappingTranslation: 0.509,
+                  total: 1.237
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 0.994,
+                  normalization: 0,
+                  dataPreparation: 0.401,
+                  schemaCreationLoad: 0.46,
+                  mappingTranslation: 0.538,
+                  total: 2.393
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.274,
+                  normalization: 0,
+                  dataPreparation: 1.858,
+                  schemaCreationLoad: 3.839,
+                  mappingTranslation: 0.534,
+                  total: 13.504
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 73.084,
+                  normalization: 0,
+                  dataPreparation: 17.717,
+                  schemaCreationLoad: 69.82,
+                  mappingTranslation: 0.532,
+                  total: 161.153
+              }
+            ],
+          "datatype": "1",
+          "substitution": "4"
+      },
+      "q13": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.43,
+                  normalization: 0,
+                  dataPreparation: 0.073,
+                  schemaCreationLoad: 0.064,
+                  mappingTranslation: 0.54,
+                  total: 1.107
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.006,
+                  normalization: 0,
+                  dataPreparation: 0.143,
+                  schemaCreationLoad: 0.16,
+                  mappingTranslation: 0.503,
+                  total: 1.811
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.314,
+                  normalization: 0,
+                  dataPreparation: 0.69,
+                  schemaCreationLoad: 0.981,
+                  mappingTranslation: 0.524,
+                  total: 9.509
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 71.511,
+                  normalization: 0,
+                  dataPreparation: 6.718,
+                  schemaCreationLoad: 9.169,
+                  mappingTranslation: 0.511,
+                  total: 87.909
+              }
+            ],
+          "datatype": "1",
+          "substitution": "3"
+      },
+      "q14": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.396,
+                  normalization: 0,
+                  dataPreparation: 0.246,
+                  schemaCreationLoad: 0.141,
+                  mappingTranslation: 0.581,
+                  total: 1.365
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.019,
+                  normalization: 0,
+                  dataPreparation: 0.408,
+                  schemaCreationLoad: 0.453,
+                  mappingTranslation: 0.577,
+                  total: 2.458
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.242,
+                  normalization: 0,
+                  dataPreparation: 1.899,
+                  schemaCreationLoad: 3.038,
+                  mappingTranslation: 0.519,
+                  total: 12.698
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 73.874,
+                  normalization: 0,
+                  dataPreparation: 18.356,
+                  schemaCreationLoad: 48.674,
+                  mappingTranslation: 0.532,
+                  total: 141.437
+              }
+            ],
+          "datatype": "1",
+          "substitution": "3"
+      },
+      "q15": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.363,
+                  normalization: 0,
+                  dataPreparation: 0.069,
+                  schemaCreationLoad: 0.055,
+                  mappingTranslation: 0.498,
+                  total: 0.985
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.009,
+                  normalization: 0,
+                  dataPreparation: 0.176,
+                  schemaCreationLoad: 0.221,
+                  mappingTranslation: 0.513,
+                  total: 1.92
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.328,
+                  normalization: 0,
+                  dataPreparation: 1.108,
+                  schemaCreationLoad: 1.244,
+                  mappingTranslation: 0.534,
+                  total: 10.213
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 73.003,
+                  normalization: 0,
+                  dataPreparation: 10.506,
+                  schemaCreationLoad: 13.434,
+                  mappingTranslation: 0.557,
+                  total: 97.5
+              }
+            ],
+          "datatype": "4",
+          "substitution": "11"
+      },
+      "q16": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.37,
+                  normalization: 0,
+                  dataPreparation: 0.205,
+                  schemaCreationLoad: 0.087,
+                  mappingTranslation: 0.53,
+                  total: 1.192
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.019,
+                  normalization: 0,
+                  dataPreparation: 0.234,
+                  schemaCreationLoad: 0.117,
+                  mappingTranslation: 0.522,
+                  total: 1.892
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.373,
+                  normalization: 0,
+                  dataPreparation: 0.441,
+                  schemaCreationLoad: 0.346,
+                  mappingTranslation: 0.538,
+                  total: 8.698
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 71.692,
+                  normalization: 0,
+                  dataPreparation: 1.505,
+                  schemaCreationLoad: 2.028,
+                  mappingTranslation: 0.551,
+                  total: 75.776
+              }
+            ],
+          "datatype": "2",
+          "substitution": "2"
+      },
+      "q17": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.389,
+                  normalization: 0,
+                  dataPreparation: 0.169,
+                  schemaCreationLoad: 0.091,
+                  mappingTranslation: 0.543,
+                  total: 1.193
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.013,
+                  normalization: 0,
+                  dataPreparation: 0.22,
+                  schemaCreationLoad: 0.198,
+                  mappingTranslation: 0.536,
+                  total: 1.967
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.241,
+                  normalization: 0,
+                  dataPreparation: 0.666,
+                  schemaCreationLoad: 1.093,
+                  mappingTranslation: 0.533,
+                  total: 9.533
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 72.449,
+                  normalization: 0,
+                  dataPreparation: 4.2,
+                  schemaCreationLoad: 10.732,
+                  mappingTranslation: 0.528,
+                  total: 87.909
+              }
+            ],
+          "datatype": "1",
+          "substitution": "4"
+      },
+      "q18": {
+          executiontimes: [
+               {
+                  size:1,
+                  key:'1',
+                  selection: 0.379,
+                  normalization: 0,
+                  dataPreparation: 0.226,
+                  schemaCreationLoad: 0.101,
+                  mappingTranslation: 0.519,
+                  total: 1.224
+              },
+              {
+                  size:10,
+                  key:'2',
+                  selection: 1.028,
+                  normalization: 0,
+                  dataPreparation: 0.239,
+                  schemaCreationLoad: 0.117,
+                  mappingTranslation: 0.542,
+                  total: 1.926
+              },
+               {
+                  size:100,
+                  key:'3',
+                  selection: 7.276,
+                  normalization: 0,
+                  dataPreparation: 0.459,
+                  schemaCreationLoad: 0.296,
+                  mappingTranslation: 0.578,
+                  total: 8.611
+              },
+              {
+                  size:1000,
+                  key:'4',
+                  selection: 71.849,
+                  normalization: 0,
+                  dataPreparation: 1.552,
+                  schemaCreationLoad: 1.905,
+                  mappingTranslation: 0.541,
+                  total: 75.847
+              }
+            ],
+          "datatype": "1",
+          "substitution": "3"
+      }
+  },
     
     "bsbm":{
-        "q1":{
-        "datatype": 7,
-        "substitution": 1
-          },
-        "q2":{
-        "datatype": 10,
-        "substitution": 12
-          },
-        "q3":{
-        "datatype": 8,
-        "substitution": 3
-          },
-        "q4":{
-        "datatype": 2,
-        "substitution": 2
-          },
-        "q5":{
-        "datatype": 6,
-        "substitution": 3
-          },
-        "q6":{
-        "datatype": 0,
-        "substitution": 1
-          },
-        "q7":{
-        "datatype": 11,
-        "substitution": 2
-          },
-        "q8":{
-        "datatype": 8,
-        "substitution": 8
-          },
-        "q9":{
-        "datatype": 0,
-        "substitution": 0
-          },
-        "q10":{
-        "datatype": 7,
-        "substitution": 2
-          },
-        "q11":{
-        "datatype": 29,
-        "substitution": 53
-          },
-        "q12":{
-        "datatype": 6,
-        "substitution": 7
-          }
-    },
+      "q1": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 3.2912,
+                  schemaCreationLoad: 3.0438,
+                  mappingTranslation: 0.5144,
+                  total: 6.8533
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0036,
+                  normalization: 0.0001,
+                  dataPreparation: 6.8821,
+                  schemaCreationLoad: 6.1181,
+                  mappingTranslation: 0.5397,
+                  total: 13.5436
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0037,
+                  normalization: 0.0001,
+                  dataPreparation: 12.6749,
+                  schemaCreationLoad: 10.7403,
+                  mappingTranslation: 0.5339,
+                  total: 23.9529
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 23.8461,
+                  schemaCreationLoad: 26.804,
+                  mappingTranslation: 0.545,
+                  total: 51.1989
+              }
+            ],
+          "datatype": "7",
+          "substitution": "1"
+      },
+      "q2": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.004,
+                  normalization: 0.0001,
+                  dataPreparation: 5.6994,
+                  schemaCreationLoad: 4.3547,
+                  mappingTranslation: 0.5642,
+                  total: 10.6224
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0041,
+                  normalization: 0.0001,
+                  dataPreparation: 10.0219,
+                  schemaCreationLoad: 8.6672,
+                  mappingTranslation: 0.5252,
+                  total: 19.2185
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0041,
+                  normalization: 0.0004,
+                  dataPreparation: 19.9463,
+                  schemaCreationLoad: 15.8481,
+                  mappingTranslation: 0.508,
+                  total: 36.307
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0041,
+                  normalization: 0.0001,
+                  dataPreparation: 43.8798,
+                  schemaCreationLoad: 44.0315,
+                  mappingTranslation: 0.571,
+                  total: 88.4865
+              }
+            ],
+          "datatype": "10",
+          "substitution": "12"
+      },
+      "q3": {
+          executiontimes: [
+               {
+                  size:45,
+                  key:'1',
+                  selection: 0.0035,
+                  normalization: 0.0001,
+                  dataPreparation: 3.4244,
+                  schemaCreationLoad: 2.7071,
+                  mappingTranslation: 0.4977,
+                  total: 6.6328
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 6.3343,
+                  schemaCreationLoad: 5.5293,
+                  mappingTranslation: 0.5161,
+                  total: 12.3835
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 11.9776,
+                  schemaCreationLoad: 11.1342,
+                  mappingTranslation: 0.5453,
+                  total: 23.661
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0036,
+                  normalization: 0.0001,
+                  dataPreparation: 24.9695,
+                  schemaCreationLoad: 24.6673,
+                  mappingTranslation: 0.536,
+                  total: 50.1765
+              }
+            ],
+          "datatype": "8",
+          "substitution": "3"
+      },
+      "q4": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 3.5068,
+                  schemaCreationLoad: 3.0494,
+                  mappingTranslation: 0.5222,
+                  total: 7.0822
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 6.3778,
+                  schemaCreationLoad: 5.7111,
+                  mappingTranslation: 0.5093,
+                  total: 12.6021
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 12.4592,
+                  schemaCreationLoad: 12.542,
+                  mappingTranslation: 0.5128,
+                  total: 25.5179
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 24.5968,
+                  schemaCreationLoad: 30.7087,
+                  mappingTranslation: 0.5327,
+                  total: 55.842
+              }
+            ],
+          "datatype": "2",
+          "substitution": "2"
+      },
+      "q5": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0037,
+                  normalization: 0.0001,
+                  dataPreparation: 3.4247,
+                  schemaCreationLoad: 2.6484,
+                  mappingTranslation: 0.5046,
+                  total: 6.5814
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 7.1667,
+                  schemaCreationLoad: 6.0669,
+                  mappingTranslation: 0.5268,
+                  total: 13.7642
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 11.9694,
+                  schemaCreationLoad: 11.45,
+                  mappingTranslation: 0.5318,
+                  total: 23.9551
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0037,
+                  normalization: 0.0001,
+                  dataPreparation: 23.6697,
+                  schemaCreationLoad: 23.0889,
+                  mappingTranslation: 0.5396,
+                  total: 47.302
+              }
+            ],
+          "datatype": "6",
+          "substitution": "3"
+      },
+      "q6": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0039,
+                  normalization: 0,
+                  dataPreparation: 2.3183,
+                  schemaCreationLoad: 0.1024,
+                  mappingTranslation: 0.5239,
+                  total: 2.9485
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0033,
+                  normalization: 0,
+                  dataPreparation: 3.1491,
+                  schemaCreationLoad: 0.1685,
+                  mappingTranslation: 0.5087,
+                  total: 3.8296
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0035,
+                  normalization: 0,
+                  dataPreparation: 5.2546,
+                  schemaCreationLoad: 0.2683,
+                  mappingTranslation: 0.5143,
+                  total: 6.0408
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0036,
+                  normalization: 0,
+                  dataPreparation: 10.401,
+                  schemaCreationLoad: 0.4345,
+                  mappingTranslation: 0.4936,
+                  total: 11.3328
+              }
+            ],
+          "datatype": "0",
+          "substitution": "1"
+      },
+      "q7": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.004,
+                  normalization: 0.0001,
+                  dataPreparation: 20.7498,
+                  schemaCreationLoad: 5.8194,
+                  mappingTranslation: 0.5636,
+                  total: 27.1369
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.004,
+                  normalization: 0.0001,
+                  dataPreparation: 42.1908,
+                  schemaCreationLoad: 12.6681,
+                  mappingTranslation: 0.5458,
+                  total: 55.4089
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0042,
+                  normalization: 0.0001,
+                  dataPreparation: 83.4856,
+                  schemaCreationLoad: 25.6928,
+                  mappingTranslation: 0.5842,
+                  total: 109.7669
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0044,
+                  normalization: 0.0001,
+                  dataPreparation: 198.9749,
+                  schemaCreationLoad: 55.6235,
+                  mappingTranslation: 0.5804,
+                  total: 255.1833
+              }
+            ],
+          "datatype": "11",
+          "substitution": "2"
+      },
+      "q8": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 28.6568,
+                  schemaCreationLoad: 14.1682,
+                  mappingTranslation: 0.5513,
+                  total: 43.3802
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0035,
+                  normalization: 0.0001,
+                  dataPreparation: 61.5915,
+                  schemaCreationLoad: 30.6142,
+                  mappingTranslation: 0.5513,
+                  total: 92.7606
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 122.1732,
+                  schemaCreationLoad: 67.6765,
+                  mappingTranslation: 0.554,
+                  total: 190.4076
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0041,
+                  normalization: 0.0001,
+                  dataPreparation: 293.0871,
+                  schemaCreationLoad: 136.0903,
+                  mappingTranslation: 0.5834,
+                  total: 429.7649
+              }
+            ],
+          "datatype": "8",
+          "substitution": "8"
+      },
+      "q9": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0036,
+                  normalization: 0.0001,
+                  dataPreparation: 13.3971,
+                  schemaCreationLoad: 1.2227,
+                  mappingTranslation: 0.519,
+                  total: 15.1425
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0036,
+                  normalization: 0.0001,
+                  dataPreparation: 24.1354,
+                  schemaCreationLoad: 2.2266,
+                  mappingTranslation: 0.5118,
+                  total: 26.8774
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0034,
+                  normalization: 0,
+                  dataPreparation: 47.8334,
+                  schemaCreationLoad: 5.2435,
+                  mappingTranslation: 0.5535,
+                  total: 53.6338
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0037,
+                  normalization: 0.0001,
+                  dataPreparation: 110.8523,
+                  schemaCreationLoad: 10.037,
+                  mappingTranslation: 0.5032,
+                  total: 121.3961
+              }
+            ],
+          "datatype": "0",
+          "substitution": "0"
+      },
+      "q10": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0038,
+                  normalization: 0.0001,
+                  dataPreparation: 7.4326,
+                  schemaCreationLoad: 3.8943,
+                  mappingTranslation: 0.5692,
+                  total: 11.9
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.004,
+                  normalization: 0.0001,
+                  dataPreparation: 13.9073,
+                  schemaCreationLoad: 8.0035,
+                  mappingTranslation: 0.5194,
+                  total: 22.4342
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0039,
+                  normalization: 0.0001,
+                  dataPreparation: 29.4198,
+                  schemaCreationLoad: 15.2676,
+                  mappingTranslation: 0.5745,
+                  total: 45.2659
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0036,
+                  normalization: 0.0001,
+                  dataPreparation: 57.8784,
+                  schemaCreationLoad: 32.0361,
+                  mappingTranslation: 0.5625,
+                  total: 90.4808
+              }
+            ],
+          "datatype": "7",
+          "substitution": "2"
+      },
+      "q11": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0044,
+                  normalization: 0.0002,
+                  dataPreparation: 43.7319,
+                  schemaCreationLoad: 27.0343,
+                  mappingTranslation: 0.5715,
+                  total: 71.3422
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0051,
+                  normalization: 0.0002,
+                  dataPreparation: 85.4322,
+                  schemaCreationLoad: 56.776,
+                  mappingTranslation: 0.5693,
+                  total: 142.7827
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0047,
+                  normalization: 0.0002,
+                  dataPreparation: 185.6499,
+                  schemaCreationLoad: 137.5224,
+                  mappingTranslation: 0.6069,
+                  total: 323.7841
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.0046,
+                  normalization: 0.0002,
+                  dataPreparation: 415.0521,
+                  schemaCreationLoad: 262.529,
+                  mappingTranslation: 0.6318,
+                  total: 678.2176
+              }
+            ],
+          "datatype": "29",
+          "substitution": "53"
+      },
+      "q12": {
+          executiontimes: [
+               {
+                   size:45,
+                   key:'1',
+                  selection: 0.0041,
+                  normalization: 0.0001,
+                  dataPreparation: 8.4426,
+                  schemaCreationLoad: 5.1514,
+                  mappingTranslation: 0.5407,
+                  total: 14.139
+              },
+               {
+                   size:90,
+                   key:'2',
+                  selection: 0.0039,
+                  normalization: 0.0001,
+                  dataPreparation: 16.0586,
+                  schemaCreationLoad: 10.6385,
+                  mappingTranslation: 0.5461,
+                  total: 27.2472
+              },
+                {
+                    size:180,
+                    key:'3',
+                  selection: 0.0036,
+                  normalization: 0.0001,
+                  dataPreparation: 34.682,
+                  schemaCreationLoad: 21.4108,
+                  mappingTranslation: 0.5989,
+                  total: 56.6955
+              },
+               {
+                   size:360,
+                   key:'4',
+                  selection: 0.004,
+                  normalization: 0.0001,
+                  dataPreparation: 66.7594,
+                  schemaCreationLoad: 44.7156,
+                  mappingTranslation: 0.5403,
+                  total: 112.0194
+              }
+            ],
+          "datatype": "6",
+          "substitution": "7"
+      }
+  },
     "bio2rdf":{
         "q1":{
         "datatype": 0,

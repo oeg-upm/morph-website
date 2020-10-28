@@ -7,7 +7,6 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-import {sendData} from '../../requests/mapeathorApi'
 import axios from 'axios'
 import { useRef } from 'react';
 const {Title, Paragraph, Text} = Typography
@@ -25,17 +24,7 @@ const normFile = e => {
   }
   return e && e.fileList;
 };
-  const onFinish = values => {
-      console.log('Received values of form: ', values);
-      // if(values.file !== undefined)
-      //     values.file = values.file[0]
-      sendData(values).then((data) => {
-          console.log(data)
-      }).catch((err) => {
-          console.log(err)
-      });
-      
-    }
+
 
 
 

@@ -29,21 +29,3 @@ export default function layoutSider(props){
         </Layout>
     )
 }
-/**
- *         <Row>
-            <Col>
-                <DatasetSelector></DatasetSelector>
-            </Col>
-            <Col
-            >
-                <Row justify="center">
-                    <Col
-                    xs={22}
-                    sm={20}
-                    md={18} >
-                    {props.children}
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
- */
