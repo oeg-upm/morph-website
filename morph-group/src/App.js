@@ -33,8 +33,8 @@ class App extends React.Component {
             <Route path="/tool/:code" component={Tool}/>
             <Route exact path="/tools" component={Tools}/>
             <Route exact path="/demo/mapeathor" component={MapeathorDemo}/>
-            <Route exact path="/demo/morphcsv" component={MorphCsvDemo}/>
-            <Route path="/demo/morphcsv/run/:dataset/:query" component={MorphCsvDemoQuery}/>
+            <Route exact path="/demo/morph-csv" component={MorphCsvDemo}/>
+            <Route path="/demo/morph-csv/run/:dataset/:query" component={MorphCsvDemoQuery}/>
 
         </BrowserRouter>
     );

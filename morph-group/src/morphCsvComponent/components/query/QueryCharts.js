@@ -19,47 +19,54 @@ const totalElements = {
 }
 const executiontimesColumns = [
     {
+        title:'Size',
+        dataIndex:'size',
+        key:'size',
+        render: val => (val === 0?'-':val),
+        align:'center'
+    } ,    
+    {
         title:'Selection',
         dataIndex:'selection',
         key:'selection',
-        render: val => (val === 0?'-':val)
+        render: val => (val === 0?'-':val.toString() + 's'),
+        align:'center'
     },
     {
         title:'Normalization',
         dataIndex:'normalization',
         key:'normalization',
-        render: val => (val === 0?'-':val)
+        render: val => (val === 0?'-':val.toString() + 's'),
+        align:'center'
     },
     {
         title:'Data Preparation',
         dataIndex:'dataPreparation',
         key:'dataPreparation',
-        render: val => (val === 0?'-':val)
+        render: val => (val === 0?'-':val.toString() + 's'),
+        align:'center'
     },
     {
         title:'Schema Creation and Load',
         dataIndex:'schemaCreationLoad',
         key:'schemaCreationLoad',
-        render: val => (val === 0?'-':val)
+        render: val => (val === 0?'-':val.toString() + 's'),
+        align:'center'
     },
     {
         title:'Mapping Translation',
         dataIndex:'mappingTranslation',
         key:'mappingTranslation',
-        render: val => (val === 0?'-':val)
+        render: val => (val === 0?'-':val.toString() + 's'),
+        align:'center'
     },
     {
         title:'Total',
         dataIndex:'total',
         key:'total',
-        render: val => (val === 0?'-':val)
-    }, 
-    {
-        title:'Size',
-        dataIndex:'size',
-        key:'size',
-        render: val => (val === 0?'-':val)
-    }   
+        render: val => (val === 0?'-':val.toString() + 's'),
+        align:'center'
+    } 
 ]
 export default function QueryChart(props){
     let foreignKeys = 0;

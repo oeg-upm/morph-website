@@ -1,7 +1,22 @@
 import React from 'react'
 import {Link}  from 'react-router-dom'
-import {Menu, Row, Col} from 'antd'
+import {Menu, Row, Col, Dropdown} from 'antd'
 import logo from '../assets/logo.png'
+
+
+const demos = () => {
+    return(
+        <Menu>
+            <Menu.Item>
+                <Link to="/demo/mapeathor">Mapeathor Demo</Link>
+            </Menu.Item>
+            <Menu.Item>
+                <Link to="/demo/morph-csv">Morph-CSV Demo</Link>
+            </Menu.Item>            
+        </Menu>
+    )
+}
+
 class Header extends React.Component {
     render() {
         return (
@@ -22,6 +37,13 @@ class Header extends React.Component {
                     <Menu.Item key="tools">
                         <Link to="/tools">Tools</Link>
                     </Menu.Item>
+                    <Menu.Item key="demos">
+                        <Dropdown overlay={demos} placement="bottomCenter" arrow>
+                        <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                                Demos
+                        </a>                            
+                        </Dropdown>
+                    </Menu.Item>                    
                     <Menu.Item>
                         <a href="https://morph.oeg.fi.upm.es/sparql">SPARQL Endpoint</a>
                     </Menu.Item>

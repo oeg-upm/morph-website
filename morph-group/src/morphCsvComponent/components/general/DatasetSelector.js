@@ -19,6 +19,9 @@ export default class DatasetSelector extends React.Component{
             mode="inline"
             style={{ height: '100%', borderRight:'10 #000000'}}
           >
+              <Menu.Item>
+                  <Link to="/demo/morph-csv">Evaluation</Link>
+              </Menu.Item>
               {Object.keys(data).map((dataset, idx) => {
                   return(
                       <SubMenu
@@ -28,9 +31,9 @@ export default class DatasetSelector extends React.Component{
                           {Object.keys(data[dataset]["queries"]).map((query,jdx) => {
                               return(
                                 <Menu.Item key={dataset + query}>
-                                    <a href={`/demo/morphcsv/run/${dataset}/${jdx + 1}`}>
+                                    <Link to={`/demo/morph-csv/run/${dataset}/${jdx + 1}`}>
                                     {"Query" + query}     
-                                    </a>
+                                    </Link>
                                 </Menu.Item>
                               )
                           })}
