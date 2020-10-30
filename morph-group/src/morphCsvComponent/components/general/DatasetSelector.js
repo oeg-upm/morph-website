@@ -8,7 +8,7 @@ export default class DatasetSelector extends React.Component{
         state = {
             dataset:'gtfs'
         }
-    
+
     render(){
         return(
             <Menu
@@ -31,9 +31,9 @@ export default class DatasetSelector extends React.Component{
                           {Object.keys(data[dataset]["queries"]).map((query,jdx) => {
                               return(
                                 <Menu.Item key={dataset + query}>
-                                    <Link to={`/demo/morph-csv/run/${dataset}/${jdx + 1}`}>
-                                    {"Query" + query}     
-                                    </Link>
+                                    <a href={`/demo/morph-csv/run/${dataset}/${jdx + 1}`}>
+                                    {"Query" + query}
+                                    </a>
                                 </Menu.Item>
                               )
                           })}
