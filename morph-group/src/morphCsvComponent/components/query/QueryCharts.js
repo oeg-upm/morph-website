@@ -20,38 +20,45 @@ const totalElements = {
 const executiontimesColumns = [
     {
         title:'Selection',
-        index:'selection',
-        key:'selection'
+        dataIndex:'selection',
+        key:'selection',
+        render: val => (val === 0?'-':val)
     },
     {
         title:'Normalization',
-        index:'normalization',
-        key:'normalization'
+        dataIndex:'normalization',
+        key:'normalization',
+        render: val => (val === 0?'-':val)
     },
     {
         title:'Data Preparation',
-        index:'dataPreparation',
-        key:'dataPreparation'
+        dataIndex:'dataPreparation',
+        key:'dataPreparation',
+        render: val => (val === 0?'-':val)
     },
     {
         title:'Schema Creation and Load',
-        index:'schemaCreationLoad',
-        key:'schemaCreationLoad'
+        dataIndex:'schemaCreationLoad',
+        key:'schemaCreationLoad',
+        render: val => (val === 0?'-':val)
     },
     {
         title:'Mapping Translation',
-        index:'mappingTranslation',
-        key:'mappingTranslation'
+        dataIndex:'mappingTranslation',
+        key:'mappingTranslation',
+        render: val => (val === 0?'-':val)
     },
     {
         title:'Total',
-        index:'total',
-        key:'total'
+        dataIndex:'total',
+        key:'total',
+        render: val => (val === 0?'-':val)
     }, 
     {
         title:'Size',
-        index:'size',
-        key:'size'
+        dataIndex:'size',
+        key:'size',
+        render: val => (val === 0?'-':val)
     }   
 ]
 export default function QueryChart(props){
