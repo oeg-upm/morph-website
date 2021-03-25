@@ -6,3 +6,5 @@ tool_id,paper_id
 "mapeathor","towards-the-definition-of-a-language-independent-mapping-template-for-knowledge-graph-creation"
 "mapeathor","mapeathor-simplifying-the-specification-of-declarative-rules-for-knowledge-graph-construction"
 "morph-csv","morph-csv-virtual-knowledge-graph-access-for-tabular-data"
+"morph-skyline","morph-skyline-skyline-queries-for-virtual-knowledge-graph-access"
+"morph-skyline","morph-skyline-virtual-ontology-based-data-access-for-skyline-queries"
