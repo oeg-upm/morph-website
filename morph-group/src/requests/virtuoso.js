@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {Client} from "graphql-ld";
 import {QueryEngineComunica} from "graphql-ld-comunica";
-const API = 'https://morph.oeg.fi.upm.es/sparql'
+const API = 'http://localhost:8890/sparql'//'https://morph.oeg.fi.upm.es/sparql'
 const uris = {
   schema:'http://schema.org/',
   dcterms:'http://purl.org/dc/terms/',
