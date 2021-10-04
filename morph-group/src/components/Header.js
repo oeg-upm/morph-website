@@ -12,7 +12,10 @@ const demos = () => {
             </Menu.Item>
             <Menu.Item>
                 <Link to="/demo/morph-csv">Morph-CSV Demo</Link>
-            </Menu.Item>            
+            </Menu.Item>     
+            <Menu.Item>
+                <Link to="/demo/morph-kgc">Morph-KGC Demo</Link>
+            </Menu.Item>         
         </Menu>
     )
 }
