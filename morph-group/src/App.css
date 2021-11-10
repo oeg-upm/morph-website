@@ -83,3 +83,8 @@
 .file-preview {
 margin: 0 10px;
 }
+
+.errorCard {
+  background-color: rgb(255, 202, 202)!important;
+  border-radius: 20px;
+}

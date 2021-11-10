@@ -1,6 +1,6 @@
 import axios from 'axios'
 const api = "https://morphkgc.oeg.fi.upm.es/"
-const parserApi = "https://yarrrmlparser.oeg.fi.upm.es/"
+const parserApi = "https://yarrrmlparser.oeg.fi.upm.es/" //"http://localhost:3001"//
 function uploadFiles(data){
     return new Promise(async (resolve,reject) => {
         const formData = new FormData();
@@ -12,11 +12,9 @@ function uploadFiles(data){
             },
             responseType:'blob'
         }
-        const response = await axios.post(api,formData,config).catch((err) => reject(err));;
+        const response = await axios.post(api,formData,config).catch((err) => reject(err));
         if(response){
             resolve(response.data)
-        }else{
-            reject()
         }
     });
 }
@@ -26,8 +24,6 @@ function parseMapping(mapping){
         const response = await axios.post(parserApi + '/parse',data).catch((err) => reject(err));
         if(response){
             resolve(response.data)
-        }else{
-            reject()
         }
     });
 }
