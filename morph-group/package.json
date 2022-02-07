@@ -26,6 +26,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-syntax-highlighter": "^13.5.3",
+    "serve": "^13.0.2",
     "sparqljson-to-tree": "^2.0.0"
   },
   "scripts": {

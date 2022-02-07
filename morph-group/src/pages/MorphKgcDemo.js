@@ -6,63 +6,102 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { ghcolors } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function MorphKgcDemo(props){
-    const [mapping, setMapping] = useState(null)
-    const [textMapping, setTextMapping] = useState("")
-    const [rmlMapping, setrmlMapping] = useState("")
+	
+//    const [mapping, setMapping] = useState(null)
+//    const [textMapping, setTextMapping] = useState("")
+//    const [rmlMapping, setrmlMapping] = useState("")
     const [mappingError, setMappingError] = useState(null)
     const [csv, setCsv] = useState(null)
+    
+    let mapping = null
+    let data = null
+    
+    // Check file size before upload
+    
     const beforeUpload = (file) => {
-      const isLt2M = file.size / 1024 / 1024 < 101;
-      if (!isLt2M) {
-        message.error('Image must smaller than 2MB!');
+		
+      const sz = file.size / 1024 / 1024 < 100;
+      
+      if (!sz) {
+        message.error('The file size is above the 100M limit of this service, you can use Morph-KGC locally to process huge files.');
       }
-      return isLt2M;
+      return sz;
     }
-    const uploadCSV = (data) => {
-      setCsv(data.file)
-      return {...data, status:"success"}
+    
+    
+    const sendRequest = async () => {
+		
+		console.log(mapping)
+		console.log(data)
+
+		if(mapping && data){
+			
+			  uploadFiles({mapping:mapping, data:data}).then((data) => { //Apuf
+
+				const downloadUrl = window.URL.createObjectURL(new Blob([data]));
+		
+				const link = document.createElement('a');
+		
+				link.href = downloadUrl;
+		
+				link.setAttribute('download', 'processed_result.zip');
+		
+				document.body.appendChild(link);
+		
+				link.click();
+		
+				link.remove();
+		
+			  }).catch((err) => {
+				message.error("Somenthing has failed in the materialization process.")
+			  });
+
+		  }else{
+			message.error("You need to select a valid mapping and sources first.")
+		  }
+    
     }
-    const uploadData = async () => {
-
-      if(textMapping !== null && csv !== null){
-        if(textMapping && textMapping.length > 0){
-
-        if(rmlMapping){
-          uploadFiles({mapping:rmlMapping, csv:csv}).then(( data) => {
-
-            const downloadUrl = window.URL.createObjectURL(new Blob([data]));
     
-            const link = document.createElement('a');
+    function uploadMapping(obj){
+		
+		readFile(obj.file).then((textMapping) => {
+		
+			if(textMapping.length > 0){
+			  parseMapping(textMapping).then((data) =>  {
+				if(data){
+				  //setrmlMapping(data.toString())
+				  obj.onSuccess();
+				  setMappingError(null)
+				  
+				  mapping = new Blob([data], {type: "text/turtle"});
+				}
+			  }).catch((err) => {
+				console.log(err)
+				obj.onError();
+				if(err.response){
+				  setMappingError("Error: "+JSON.stringify(err.response.data.message).replace("\n", "")+"\nLínea: "+JSON.stringify(err.response.data.parsedLine)+"\nFragmento: "+JSON.stringify(err.response.data.snippet))
+				}else{
+				  setMappingError("Unknown error")
+				}
+				message.error("Not valid mapping file")
+			  });
+			}
+		
+		}).catch((err) => console.log(err));
+			
+	}
     
-            link.href = downloadUrl;
+    function uploadSources(obj){
+		
+		console.log(obj);
+		data = obj.file
+		
+		window.setTimeout(function(){
+			obj.onSuccess();
+		}, 500);
+		
+	}
     
-            link.setAttribute('download', 'file.zip'); //any other extension
-    
-            document.body.appendChild(link);
-    
-            link.click();
-    
-            link.remove();
-    
-          }).catch((err) => {
-            message.error("Somenthing has failed in the materialization process.")
-          });
-    
-        }
-
-      }else{
-        message.error("Not valid mapping file")
-      }
-    }else{
-      if(mapping === null){
-        message.error("The YARRRML mapping file it is required.")
-      }
-      if(csv === null){
-        message.error("The CSV file(s) it is required.")
-
-      }
-    }
-    }
     function readFile(data){
       const reader = new FileReader();
       return new Promise((resolve, reject) => {
@@ -70,33 +109,8 @@ export default function MorphKgcDemo(props){
           reader.onerror = error => reject(error)
           reader.readAsText(data)    
           });
-  }
-  useEffect(() => {
-    readFile(mapping).then((data) => {
-        setTextMapping(data)
-    }).catch((err) => console.log(err));
-
-  },[mapping])
-  useEffect(() => {
-    if(textMapping.length > 0){
-      parseMapping(textMapping).then((data) =>  {
-        if(data){
-          setrmlMapping(data.toString())
-          console.log(data)
-          setMappingError(null)
-        }
-      }).catch((err) => {
-        console.log(err)
-        if(err.response){
-          setMappingError(JSON.stringify(err.response.data).replace(",", ",\n"))
-        }else{
-          setMappingError("Unknown error")
-        }
-        message.error("Not valid mapping file")
-      });
     }
-    
-  }, [textMapping])
+  
     return (
       <Layout>
         <h2>Morph-KGC</h2>
@@ -157,42 +171,25 @@ export default function MorphKgcDemo(props){
         <div className="mt-3">
         <Upload
         beforeUpload={beforeUpload}
-        customRequest={(data) => setMapping(data.file)}
+        customRequest={(data) => uploadMapping(data)}
         >
         <Button>Upload Mapping</Button>
       </Upload>
-      <div className="rmlViewver mt-3">
-         {
-           mappingError ?(
-             <div className="errorCard p-5">
-               <h5>There is a problem with your mapping file:</h5>
-                <p>{
-                  mappingError.toString()
-                }</p>
-             </div>
-           ):textMapping.length > 0?(
-            <Collapse>
-            <Collapse.Panel key="1" header="RML mapping">
-             <SyntaxHighlighter language="javascript" style={{...ghcolors, whiteSpace:"pre-line"}}>
-               {rmlMapping.replace(";", ";")}
-             </SyntaxHighlighter>
-            </Collapse.Panel>
-          </Collapse>
-           ):null
-         }
-      </div>
+      
+
       <div className="mt-3">
       <Upload
+          disabled={false}
           iconRender={null}
-          accept=".zip,.rar,.7zip"
+          accept=".zip"
           beforeUpload={beforeUpload}
-        customRequest={(data) => uploadCSV(data)}
+        customRequest={(data) => uploadSources(data)}
         >
-        <Button>Upload CSV(s)</Button>
+        <Button>Upload data sources</Button>
       </Upload>
       </div>
         <div className="mt-5">
-          <Button onClick={() => uploadData()}>Upload</Button>
+          <Button disabled={false} onClick={() => sendRequest()}>Materialize</Button>
         </div>
         </div>
 

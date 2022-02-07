@@ -1,11 +1,11 @@
 import axios from 'axios'
-const api = "https://morphkgc.oeg.fi.upm.es/"
+const api = "http://172.17.0.2:5000/"
 const parserApi = "https://yarrrmlparser.oeg.fi.upm.es/" //"http://localhost:3001"//
-function uploadFiles(data){
+function uploadFiles(req){
     return new Promise(async (resolve,reject) => {
         const formData = new FormData();
-        formData.append('mapping', data.mapping);
-        formData.append('csv', data.csv)
+        formData.append('mapping', req.mapping);
+        formData.append('data', req.data)
         const config = {
             headers:{
                 'Content-Type':'multipart/form-data'
