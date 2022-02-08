@@ -128,26 +128,30 @@ export default function MorphKgcDemo(props){
           <Col>
             <List>
               <List.Item>
-                <h5>Requirements</h5>
+                <h5>Mapping requirements</h5>
               </List.Item> 
-              <List.Item>
-                The tool only allows the upload of <b>CSV files and YARRRML mappings.</b>
-              </List.Item>
               <List.Item>
                 All the sources must start from the dir <b>/data/</b>
               </List.Item>
               <List.Item>
-                If the mapping require more than a CSV file then you have to compress the dir and upload a zip file.
-              </List.Item>
-              <List.Item>
-                The data size can not be larger than 100MB 
-              </List.Item>
-              <List.Item>
-                If you have any problem or find a bug please leave an issue <a href="https://github.com/oeg-upm/Morph-KGC/issues">here</a>
+                This demo only support mappings in YARRRML format.
               </List.Item>
               <List.Item>
                 If you have any doubt about how to create a YARRRML mapping, you can research and ask <a href="https://github.com/kg-construct/rml-questions/discussions">here</a>
               </List.Item>
+              <List.Item>
+                <h5>Sources requirements</h5>
+              </List.Item>
+              <List.Item>
+                This demo support CSV, JSON and XML files of a combined size of 100MB (compressed).
+              </List.Item>
+              <List.Item>
+                All sources must be provided in a single ZIP file. That file will be decompresses as the /data/ folder.
+              </List.Item>
+              <List.Item>
+                If you have any problem or find a bug please leave an issue <a href="https://github.com/oeg-upm/Morph-KGC/issues">here</a>
+              </List.Item>
+
             </List>          
           </Col>
           <Col>
@@ -171,6 +175,8 @@ export default function MorphKgcDemo(props){
         <div className="mt-3">
         <Upload
         beforeUpload={beforeUpload}
+        accept=".yml,.yaml,.txt"
+        maxCount={1}
         customRequest={(data) => uploadMapping(data)}
         >
         <Button>Upload Mapping</Button>
@@ -181,7 +187,8 @@ export default function MorphKgcDemo(props){
       <Upload
           disabled={false}
           iconRender={null}
-          accept=".zip"
+          maxCount={1}
+          accept=".zip,.xz"
           beforeUpload={beforeUpload}
         customRequest={(data) => uploadSources(data)}
         >

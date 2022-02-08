@@ -1,6 +1,7 @@
 import axios from 'axios'
-const api = "http://172.17.0.2:5000/"
-const parserApi = "https://yarrrmlparser.oeg.fi.upm.es/" //"http://localhost:3001"//
+//const api = "http://172.17.0.2:5000/"
+const api = "https://morphkgc.oeg.fi.upm.es/"
+const parserApi = "https://yarrrmlparser.oeg.fi.upm.es/"
 function uploadFiles(req){
     return new Promise(async (resolve,reject) => {
         const formData = new FormData();
