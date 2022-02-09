@@ -11,43 +11,43 @@ prefixes:
 mappings:
   person:
     sources:
-      - [/data/files/person.csv~csv]
+      - [files/person.csv~csv]
     s: oeg:person/$(id)
     po:
     - [a, schema:Person]
-    - [dct:identifier, $(id), xsd:string]
+    - [dct:identifier, $(id)]
     - [schema:jobTitle, $(position), xsd:integer] 
-    - [schema:jobTitle, $(role), xsd:string]
-    - [schema:name, $(name), xsd:string]
+    - [schema:jobTitle, $(role)]
+    - [schema:name, $(name)]
     - [schema:url, $(webpage)~iri]
     - [schema:memberOf, $(group)~iri]
     - [schema:memberOf, $(organization)~iri]    
     - [schema:affiliation, $(organization)~iri]
     - [schema:worksFor, $(organization)~iri]    
     - [schema:image, $(photo)~iri]
-    - [schema:description, $(biography), xsd:string]
-    - [schema:email, $(email), xsd:string]
-    - [schema:identifier, "http://twitter.com/$(twitter)~iri"]
+    - [schema:description, $(biography)]
+    - [schema:email, $(email)]
+    - [schema:identifier, http://twitter.com/$(twitter)~iri]
     - [schema:identifier, $(linkedin)~iri]    
-    - [schema:identifier, "http://github.com/$(github)~iri"]   
+    - [schema:identifier, http://github.com/$(github)~iri]   
     - [schema:startDate, $(start_date), xsd:date] # I am not sure that we need this property. It is not applicable to Person, anyway
-    - [schema:nationality, $(nationality), xsd:string]  #TODO: Add this in the CSV
-    - [ex:status, $(status), xsd:string] #Is this property needed?
+    - [schema:nationality, $(nationality)]  #TODO: Add this in the CSV
+    - [ex:status, $(status)] #Is this property needed?
 
 
   paper:
     sources:
-      - [/data/files/paper.csv~csv]
+      - [files/paper.csv~csv]
     s: oeg:paper/$(id)
     po:
     - [a, schema:ScholarlyArticle]
-    - [dct:identifier, $(id), xsd:string]
-    - [schema:name, $(title), xsd:string]
-    - [schema:abstract, $(description), xsd:string]
+    - [dct:identifier, $(id)]
+    - [schema:name, $(title)]
+    - [schema:abstract, $(description)]
     - [schema:url, $(paper_link)~iri]
     - [schema:datePublished, $(date_published), xsd:date]
     - [schema:Event, $(event)~iri] # This not right, although in schema.org there is no way to relate an article and the event where it comes from
-    - [ex:eventName, $(event_name), xsd:string] # Indeed, I suggest removing all references to events and create a single property, or then creating an entity of type Event, etc.
+    - [ex:eventName, $(event_name)] # Indeed, I suggest removing all references to events and create a single property, or then creating an entity of type Event, etc.
     - p: schema:author
       o:
         - mapping: papers_people
@@ -74,16 +74,16 @@ mappings:
               - [str2, $(paper_id)]              
   tool:
     sources:
-      - [/data/files/tool.csv~csv]
+      - [files/tool.csv~csv]
     s: oeg:Tool/$(id)
     po:
     - [a, schema:SoftwareSourceCode]
-    - [dct:identifier, $(id), xsd:string]
-    - [schema:name, $(name), xsd:string]
+    - [dct:identifier, $(id)]
+    - [schema:name, $(name)]
     - [schema:codeRepository, $(ghrepo)~iri]
-    - [doi:name, $(zenodo), xsd:string]  #TODO: This should be a sameAs to the URL of the DOI, instead of this. Remove
-    - [schema:about, $(description), xsd:string]
-    - [schema:abstract, $(abstract), xsd:string]
+    - [doi:name, $(zenodo)]  #TODO: This should be a sameAs to the URL of the DOI, instead of this. Remove
+    - [schema:about, $(description)]
+    - [schema:abstract, $(abstract)]
     - [schema:image, $(image_link)~iri]
     - [schema:datePublished, $(date_published), xsd:date]
     - [schema:url, $(webpage)~iri]
@@ -114,16 +114,16 @@ mappings:
 
   award:  #TODO: I would remove all structured references to Awards, since they do not exist in schema.org and are just a text, and this is how they are presented in the website. Create a text from this CSV.
     sources:
-      - [/data/files/award.csv~csv]
+      - [files/award.csv~csv]
     s: oeg:Award/$(id)
     po:
     - [a, schema:award]
-    - [dct:identifier, $(id), xsd:string]
-    - [schema:name, $(name), xsd:string]
-    - [schema:about,$(description), xsd:string]
+    - [dct:identifier, $(id)]
+    - [schema:name, $(name)]
+    - [schema:about,$(description)]
     - [schema:Date, $(date), xsd:date]
     - [schema:Event, $(event)~iri]
-    - [ex:eventName, $(event_name), xsd:string]    
+    - [ex:eventName, $(event_name)]    
     - [schema:url, $(award_link)~iri]
     - p: schema:winner
       o:
@@ -152,7 +152,7 @@ mappings:
                                 
   papers_people:
     sources:
-      - [/data/files/papers_people.csv~csv]
+      - [files/papers_people.csv~csv]
     s: oeg:Paper_person/$(paper_id)_$(person_id)
     po:
     - [a, schema:isRelatedTo]
@@ -176,7 +176,7 @@ mappings:
 
   papers_awards:
     sources:
-      - [/data/files/papers_awards.csv~csv]
+      - [files/papers_awards.csv~csv]
     s: oeg:Paper_award/$(paper_id)_$(award_id)
     po:
     - [a, schema:isRelatedTo]
@@ -199,7 +199,7 @@ mappings:
 
   papers_tools:
     sources:
-      - [/data/files/papers_tools.csv~csv]
+      - [files/papers_tools.csv~csv]
     s: oeg:Paper_tool/$(paper_id)_$(tool_id)
     po:
     - [a, schema:isRelatedTo]
@@ -222,7 +222,7 @@ mappings:
 
   awards_tools:
     sources:
-      - [/data/files/awards_tools.csv~csv]
+      - [files/awards_tools.csv~csv]
     s: oeg:Award_tool/$(award_id)_$(tool_id)
     po:
     - [a, schema:isRelatedTo]
@@ -245,7 +245,7 @@ mappings:
 
   people_tools:
     sources:
-      - [/data/files/people_tools.csv~csv]
+      - [files/people_tools.csv~csv]
     s: oeg:Person_tool/$(person_id)_$(tool_id)
     po:
     - [a, schema:isRelatedTo]
@@ -268,7 +268,7 @@ mappings:
   
   people_awards:
     sources:
-      - [/data/files/people_awards.csv~csv]
+      - [files/people_awards.csv~csv]
     s: oeg:Person_award/$(person_id)_$(award_id)
     po:
     - [a, schema:isRelatedTo]
