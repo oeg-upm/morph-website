@@ -2,9 +2,10 @@ import axios from 'axios'
 import {Client} from "graphql-ld";
 import {QueryEngineComunica} from "graphql-ld-comunica";
 const API = 'https://morph.oeg.fi.upm.es/sparql'
+//const API = "http://localhost:5001/sparql"
 const uris = {
   schema:'http://schema.org/',
-  dcterms:'http://purl.org/dc/terms/',
+  dct:'http://purl.org/dc/terms/',
   ex:'http://example.com/',
   rdf:'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   ov: 'http://open.vocab.org/terms/',
@@ -14,7 +15,7 @@ const uris = {
 const context = {
     "@context": {
       a:`${uris.rdf}type` ,
-      Article:`${uris.schema}Article`,
+      Article:`${uris.schema}ScholarlyArticle`,
       Event:`${uris.schema}Event`,
       eventName:`${uris.ex}eventName`,
       name:`${uris.schema}name`,
@@ -48,7 +49,7 @@ const context = {
       hasWrite:`${uris.ex}hasWrite`,
       hasWon:`${uris.ex}hasWon`,
       SoftwareSourceCode:`${uris.schema}SoftwareSourceCode`,
-      code:`${uris.ex}code`,
+      code:`${uris.dct}identifier`,
       about:`${uris.schema}about`,
       isRelatedTo:`${uris.schema}isRelatedTo`,
       identifier:`${uris.schema}identifier`,
@@ -76,7 +77,7 @@ const comunicaConfig = {
   const queryAllTools =`
     query{
       id(a:SoftwareSourceCode) @single
-      code @single
+      code @single 
       datePublished @single @optional
     }
   `
@@ -167,7 +168,7 @@ const queryTool = (code) => {
 const queryMemberCode = (name) => (
   `
     query @single(scope: all){
-      id(a:Person, name: "${name}")
+      id(a:Person, code: "${name}")
       code
     }
   `

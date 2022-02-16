@@ -50,11 +50,11 @@ export default class ArticleCard extends React.Component{
             await this.getArticleData()
         }    
     }
-    async componentDidUpdate(){
+  /*  async componentDidUpdate(){
         if(Object.keys(this.state.data).length === 0){
             await this.getArticleData()
         }
-    }
+    }*/
     render(){
         return(
             Object.keys(this.state.data).length !== 0?(

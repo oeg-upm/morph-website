@@ -1,7 +1,7 @@
 {
   "homepage": "https://morph.oeg.fi.upm.es",
   "name": "morph-group",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@antv/g6": "^3.4.5",
@@ -12,9 +12,8 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
-    "graphql-ld": "^1.1.0",
+    "graphql-ld": "^1.2.0",
     "graphql-ld-comunica": "^1.0.1",
-    "graphql-to-sparql": "^2.1.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",

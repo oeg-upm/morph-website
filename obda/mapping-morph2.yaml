@@ -5,10 +5,10 @@ prefixes:
     idlab-fn: http://example.com/idlab/function/
     grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
     ex: http://example.com/
-    doi: http://doi.org/
     oeg: http://www.oeg-upm.net/resource/
 
 mappings:
+
   person:
     sources:
       - [files/person.csv~csv]
@@ -27,13 +27,18 @@ mappings:
     - [schema:description, $(biography)]
     - [schema:email, $(email)]
     - [schema:identifier, http://twitter.com/$(twitter)~iri]
-    - [schema:identifier, $(linkedin)~iri]    
+    - [schema:identifier, $(linkedin)~iri]
     - [schema:identifier, http://github.com/$(github)~iri]   
-    - [schema:startDate, $(start_date), xsd:date] # I am not sure that we need this property. It is not applicable to Person, anyway
-    - [schema:nationality, $(nationality)]  #TODO: Add this in the CSV
-    - [ex:status, $(status)] #Is this property needed?
 
-
+# https://schema.org/PublicationEvent
+  event:
+    sources:
+      - [files/events.csv~csv]
+    s: oeg:event/$(id)
+    po:
+      - [a, schema:PublicationEvent]
+      - 
+# https://schema.org/ScholarlyArticle
   paper:
     sources:
       - [files/paper.csv~csv]
@@ -45,8 +50,7 @@ mappings:
     - [schema:abstract, $(description)]
     - [schema:url, $(paper_link)~iri]
     - [schema:datePublished, $(date_published), xsd:date]
-    - [schema:Event, $(event)~iri] # This not right, although in schema.org there is no way to relate an article and the event where it comes from
-    - [ex:eventName, $(event_name)] # Indeed, I suggest removing all references to events and create a single property, or then creating an entity of type Event, etc.
+    - [schema:releasedEvent, $(event)]
     - p: schema:author
       o:
         - mapping: papers_people
@@ -80,7 +84,7 @@ mappings:
     - [dct:identifier, $(id)]
     - [schema:name, $(name)]
     - [schema:codeRepository, $(ghrepo)~iri]
-    - [doi:name, $(zenodo)]  #TODO: This should be a sameAs to the URL of the DOI, instead of this. Remove
+    - [schema:sameAs, $(zenodo)]
     - [schema:about, $(description)]
     - [schema:abstract, $(abstract)]
     - [schema:image, $(image_link)~iri]

@@ -45,10 +45,10 @@ export default class ToolCard extends React.Component{
         if(Object.keys(this.state.data).length === 0)
             await this.getData()
     }
-    async componentDidUpdate(){
+  /*  async componentDidUpdate(){
         if(Object.keys(this.state.data).length === 0)
             await this.getData()
-    }
+    }*/
     render(){
             return(
                 this.props.size === "small"?(

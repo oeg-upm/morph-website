@@ -32,6 +32,7 @@ export default class Member extends React.Component{
             await this.getMember()
         }
     }
+    
     async getMember(){
         const response = await getMemberInfo(this.props.code).catch((err) => console.log(err))
         const socialMedia = await !(!Object.keys(response.data.person).includes("indentifier") &&

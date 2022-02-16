@@ -4,18 +4,19 @@ import {getCodeMember} from '../requests/virtuoso'
 import MemberCard from '../components/Members/MemberCard'
 
 
-
-
 export default class Member extends React.Component{
+	
     constructor(props){
         super(props);
         this.state = {
             code:""
         }
     }
+    
     async componentDidMount(){
         const {member} = await this.props.match.params
-        const response = await getCodeMember(member).catch(err => console.log(err))    
+        console.log(this.props)
+        //const response = await getCodeMember(member).catch(err => console.log(err))    
         this.setState({code:member})
     }
 
