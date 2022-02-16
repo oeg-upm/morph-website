@@ -34,12 +34,12 @@ class Header extends React.Component {
     render() {
         return (
             <Row  align="bottom" style={{marginBottom:16}} justify="space-between">
-                <Col>
+                <Col span={6}>
                 <a href="/">
                     <img className="img-fluid" src={logo} alt="" style={{height:60}}/>
                 </a>
                 </Col>
-                <Col>
+                <Col span={18}>
                 <Menu mode="horizontal" >
                     <Menu.Item key="home" icon={<HomeOutlined />}>
                         <Link to="/">Home</Link>
