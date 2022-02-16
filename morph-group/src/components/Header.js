@@ -40,7 +40,7 @@ class Header extends React.Component {
                 </a>
                 </Col>
                 <Col span={18}>
-                <Menu mode="horizontal" >
+                <Menu mode="horizontal" style={{justifyContent:"flex-end"}}>
                     <Menu.Item key="home" icon={<HomeOutlined />}>
                         <Link to="/">Home</Link>
                     </Menu.Item>        
