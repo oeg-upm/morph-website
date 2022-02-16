@@ -5,7 +5,7 @@ import {Row, Col, Space} from 'antd'
 
 export default function Layout(props){
     return(
-        <div className=" container-fluid-xs container-fluid-sm container-fluid-md container-lg container-xl">
+        <div className="container-fluid-xs container-fluid-sm container-fluid-md container-lg container-xl">
             <Header />
             <div className="fullScreen">
                 {props.children}
