@@ -134,19 +134,19 @@ export default function MorphKgcDemo(props){
                 All the sources must start from the dir <b>/data/</b>
               </List.Item>
               <List.Item>
-                This demo only support mappings in YARRRML format.
+                This demo only supports mappings in YARRRML format.
               </List.Item>
               <List.Item>
                 If you have any doubt about how to create a YARRRML mapping, you can research and ask <a href="https://github.com/kg-construct/rml-questions/discussions">here</a>
               </List.Item>
               <List.Item>
-                <h5>Sources requirements</h5>
+                <h5>Data requirements</h5>
               </List.Item>
               <List.Item>
                 This demo support CSV, JSON and XML files of a combined size of 100MB (compressed).
               </List.Item>
               <List.Item>
-                All sources must be provided in a single ZIP file. That file will be decompresses as the /data/ folder.
+                All sources must be provided in a single ZIP file. That file will be decompressed as the /data/ folder.
               </List.Item>
               <List.Item>
                 If you have any problem or find a bug please leave an issue <a href="https://github.com/oeg-upm/Morph-KGC/issues">here</a>
@@ -163,7 +163,7 @@ export default function MorphKgcDemo(props){
                   1. Create a YARRRML mapping.
                 </List.Item>
                 <List.Item>
-                  2. Zip your CSVs files.
+                  2. Compress your data files (CSV, JSON, XML...).
                 </List.Item>
                 <List.Item>
                   3. Upload your YARRRML mapping and your zipped files.
@@ -188,7 +188,7 @@ export default function MorphKgcDemo(props){
           disabled={false}
           iconRender={null}
           maxCount={1}
-          accept=".zip,.xz"
+          accept=".zip,.csv,.json,.xml"
           beforeUpload={beforeUpload}
         customRequest={(data) => uploadSources(data)}
         >

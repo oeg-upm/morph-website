@@ -33,7 +33,7 @@ const demos = () => {
 class Header extends React.Component {
     render() {
         return (
-            <Row  align="bottom" style={{marginBottom:16}} justify="space-between">
+            <Row  align="bottom" style={{marginBottom:16, marginTop:20}} justify="space-between">
                 <Col span={6}>
                 <a href="/">
                     <img className="img-fluid" src={logo} alt="" style={{height:60}}/>
