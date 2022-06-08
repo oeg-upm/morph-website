@@ -28,7 +28,8 @@ const normFile = e => {
 
 
 
-const UPLOAD_SUCCESS_URL = "https://morph.oeg.fi.upm.es/api"
+const UPLOAD_SUCCESS_URL = "https://morph.oeg.fi.upm.es/tool/mapeathor/api/"
+
 const loadingIcon = <LoadingOutlined style={{ fontSize: 48 }} spin />;
 
 const options = [
